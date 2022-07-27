@@ -1,7 +1,8 @@
-package com.FreedAsd.fuel_calculator
+package com.FreedAsd.fuel_calculator.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.FreedAsd.fuel_calculator.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
