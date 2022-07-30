@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Fuel_calculator</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="average_fuel_consumption_string">Средний расход топлива, литров/100км</string>
+    <string name="hint_average_fuel_consumption">6.5</string>
+    <string name="distance_tv">Расстояние в километрах</string>
+    <string name="hint_distance_ed">100</string>
+    <string name="fuel_price_tv">Стоимость 1 литра топлива</string>
+    <string name="hint_fuel_price_ed">45.5</string>
+    <string name="passengers_count_tv">Количество пассажиров</string>
+    <string name="hint_count_of_passengers_ed">3</string>
+    <string name="calculate_button_trip_price">Посчитать</string>
 </resources>
