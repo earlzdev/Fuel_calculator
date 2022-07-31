@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.FreedAsd.fuel_calculator.FuelCalcApp
@@ -40,6 +41,7 @@ class ResultDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.provideResult(onDetails())
+        isPassengerAlone()
         viewModel.observe(viewLifecycleOwner){
             binding.tvAmountOfFuelToFill.text = getString(
                 R.string.fuel_need_example,
@@ -58,10 +60,18 @@ class ResultDialogFragment : DialogFragment() {
                 String.format("%.2f", it.everyoneTripPrice)
             )
         }
+
     }
 
     private fun onDetails() = requireArguments().getParcelable<PriceResultUi>(RESULT_DETAILS)
         ?: throw  IllegalStateException("calculation result cannot be null")
+
+    private fun isPassengerAlone() {
+        if (onDetails().passengers == 1f) {
+            binding.tvValuePriceForEveryone.isVisible = false
+            binding.tvForEveryoneTripPrice.isVisible = false
+        }
+    }
 
     override fun onDestroy() {
         super.onDestroy()

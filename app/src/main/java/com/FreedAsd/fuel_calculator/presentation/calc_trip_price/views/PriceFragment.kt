@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import com.FreedAsd.fuel_calculator.core.BaseFragment
 import com.FreedAsd.fuel_calculator.core.Event
 import com.FreedAsd.fuel_calculator.databinding.FragmentBasePriceBinding
@@ -32,7 +33,7 @@ class PriceFragment :
         val validation = Validation.Base(
             binding.etAverageFuelConsumption,
             binding.etDistance,
-            binding.etFuelPrice
+            binding.etFuelPrice,
         )
 
         binding.calcPriceButton.setOnClickListener { calculate(validation) }
@@ -45,9 +46,16 @@ class PriceFragment :
                 binding.etAverageFuelConsumption.text.toString().toFloat(),
                 binding.etDistance.text.toString().toFloat(),
                 binding.etFuelPrice.text.toString().toFloat(),
-                binding.etCountOfPassengers.text.toString().toFloat()
+                isPassengersCountValid(binding.etCountOfPassengers)
             )
             viewModel.calculateAnswer(inputData)
+        }
+    }
+
+    private fun isPassengersCountValid(passengers: EditText): Float {
+        return when {
+            passengers.text.isEmpty() -> 1f
+            else -> passengers.text.toString().toFloat()
         }
     }
 
