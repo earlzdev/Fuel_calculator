@@ -11,4 +11,13 @@
     <string name="passengers_count_tv">Количество пассажиров</string>
     <string name="hint_count_of_passengers_ed">3</string>
     <string name="calculate_button_trip_price">Посчитать</string>
+    <string name="empty_error_msg">Поле не может быть пустым</string>
+    <string name="fill_car">Залейте</string>
+    <string name="fuel_need_example">%s литров</string>
+    <string name="article">на</string>
+    <string name="distance_example">%s километров</string>
+    <string name="genrral_price_tv">Общая стоимость</string>
+    <string name="general_price_example">%s рублей</string>
+    <string name="by_person_tv">С человека</string>
+    <string name="by_person_example">%s рублей</string>
 </resources>

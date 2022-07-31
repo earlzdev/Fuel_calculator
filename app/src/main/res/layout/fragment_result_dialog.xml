@@ -1,17 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.calc_trip_price.views.ResultDialogFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/test_textView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        android:layout_gravity="center"
-        android:gravity="center"
+        android:id="@+id/tv_fill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fill_car"
+        android:textSize="22sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
         />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_amount_of_fuel_to_fill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fuel_need_example"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_fill"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="45dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_fuel_on_kilometers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/article"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_amount_of_fuel_to_fill"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="40dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_kilometers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/distance_example"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_fuel_on_kilometers"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="45dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_general_tripPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/genrral_price_tv"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_kilometers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="120dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="40dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_value_general_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/general_price_example"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_general_tripPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="45dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_for_everyone_trip_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/by_person_tv"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_value_general_price"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_value_price_for_everyone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/by_person_example"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_for_everyone_trip_price"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="45dp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
