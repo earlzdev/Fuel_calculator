@@ -28,17 +28,17 @@
         />
 
     <TextView
-        android:id="@+id/tv_distance"
+        android:id="@+id/amount_of_fuel_tv"
         android:layout_width="220dp"
         android:layout_height="48dp"
-        android:text="@string/distance_tv"
+        android:text="@string/amount_of_fuel_distance"
         android:textSize="18sp"
         android:layout_marginTop="100dp"
         android:layout_marginStart="20dp"
         />
 
     <EditText
-        android:id="@+id/et_distance"
+        android:id="@+id/amount_of_fuel_ed"
         android:layout_width="80dp"
         android:layout_height="48dp"
         android:hint="@string/hint_distance_ed"
@@ -71,30 +71,8 @@
         android:layout_marginStart="300dp"
         />
 
-    <TextView
-        android:id="@+id/tv_count_of_passengers"
-        android:layout_width="220dp"
-        android:layout_height="48dp"
-        android:text="@string/passengers_count_tv"
-        android:textSize="18sp"
-        android:layout_marginTop="220dp"
-        android:layout_marginStart="20dp"
-        />
-
-    <EditText
-        android:id="@+id/et_count_of_passengers"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:hint="@string/hint_count_of_passengers_ed"
-        android:text="2"
-        android:textSize="18sp"
-        android:inputType="number"
-        android:layout_marginTop="210dp"
-        android:layout_marginStart="300dp"
-        tools:ignore="LabelFor" />
-
     <Button
-        android:id="@+id/calcPrice_button"
+        android:id="@+id/calc_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/calculate_button_trip_price"

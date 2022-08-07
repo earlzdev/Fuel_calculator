@@ -20,4 +20,10 @@
     <string name="general_price_example">%s рублей</string>
     <string name="by_person_tv">С человека</string>
     <string name="by_person_example">%s рублей</string>
+    <string name="amount_of_fuel_distance">Количество топлива в литрах</string>
+    <string name="max_distance">Максимальная дальность поездки</string>
+    <string name="max_distance_kilometers">%s километров</string>
+    <string name="trip_price">Стоимость</string>
+    <string name="kilometers">%s километров</string>
+    <string name="rubles">%s рублей</string>
 </resources>
