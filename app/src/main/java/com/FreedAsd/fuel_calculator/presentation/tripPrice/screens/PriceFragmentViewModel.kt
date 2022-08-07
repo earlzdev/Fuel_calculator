@@ -1,15 +1,15 @@
-package com.FreedAsd.fuel_calculator.presentation.tripPrice.screens
+package com.freedasd.fuel_calculator.presentation.tripPrice.screens
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.FreedAsd.fuel_calculator.core.BaseViewModel
-import com.FreedAsd.fuel_calculator.core.Event
-import com.FreedAsd.fuel_calculator.data.Repository
-import com.FreedAsd.fuel_calculator.domain.tripPrice.usecase.CalcTripPriceUseCase
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.PriceInputDataUi
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.PriceResultUi
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.uiPriceMappers.PriceInputUiMapper
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.uiPriceMappers.PriceResultUiMapper
+import com.freedasd.fuel_calculator.core.BaseViewModel
+import com.freedasd.fuel_calculator.core.Event
+import com.freedasd.fuel_calculator.data.Repository
+import com.freedasd.fuel_calculator.domain.tripPrice.usecase.CalcTripPriceUseCase
+import com.freedasd.fuel_calculator.presentation.tripPrice.PriceInputDataUi
+import com.freedasd.fuel_calculator.presentation.tripPrice.PriceResultUi
+import com.freedasd.fuel_calculator.presentation.tripPrice.uiPriceMappers.PriceInputUiMapper
+import com.freedasd.fuel_calculator.presentation.tripPrice.uiPriceMappers.PriceResultUiMapper
 
 class PriceFragmentViewModel(
     private val calcPriceUseCase: CalcTripPriceUseCase,

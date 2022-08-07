@@ -1,7 +1,6 @@
-package com.FreedAsd.fuel_calculator.presentation.tripPrice.screens.dialog
+package com.freedasd.fuel_calculator.presentation.tripPrice.screens.dialog
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +8,10 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
-import com.FreedAsd.fuel_calculator.FuelCalcApp
-import com.FreedAsd.fuel_calculator.R
-import com.FreedAsd.fuel_calculator.databinding.FragmentDialogPriceBinding
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.PriceResultUi
+import com.freedasd.fuel_calculator.FuelCalcApp
+import com.freedasd.fuel_calculator.R
+import com.freedasd.fuel_calculator.databinding.FragmentDialogPriceBinding
+import com.freedasd.fuel_calculator.presentation.tripPrice.PriceResultUi
 
 class ResultDialogFragment : DialogFragment() {
 

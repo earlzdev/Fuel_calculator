@@ -1,8 +1,8 @@
-package com.FreedAsd.fuel_calculator.domain.tripPrice
+package com.freedasd.fuel_calculator.domain.tripPrice
 
-import com.FreedAsd.fuel_calculator.data.Repository
-import com.FreedAsd.fuel_calculator.data.tripPrice.PriceInputData
-import com.FreedAsd.fuel_calculator.data.tripPrice.PriceResultData
+import com.freedasd.fuel_calculator.data.Repository
+import com.freedasd.fuel_calculator.data.tripPrice.PriceInputData
+import com.freedasd.fuel_calculator.data.tripPrice.PriceResultData
 
 interface CalcTripPriceRepository : Repository{
 

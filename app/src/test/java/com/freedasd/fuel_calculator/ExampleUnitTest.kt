@@ -1,4 +1,4 @@
-package com.FreedAsd.fuel_calculator
+package com.freedasd.fuel_calculator
 
 import org.junit.Test
 

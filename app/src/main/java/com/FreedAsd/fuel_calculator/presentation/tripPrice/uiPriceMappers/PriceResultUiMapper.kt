@@ -1,8 +1,8 @@
-package com.FreedAsd.fuel_calculator.presentation.tripPrice.uiPriceMappers
+package com.freedasd.fuel_calculator.presentation.tripPrice.uiPriceMappers
 
-import com.FreedAsd.fuel_calculator.core.BaseMapper
-import com.FreedAsd.fuel_calculator.domain.tripPrice.PriceResultDomain
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.PriceResultUi
+import com.freedasd.fuel_calculator.core.BaseMapper
+import com.freedasd.fuel_calculator.domain.tripPrice.PriceResultDomain
+import com.freedasd.fuel_calculator.presentation.tripPrice.PriceResultUi
 
 interface PriceResultUiMapper: BaseMapper<PriceResultDomain, PriceResultUi> {
 

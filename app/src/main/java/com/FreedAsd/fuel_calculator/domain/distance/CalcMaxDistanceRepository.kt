@@ -1,7 +1,7 @@
-package com.FreedAsd.fuel_calculator.domain.distance
+package com.freedasd.fuel_calculator.domain.distance
 
-import com.FreedAsd.fuel_calculator.data.distance.DistanceInputData
-import com.FreedAsd.fuel_calculator.data.distance.DistanceResultData
+import com.freedasd.fuel_calculator.data.distance.DistanceInputData
+import com.freedasd.fuel_calculator.data.distance.DistanceResultData
 
 interface CalcMaxDistanceRepository {
 

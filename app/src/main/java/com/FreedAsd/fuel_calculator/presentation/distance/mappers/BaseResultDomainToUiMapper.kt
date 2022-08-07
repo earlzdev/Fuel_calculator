@@ -1,7 +1,7 @@
-package com.FreedAsd.fuel_calculator.presentation.distance.mappers
+package com.freedasd.fuel_calculator.presentation.distance.mappers
 
-import com.FreedAsd.fuel_calculator.domain.distance.mappers.ResultDomainToUiMapper
-import com.FreedAsd.fuel_calculator.presentation.distance.DistanceResultUi
+import com.freedasd.fuel_calculator.domain.distance.mappers.ResultDomainToUiMapper
+import com.freedasd.fuel_calculator.presentation.distance.DistanceResultUi
 
 class BaseResultDomainToUiMapper : ResultDomainToUiMapper<DistanceResultUi> {
 

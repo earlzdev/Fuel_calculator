@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.consumption.screens.ConsumptionFragment">
+
+    <TextView
+        android:id="@+id/tv_previous_mileage"
+        android:layout_width="220dp"
+        android:layout_height="48dp"
+        android:text="Предыдущее показание пробега"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        />
+
+    <EditText
+        android:id="@+id/et_previous_mileage"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:hint="@string/hint_average_fuel_consumption"
+        android:text="120000"
+        android:textSize="18sp"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="300dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_current_mileage"
+        android:layout_width="220dp"
+        android:layout_height="48dp"
+        android:text="Текущее показание пробега"
+        android:textSize="18sp"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="20dp"
+        />
+
+    <EditText
+        android:id="@+id/et_current_mileage"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:hint="@string/hint_distance_ed"
+        android:text="120345"
+        android:textSize="18sp"
+        android:inputType="number"
+        android:layout_marginTop="90dp"
+        android:layout_marginStart="300dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_filled_fuel"
+        android:layout_width="220dp"
+        android:layout_height="48dp"
+        android:text="Залито топлива"
+        android:textSize="18sp"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="20dp"
+        />
+
+    <EditText
+        android:id="@+id/et_filled_fuel"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:hint="@string/hint_fuel_price_ed"
+        android:text="40"
+        android:textSize="18sp"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="300dp"
+        />
+
+    <Button
+        android:id="@+id/calc_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calculate_button_trip_price"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        />
+
+</FrameLayout>

@@ -1,0 +1,33 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.freedasd.fuel_calculator.presentation.consumption.screens.dialog.ConsumptionDialogFragment">
+
+
+    <TextView
+        android:id="@+id/max_distance_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Расход"
+        android:textSize="22sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        />
+
+    <TextView
+        android:id="@+id/max_distance_ed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cons_litersOnKm"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/max_distance_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="45dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

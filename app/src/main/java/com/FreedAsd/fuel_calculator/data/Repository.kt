@@ -1,4 +1,4 @@
-package com.FreedAsd.fuel_calculator.data
+package com.freedasd.fuel_calculator.data
 
 interface Repository {
 }

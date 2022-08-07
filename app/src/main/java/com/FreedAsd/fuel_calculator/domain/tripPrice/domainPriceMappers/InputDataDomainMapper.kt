@@ -1,8 +1,8 @@
-package com.FreedAsd.fuel_calculator.domain.tripPrice.domainPriceMappers
+package com.freedasd.fuel_calculator.domain.tripPrice.domainPriceMappers
 
-import com.FreedAsd.fuel_calculator.data.tripPrice.PriceInputData
-import com.FreedAsd.fuel_calculator.domain.tripPrice.PriceInputDomain
-import com.FreedAsd.fuel_calculator.core.BaseMapper
+import com.freedasd.fuel_calculator.data.tripPrice.PriceInputData
+import com.freedasd.fuel_calculator.domain.tripPrice.PriceInputDomain
+import com.freedasd.fuel_calculator.core.BaseMapper
 
 interface InputDataDomainMapper: BaseMapper<PriceInputDomain, PriceInputData> {
 

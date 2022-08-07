@@ -1,4 +1,4 @@
-package com.FreedAsd.fuel_calculator.presentation.tripPrice
+package com.freedasd.fuel_calculator.presentation.tripPrice
 
 data class PriceInputDataUi(
     val averageConsumption: Float,

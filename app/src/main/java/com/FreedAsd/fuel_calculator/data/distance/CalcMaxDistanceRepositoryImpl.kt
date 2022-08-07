@@ -1,6 +1,6 @@
-package com.FreedAsd.fuel_calculator.data.distance
+package com.freedasd.fuel_calculator.data.distance
 
-import com.FreedAsd.fuel_calculator.domain.distance.CalcMaxDistanceRepository
+import com.freedasd.fuel_calculator.domain.distance.CalcMaxDistanceRepository
 
 class CalcMaxDistanceRepositoryImpl(
     private val distanceMapper: DistanceInputData.MaxDistanceMapper,

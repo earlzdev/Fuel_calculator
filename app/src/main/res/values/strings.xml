@@ -26,4 +26,6 @@
     <string name="trip_price">Стоимость</string>
     <string name="kilometers">%s километров</string>
     <string name="rubles">%s рублей</string>
+    <string name="cons_litersOnKm">%s литров/100км</string>
+
 </resources>

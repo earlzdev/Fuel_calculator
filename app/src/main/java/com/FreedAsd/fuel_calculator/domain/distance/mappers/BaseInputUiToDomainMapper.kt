@@ -1,7 +1,7 @@
-package com.FreedAsd.fuel_calculator.domain.distance.mappers
+package com.freedasd.fuel_calculator.domain.distance.mappers
 
-import com.FreedAsd.fuel_calculator.domain.distance.DistanceInputDomain
-import com.FreedAsd.fuel_calculator.presentation.distance.mappers.InputUiToDomainMapper
+import com.freedasd.fuel_calculator.domain.distance.DistanceInputDomain
+import com.freedasd.fuel_calculator.presentation.distance.mappers.InputUiToDomainMapper
 
 class BaseInputUiToDomainMapper : InputUiToDomainMapper<DistanceInputDomain> {
 
