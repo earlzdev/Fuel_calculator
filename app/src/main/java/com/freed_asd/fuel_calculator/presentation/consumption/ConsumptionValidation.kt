@@ -21,15 +21,15 @@ interface ConsumptionValidation {
 
             return when {
                 currentMileage.text.isEmpty() -> {
-                    currentMileage.text = errorMsg
+                    currentMileage.error = errorMsg
                     false
                 }
                 previousMileage.text.isEmpty() -> {
-                    previousMileage.text = errorMsg
+                    previousMileage.error = errorMsg
                     false
                 }
                 filledFuel.text.isEmpty() -> {
-                    filledFuel.text = errorMsg
+                    filledFuel.error = errorMsg
                     false
                 }
                 else -> true
