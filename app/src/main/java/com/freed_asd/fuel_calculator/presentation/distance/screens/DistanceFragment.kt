@@ -29,8 +29,10 @@ class DistanceFragment : BaseFragment<FragmentBaseDistanceBinding, DistanceViewM
             binding.etFuelPrice
         )
 
-        binding.calcButton.setOnClickListener { calculate(validation) }
-        viewModel.observe(viewLifecycleOwner, ::openResultDialog)
+        binding.calcButton.setOnClickListener {
+            calculate(validation)
+            viewModel.observe(viewLifecycleOwner, ::openResultDialog)
+        }
     }
 
     private fun calculate(validation: DistanceValidation.Base) {
