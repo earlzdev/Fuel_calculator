@@ -4,7 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.FreedAsd.fuel_calculator.R
-import com.FreedAsd.fuel_calculator.presentation.calc_trip_price.views.PriceFragment
+import com.FreedAsd.fuel_calculator.presentation.distance.screens.DistanceFragment
+import com.FreedAsd.fuel_calculator.presentation.tripPrice.screens.PriceFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null){
-            showFragment(PriceFragment.newInstance())
+            showFragment(DistanceFragment.newInstance())
         }
     }
 
