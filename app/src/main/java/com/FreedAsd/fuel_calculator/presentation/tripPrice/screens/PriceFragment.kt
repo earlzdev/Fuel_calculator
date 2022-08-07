@@ -36,8 +36,10 @@ class PriceFragment :
             binding.etFuelPrice,
         )
 
-        binding.calcPriceButton.setOnClickListener { calculate(validation) }
-        viewModel.observe(viewLifecycleOwner, ::openResultDialog)
+        binding.calcPriceButton.setOnClickListener { calculate(validation)
+            viewModel.observe(viewLifecycleOwner, ::openResultDialog)
+        }
+
     }
 
     private fun calculate(validation: TripValidation) {
