@@ -1,4 +1,4 @@
-package com.FreedAsd.fuel_calculator.data.distance
+package com.freedasd.fuel_calculator.data.distance
 
 interface DistanceInputData {
 

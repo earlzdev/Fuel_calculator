@@ -1,4 +1,4 @@
-package com.FreedAsd.fuel_calculator.presentation.distance
+package com.freedasd.fuel_calculator.presentation.distance
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

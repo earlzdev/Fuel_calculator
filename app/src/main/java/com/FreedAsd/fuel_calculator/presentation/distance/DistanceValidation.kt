@@ -1,8 +1,7 @@
-package com.FreedAsd.fuel_calculator.presentation.distance
+package com.freedasd.fuel_calculator.presentation.distance
 
 import android.widget.EditText
-import com.FreedAsd.fuel_calculator.R
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.TripValidation
+import com.freedasd.fuel_calculator.R
 
 interface DistanceValidation {
 
@@ -12,7 +11,7 @@ interface DistanceValidation {
         private val fuelConsumption: EditText,
         private val amountOfFuel: EditText,
         private val fuelPrice: EditText
-    ) : TripValidation {
+    ) : DistanceValidation {
 
         private val context = fuelConsumption.context
 

@@ -1,10 +1,10 @@
-package com.FreedAsd.fuel_calculator.core
+package com.freedasd.fuel_calculator.core
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import com.FreedAsd.fuel_calculator.data.Repository
+import com.freedasd.fuel_calculator.data.Repository
 
 abstract class BaseViewModel<T:Repository, V> : ViewModel() {
 

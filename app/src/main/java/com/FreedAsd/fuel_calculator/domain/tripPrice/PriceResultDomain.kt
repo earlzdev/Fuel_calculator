@@ -1,4 +1,4 @@
-package com.FreedAsd.fuel_calculator.domain.tripPrice
+package com.freedasd.fuel_calculator.domain.tripPrice
 
 data class PriceResultDomain (
     val distance: Float,

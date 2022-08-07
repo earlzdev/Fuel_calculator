@@ -1,7 +1,7 @@
-package com.FreedAsd.fuel_calculator.presentation.tripPrice
+package com.freedasd.fuel_calculator.presentation.tripPrice
 
 import android.widget.EditText
-import com.FreedAsd.fuel_calculator.R
+import com.freedasd.fuel_calculator.R
 
 interface TripValidation {
 

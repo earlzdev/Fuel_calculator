@@ -9,7 +9,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.FreedAsd.fuel_calculator"
+        applicationId "com.freedasd.fuel_calculator"
         minSdk 27
         targetSdk 32
         versionCode 1

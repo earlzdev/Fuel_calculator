@@ -1,4 +1,4 @@
-package com.FreedAsd.fuel_calculator.core
+package com.freedasd.fuel_calculator.core
 
 interface BaseMapper<T, V> {
 

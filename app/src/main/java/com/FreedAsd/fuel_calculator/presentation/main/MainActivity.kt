@@ -1,11 +1,10 @@
-package com.FreedAsd.fuel_calculator.presentation.main
+package com.freedasd.fuel_calculator.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.FreedAsd.fuel_calculator.R
-import com.FreedAsd.fuel_calculator.presentation.distance.screens.DistanceFragment
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.screens.PriceFragment
+import com.freedasd.fuel_calculator.R
+import com.freedasd.fuel_calculator.presentation.consumption.screens.ConsumptionFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null){
-            showFragment(DistanceFragment.newInstance())
+            showFragment(ConsumptionFragment.newInstance())
         }
     }
 

@@ -1,6 +1,6 @@
-package com.FreedAsd.fuel_calculator.presentation.distance
+package com.freedasd.fuel_calculator.presentation.distance
 
-import com.FreedAsd.fuel_calculator.presentation.distance.mappers.InputUiToDomainMapper
+import com.freedasd.fuel_calculator.presentation.distance.mappers.InputUiToDomainMapper
 
 interface DistanceInputUi {
 

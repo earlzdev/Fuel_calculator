@@ -1,4 +1,4 @@
-package com.FreedAsd.fuel_calculator.data.local.trip_prices_table
+package com.freedasd.fuel_calculator.data.local.trip_prices_table
 
 interface FuelPriceTripsDao {
 }

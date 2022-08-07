@@ -1,16 +1,16 @@
-package com.FreedAsd.fuel_calculator.presentation.distance.screens
+package com.freedasd.fuel_calculator.presentation.distance.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.FreedAsd.fuel_calculator.core.BaseFragment
-import com.FreedAsd.fuel_calculator.core.Event
-import com.FreedAsd.fuel_calculator.databinding.FragmentBaseDistanceBinding
-import com.FreedAsd.fuel_calculator.presentation.distance.DistanceInputUi
-import com.FreedAsd.fuel_calculator.presentation.distance.DistanceResultUi
-import com.FreedAsd.fuel_calculator.presentation.distance.DistanceValidation
-import com.FreedAsd.fuel_calculator.presentation.distance.screens.dialog.DistanceDialogFragment
+import com.freedasd.fuel_calculator.core.BaseFragment
+import com.freedasd.fuel_calculator.core.Event
+import com.freedasd.fuel_calculator.databinding.FragmentBaseDistanceBinding
+import com.freedasd.fuel_calculator.presentation.distance.DistanceInputUi
+import com.freedasd.fuel_calculator.presentation.distance.DistanceResultUi
+import com.freedasd.fuel_calculator.presentation.distance.DistanceValidation
+import com.freedasd.fuel_calculator.presentation.distance.screens.dialog.DistanceDialogFragment
 
 class DistanceFragment : BaseFragment<FragmentBaseDistanceBinding, DistanceViewModel>() {
 

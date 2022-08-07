@@ -1,17 +1,17 @@
-package com.FreedAsd.fuel_calculator.presentation.tripPrice.screens
+package com.freedasd.fuel_calculator.presentation.tripPrice.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import com.FreedAsd.fuel_calculator.core.BaseFragment
-import com.FreedAsd.fuel_calculator.core.Event
-import com.FreedAsd.fuel_calculator.databinding.FragmentBasePriceBinding
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.PriceInputDataUi
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.PriceResultUi
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.TripValidation
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.screens.dialog.ResultDialogFragment
+import com.freedasd.fuel_calculator.core.BaseFragment
+import com.freedasd.fuel_calculator.core.Event
+import com.freedasd.fuel_calculator.databinding.FragmentBasePriceBinding
+import com.freedasd.fuel_calculator.presentation.tripPrice.PriceInputDataUi
+import com.freedasd.fuel_calculator.presentation.tripPrice.PriceResultUi
+import com.freedasd.fuel_calculator.presentation.tripPrice.TripValidation
+import com.freedasd.fuel_calculator.presentation.tripPrice.screens.dialog.ResultDialogFragment
 
 class PriceFragment :
     BaseFragment<FragmentBasePriceBinding, PriceFragmentViewModel>() {

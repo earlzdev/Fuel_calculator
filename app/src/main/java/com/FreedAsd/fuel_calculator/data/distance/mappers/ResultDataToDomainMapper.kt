@@ -1,4 +1,4 @@
-package com.FreedAsd.fuel_calculator.data.distance.mappers
+package com.freedasd.fuel_calculator.data.distance.mappers
 
 interface ResultDataToDomainMapper<T> {
 

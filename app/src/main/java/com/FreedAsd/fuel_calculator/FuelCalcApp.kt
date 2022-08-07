@@ -1,26 +1,27 @@
-package com.FreedAsd.fuel_calculator
+package com.freedasd.fuel_calculator
 
 import android.app.Application
-import com.FreedAsd.fuel_calculator.core.ViewModelsFactory
-import com.FreedAsd.fuel_calculator.data.distance.CalcMaxDistanceRepositoryImpl
-import com.FreedAsd.fuel_calculator.data.distance.DistanceInputData
-import com.FreedAsd.fuel_calculator.data.distance.DistanceResultData
-import com.FreedAsd.fuel_calculator.data.distance.mappers.BaseInputDomainToDataMapper
-import com.FreedAsd.fuel_calculator.data.tripPrice.CalcTripPriceRepositoryImpl
-import com.FreedAsd.fuel_calculator.domain.distance.DistanceInputDomain
-import com.FreedAsd.fuel_calculator.domain.distance.DistanceResultDomain
-import com.FreedAsd.fuel_calculator.domain.distance.interactor.Interactor
-import com.FreedAsd.fuel_calculator.domain.distance.mappers.BaseInputUiToDomainMapper
-import com.FreedAsd.fuel_calculator.domain.distance.mappers.BaseResultDataToDomainMapper
-import com.FreedAsd.fuel_calculator.domain.distance.mappers.ResultDomainToUiMapper
-import com.FreedAsd.fuel_calculator.domain.tripPrice.domainPriceMappers.InputDataDomainMapper
-import com.FreedAsd.fuel_calculator.domain.tripPrice.domainPriceMappers.PriceResultDomainMapper
-import com.FreedAsd.fuel_calculator.domain.tripPrice.usecase.CalcTripPriceUseCase
-import com.FreedAsd.fuel_calculator.presentation.distance.DistanceInputUi
-import com.FreedAsd.fuel_calculator.presentation.distance.DistanceResultUi
-import com.FreedAsd.fuel_calculator.presentation.distance.mappers.BaseResultDomainToUiMapper
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.uiPriceMappers.PriceInputUiMapper
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.uiPriceMappers.PriceResultUiMapper
+import com.freedasd.fuel_calculator.core.ViewModelsFactory
+import com.freedasd.fuel_calculator.data.distance.CalcMaxDistanceRepositoryImpl
+import com.freedasd.fuel_calculator.data.distance.DistanceInputData
+import com.freedasd.fuel_calculator.data.distance.mappers.BaseInputDomainToDataMapper
+import com.freedasd.fuel_calculator.data.tripPrice.CalcTripPriceRepositoryImpl
+import com.freedasd.fuel_calculator.domain.distance.interactor.DistanceInteractor
+import com.freedasd.fuel_calculator.domain.distance.mappers.BaseInputUiToDomainMapper
+import com.freedasd.fuel_calculator.domain.distance.mappers.BaseResultDataToDomainMapper
+import com.freedasd.fuel_calculator.domain.tripPrice.domainPriceMappers.InputDataDomainMapper
+import com.freedasd.fuel_calculator.domain.tripPrice.domainPriceMappers.PriceResultDomainMapper
+import com.freedasd.fuel_calculator.domain.tripPrice.usecase.CalcTripPriceUseCase
+import com.freedasd.fuel_calculator.presentation.distance.mappers.BaseResultDomainToUiMapper
+import com.freedasd.fuel_calculator.presentation.tripPrice.uiPriceMappers.PriceInputUiMapper
+import com.freedasd.fuel_calculator.presentation.tripPrice.uiPriceMappers.PriceResultUiMapper
+import com.freedasd.fuel_calculator.data.consumption.ConsumptionRepositoryImpl
+import com.freedasd.fuel_calculator.data.consumption.mappers.BaseConsInputDomainToDataMapper
+import com.freedasd.fuel_calculator.domain.consumption.ConsumptionRepository
+import com.freedasd.fuel_calculator.domain.consumption.interactor.ConsInteractor
+import com.freedasd.fuel_calculator.domain.consumption.mappers.BaseConsInputUiToDomainMapper
+import com.freedasd.fuel_calculator.domain.consumption.mappers.BaseConsResultDataToDomainMapper
+import com.freedasd.fuel_calculator.presentation.consumption.mappers.BaseConsResultDomainToUiMapper
 
 class FuelCalcApp: Application() {
 
@@ -37,9 +38,19 @@ class FuelCalcApp: Application() {
     private lateinit var distanceMapper: DistanceInputData.MaxDistanceMapper
     private lateinit var priceMapper: DistanceInputData.TripPriceMapper
 
-    private lateinit var interactor: Interactor
+    private lateinit var distanceInteractor: DistanceInteractor
     private lateinit var distanceInputDomainMapper: BaseInputDomainToDataMapper
     private lateinit var distanceResultDomainMapper: BaseResultDataToDomainMapper
+
+
+    //consumption
+    private lateinit var consRepository: ConsumptionRepository
+    private lateinit var inputConsInteractorMapper: BaseConsInputDomainToDataMapper
+    private lateinit var resultConsInteractorMapper: BaseConsResultDataToDomainMapper
+
+    private lateinit var consInteractor: ConsInteractor
+    private lateinit var inputConsMapper: BaseConsInputUiToDomainMapper
+    private lateinit var resultConsMapper: BaseConsResultDomainToUiMapper
 
     //viewModelsFactory
     private lateinit var inputDistanceMapper: BaseInputUiToDomainMapper
@@ -63,7 +74,16 @@ class FuelCalcApp: Application() {
 
         distanceInputDomainMapper = BaseInputDomainToDataMapper()
         distanceResultDomainMapper = BaseResultDataToDomainMapper()
-        interactor = Interactor.Base(distanceRepository, distanceInputDomainMapper, distanceResultDomainMapper)
+        distanceInteractor = DistanceInteractor.Base(distanceRepository, distanceInputDomainMapper, distanceResultDomainMapper)
+
+        //consumption
+        consRepository = ConsumptionRepositoryImpl()
+        inputConsInteractorMapper = BaseConsInputDomainToDataMapper()
+        resultConsInteractorMapper = BaseConsResultDataToDomainMapper()
+        consInteractor = ConsInteractor.Base(consRepository, inputConsInteractorMapper, resultConsInteractorMapper)
+
+        inputConsMapper = BaseConsInputUiToDomainMapper()
+        resultConsMapper = BaseConsResultDomainToUiMapper()
 
         //factory
         resultDistanceMapper = BaseResultDomainToUiMapper()
@@ -71,6 +91,16 @@ class FuelCalcApp: Application() {
     }
 
     val factory by lazy {
-        ViewModelsFactory(calcPriceUseCase, inputUiMapper, resultUIMapper, interactor, inputDistanceMapper, resultDistanceMapper)
+        ViewModelsFactory(
+            calcPriceUseCase,
+            inputUiMapper,
+            resultUIMapper,
+            distanceInteractor,
+            inputDistanceMapper,
+            resultDistanceMapper,
+            consInteractor,
+            inputConsMapper,
+            resultConsMapper
+        )
     }
 }

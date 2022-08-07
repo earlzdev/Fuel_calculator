@@ -1,11 +1,10 @@
-package com.FreedAsd.fuel_calculator.presentation.tripPrice.screens.dialog
+package com.freedasd.fuel_calculator.presentation.tripPrice.screens.dialog
 
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.FreedAsd.fuel_calculator.core.BaseViewModel
-import com.FreedAsd.fuel_calculator.data.Repository
-import com.FreedAsd.fuel_calculator.presentation.tripPrice.PriceResultUi
+import com.freedasd.fuel_calculator.core.BaseViewModel
+import com.freedasd.fuel_calculator.data.Repository
+import com.freedasd.fuel_calculator.presentation.tripPrice.PriceResultUi
 
 class ResultViewModel: BaseViewModel<Repository, PriceResultUi>() {
 

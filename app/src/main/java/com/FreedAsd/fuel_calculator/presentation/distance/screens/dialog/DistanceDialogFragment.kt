@@ -1,4 +1,4 @@
-package com.FreedAsd.fuel_calculator.presentation.distance.screens.dialog
+package com.freedasd.fuel_calculator.presentation.distance.screens.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
-import com.FreedAsd.fuel_calculator.FuelCalcApp
-import com.FreedAsd.fuel_calculator.R
-import com.FreedAsd.fuel_calculator.databinding.FragmentDialogDistanceBinding
-import com.FreedAsd.fuel_calculator.presentation.distance.DistanceResultUi
+import com.freedasd.fuel_calculator.FuelCalcApp
+import com.freedasd.fuel_calculator.R
+import com.freedasd.fuel_calculator.databinding.FragmentDialogDistanceBinding
+import com.freedasd.fuel_calculator.presentation.distance.DistanceResultUi
 
 class DistanceDialogFragment : DialogFragment() {
 

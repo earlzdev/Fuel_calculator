@@ -1,4 +1,4 @@
-package com.FreedAsd.fuel_calculator.core
+package com.freedasd.fuel_calculator.core
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
-import com.FreedAsd.fuel_calculator.FuelCalcApp
+import com.freedasd.fuel_calculator.FuelCalcApp
 
 abstract class BaseFragment<VB : ViewBinding, V : ViewModel> : Fragment() {
 
