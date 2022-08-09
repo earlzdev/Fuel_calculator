@@ -43,28 +43,28 @@ class ResultDialogFragment : DialogFragment() {
         viewModel.observe(viewLifecycleOwner){
             binding.liters.text = getString(
                 R.string.fuel_need_example,
-                String.format("%.2f", it.needFuel)
+                String.format("%.2f", it.needFuel())
             )
             binding.tvKilometers.text = getString(
                 R.string.distance_example,
-                it.distance.toInt()
+                it.distance().toInt()
             )
             binding.distancePriceEd.text = getString(
                 R.string.general_price_example,
-                String.format("%.2f", it.generalTripPrice)
+                String.format("%.2f", it.generalPrice())
             )
             binding.tvValuePriceForEveryone.text = getString(
                 R.string.by_person_example,
-                String.format("%.2f", it.everyoneTripPrice)
+                String.format("%.2f", it.everyonePrice())
             )
         }
     }
 
-    private fun onDetails() = requireArguments().getParcelable<PriceResultUi>(RESULT_DETAILS)
+    private fun onDetails() = requireArguments().getParcelable<PriceResultUi.Base>(RESULT_DETAILS)
         ?: throw  IllegalStateException("calculation result cannot be null")
 
     private fun isPassengerAlone() {
-        if (onDetails().passengers == 1f) {
+        if (onDetails().passengers() == 1f) {
             binding.tvValuePriceForEveryone.isVisible = false
             binding.tvForEveryoneTripPrice.isVisible = false
         }

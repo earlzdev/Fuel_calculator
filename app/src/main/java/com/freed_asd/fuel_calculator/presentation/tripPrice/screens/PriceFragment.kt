@@ -8,7 +8,7 @@ import android.widget.EditText
 import com.freed_asd.fuel_calculator.core.BaseFragment
 import com.freed_asd.fuel_calculator.core.Event
 import com.freed_asd.fuel_calculator.databinding.FragmentBasePriceBinding
-import com.freed_asd.fuel_calculator.presentation.tripPrice.PriceInputDataUi
+import com.freed_asd.fuel_calculator.presentation.tripPrice.PriceInputUi
 import com.freed_asd.fuel_calculator.presentation.tripPrice.PriceResultUi
 import com.freed_asd.fuel_calculator.presentation.tripPrice.TripValidation
 import com.freed_asd.fuel_calculator.presentation.tripPrice.screens.dialog.ResultDialogFragment
@@ -42,7 +42,7 @@ class PriceFragment :
 
     private fun calculate(validation: TripValidation) {
         if (validation.validate()) {
-            val inputData = PriceInputDataUi(
+            val inputData = PriceInputUi.Base(
                 binding.etAverageFuelConsumption.text.toString().toFloat(),
                 binding.etDistance.text.toString().toFloat(),
                 binding.etFuelPrice.text.toString().toFloat(),
