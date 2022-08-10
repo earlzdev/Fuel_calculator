@@ -1,83 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.consumption.screens.ConsumptionFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.consumption.screens.ConsumptionBaseFragment">
 
     <TextView
-        android:id="@+id/tv_previous_mileage"
-        android:layout_width="220dp"
-        android:layout_height="48dp"
-        android:text="Предыдущее показание пробега"
-        android:textSize="18sp"
-        android:layout_marginTop="30dp"
+        android:id="@+id/tv_calc_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Посчитать по:"
+        android:textSize="22sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/spinner"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         />
 
-    <EditText
-        android:id="@+id/et_previous_mileage"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:hint="@string/hint_average_fuel_consumption"
-        android:text="120000"
-        android:textSize="18sp"
-        android:inputType="numberDecimal"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="300dp"
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_calc_type"
+        app:layout_constraintStart_toEndOf="@id/tv_calc_type"
+        app:layout_constraintEnd_toEndOf="parent"
         />
 
     <TextView
-        android:id="@+id/tv_current_mileage"
-        android:layout_width="220dp"
-        android:layout_height="48dp"
-        android:text="Текущее показание пробега"
-        android:textSize="18sp"
-        android:layout_marginTop="100dp"
-        android:layout_marginStart="20dp"
-        />
-
-    <EditText
-        android:id="@+id/et_current_mileage"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:hint="@string/hint_distance_ed"
-        android:text="120345"
-        android:textSize="18sp"
-        android:inputType="number"
-        android:layout_marginTop="90dp"
-        android:layout_marginStart="300dp"
-        />
-
-    <TextView
-        android:id="@+id/tv_filled_fuel"
-        android:layout_width="220dp"
-        android:layout_height="48dp"
-        android:text="Залито топлива"
-        android:textSize="18sp"
-        android:layout_marginTop="150dp"
-        android:layout_marginStart="20dp"
-        />
-
-    <EditText
-        android:id="@+id/et_filled_fuel"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:hint="@string/hint_fuel_price_ed"
-        android:text="40"
-        android:textSize="18sp"
-        android:inputType="numberDecimal"
-        android:layout_marginTop="150dp"
-        android:layout_marginStart="300dp"
+        android:id="@+id/driving_regime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Режим езды:"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_calc_type"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
         />
 
     <Button
-        android:id="@+id/calc_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/track"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/calculate_button_trip_price"
-        android:layout_gravity="center"
-        android:layout_marginTop="150dp"
+        android:text="Трасса"
+        app:layout_constraintBaseline_toBaselineOf="@id/city"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/city"
         />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/city"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Город"
+        app:layout_constraintStart_toEndOf="@id/track"
+        app:layout_constraintEnd_toStartOf="@id/mixed"
+        app:layout_constraintTop_toBottomOf="@id/driving_regime"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:id="@+id/mixed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Смешанный"
+        app:layout_constraintBaseline_toBaselineOf="@id/city"
+        app:layout_constraintStart_toEndOf="@id/city"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/city" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

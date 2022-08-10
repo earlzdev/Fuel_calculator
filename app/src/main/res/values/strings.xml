@@ -28,4 +28,9 @@
     <string name="rubles">%s рублей</string>
     <string name="cons_litersOnKm">%s литров/100км</string>
 
+    <string-array name="calc_consumption_of">
+        <item>Пробегу</item>
+        <item>Расстоянию</item>
+    </string-array>
+
 </resources>

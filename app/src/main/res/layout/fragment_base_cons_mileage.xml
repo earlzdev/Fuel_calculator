@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.consumption.screens.mileage.ConsMileageFragment">
+
+    <FrameLayout
+        android:id="@+id/calc_by_mileage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_previous_mileage"
+            android:layout_width="220dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="Предыдущее показание пробега"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_previous_mileage"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="30dp"
+            android:hint="@string/hint_average_fuel_consumption"
+            android:inputType="numberDecimal"
+            android:text="120000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_current_mileage"
+            android:layout_width="220dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
+            android:text="Текущее показание пробега"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_current_mileage"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="90dp"
+            android:hint="@string/hint_distance_ed"
+            android:inputType="number"
+            android:text="120345"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_filled_fuel"
+            android:layout_width="220dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="150dp"
+            android:text="Залито топлива"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_filled_fuel"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="150dp"
+            android:hint="@string/hint_fuel_price_ed"
+            android:inputType="numberDecimal"
+            android:text="40"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/calc_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp"
+            android:text="@string/calculate_button_trip_price" />
+
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
