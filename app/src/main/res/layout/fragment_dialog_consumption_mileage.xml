@@ -29,5 +29,4 @@
         android:layout_marginStart="45dp"
         />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

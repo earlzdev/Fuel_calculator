@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.freed_asd.fuel_calculator.FuelCalcApp
+import com.freed_asd.fuel_calculator.data.local.AppDataBase
 
 abstract class BaseFragment<VB : ViewBinding, V : ViewModel> : Fragment() {
 
@@ -17,10 +18,13 @@ abstract class BaseFragment<VB : ViewBinding, V : ViewModel> : Fragment() {
 
     protected lateinit var viewModel: V
 
+    protected lateinit var appDB: AppDataBase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = (requireActivity().application as FuelCalcApp).factory
         viewModel = ViewModelProvider(this, factory)[viewModelClass()]
+
     }
 
     override fun onCreateView(

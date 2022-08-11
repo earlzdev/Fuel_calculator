@@ -6,91 +6,151 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.consumption.screens.mileage.ConsMileageFragment">
 
-    <FrameLayout
-        android:id="@+id/calc_by_mileage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <TextView
             android:id="@+id/tv_previous_mileage"
-            android:layout_width="220dp"
+            android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginStart="20dp"
+            app:layout_constraintHorizontal_weight="3"
+            android:text="Предыдущее показание пробега в километрах"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/et_previous_mileage"
             android:layout_marginTop="30dp"
-            android:text="Предыдущее показание пробега"
-            android:textSize="18sp" />
-
-<!--        <TextView-->
-<!--            android:id="@+id/temporary_field"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Для того, чтобы начать вести статистику, необходимо предыдущее показание пробега"-->
-<!--            android:layout_marginTop="75dp"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            />-->
+            android:layout_marginStart="10dp"
+            />
 
         <EditText
             android:id="@+id/et_previous_mileage"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="30dp"
-            android:hint="@string/hint_average_fuel_consumption"
-            android:inputType="numberDecimal"
+            app:layout_constraintHorizontal_weight="1.5"
             android:text="120000"
-            android:textSize="18sp" />
+            android:hint="@string/hint_average_fuel_consumption"
+            android:gravity="center_horizontal"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="@id/tv_previous_mileage"
+            app:layout_constraintStart_toEndOf="@id/tv_previous_mileage"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="10dp"
+            />
+
 
         <TextView
             android:id="@+id/tv_current_mileage"
-            android:layout_width="220dp"
+            android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="120dp"
-            android:text="Текущее показание пробега"
-            android:textSize="18sp" />
+            app:layout_constraintHorizontal_weight="3"
+            android:text="Текущее показание пробега в километрах"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_previous_mileage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/et_current_mileage"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            />
 
         <EditText
             android:id="@+id/et_current_mileage"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="120dp"
-            android:hint="@string/hint_distance_ed"
-            android:inputType="number"
+            app:layout_constraintHorizontal_weight="1.7"
             android:text="120345"
-            android:textSize="18sp" />
+            android:hint="@string/hint_distance_ed"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="@id/tv_current_mileage"
+            app:layout_constraintStart_toEndOf="@id/tv_current_mileage"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
         <TextView
             android:id="@+id/tv_filled_fuel"
-            android:layout_width="220dp"
+            android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="180dp"
-            android:text="Залито топлива"
-            android:textSize="18sp" />
+            android:text="Залито топлива в литрах"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_current_mileage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/et_filled_fuel"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            />
 
         <EditText
             android:id="@+id/et_filled_fuel"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="180dp"
-            android:hint="@string/hint_fuel_price_ed"
-            android:inputType="numberDecimal"
             android:text="40"
-            android:textSize="18sp" />
+            android:hint="@string/hint_fuel_price_ed"
+            android:gravity="center_horizontal"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="@id/tv_filled_fuel"
+            app:layout_constraintStart_toEndOf="@id/tv_filled_fuel"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
         <Button
             android:id="@+id/calc_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="150dp"
-            android:text="@string/calculate_button_trip_price" />
+            android:text="@string/calculate_button_trip_price"
+            app:layout_constraintTop_toBottomOf="@id/driving_regime"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp"
+            />
 
-    </FrameLayout>
+    <TextView
+        android:id="@+id/tv_pushStats"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Добавить этот расчет в статистику"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_filled_fuel"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <CheckBox
+        android:id="@+id/check_setStats"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_pushStats"
+        app:layout_constraintStart_toEndOf="@id/tv_pushStats"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        />
+
+    <TextView
+        android:id="@+id/driving_regime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Режим езды:"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_pushStats"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/spinner_drive_regime"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        />
+
+    <Spinner
+        android:id="@+id/spinner_drive_regime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/driving_regime"
+        app:layout_constraintStart_toEndOf="@id/driving_regime"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
