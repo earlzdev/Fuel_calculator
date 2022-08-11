@@ -11,7 +11,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
-            android:text="Пройденное расстояние"
+            android:text="Пройденное расстояние в километрах"
             android:textSize="18sp" />
 
         <EditText
@@ -30,8 +30,8 @@
             android:layout_width="220dp"
             android:layout_height="48dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="150dp"
-            android:text="Залито топлива"
+            android:layout_marginTop="100dp"
+            android:text="Затраченно литров топлива"
             android:textSize="18sp" />
 
         <EditText
@@ -39,7 +39,7 @@
             android:layout_width="80dp"
             android:layout_height="48dp"
             android:layout_marginStart="300dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
             android:hint="@string/hint_fuel_price_ed"
             android:inputType="numberDecimal"
             android:text="40"

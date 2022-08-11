@@ -10,64 +10,69 @@
         android:id="@+id/tv_calc_type"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="1.8"
         android:text="Посчитать по:"
         android:textSize="22sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/spinner"
+        app:layout_constraintEnd_toStartOf="@id/spinner_calc"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinner_calc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="3"
         app:layout_constraintTop_toTopOf="@id/tv_calc_type"
         app:layout_constraintStart_toEndOf="@id/tv_calc_type"
         app:layout_constraintEnd_toEndOf="parent"
         />
 
     <TextView
+        android:id="@+id/tv_pushStats"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Добавить этот расчет в статистику"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_calc_type"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <CheckBox
+        android:id="@+id/check_setStats"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_pushStats"
+        app:layout_constraintStart_toEndOf="@id/tv_pushStats"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        />
+    <TextView
         android:id="@+id/driving_regime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Режим езды:"
         android:textSize="22sp"
-        app:layout_constraintTop_toBottomOf="@id/tv_calc_type"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tv_pushStats"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/spinner_drive_regime"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
         />
 
-    <Button
-        android:id="@+id/track"
+    <Spinner
+        android:id="@+id/spinner_drive_regime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Трасса"
-        app:layout_constraintBaseline_toBaselineOf="@id/city"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/city"
-        />
-
-    <Button
-        android:id="@+id/city"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Город"
-        app:layout_constraintStart_toEndOf="@id/track"
-        app:layout_constraintEnd_toStartOf="@id/mixed"
-        app:layout_constraintTop_toBottomOf="@id/driving_regime"
-        android:layout_marginTop="20dp"
-        />
-
-    <Button
-        android:id="@+id/mixed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Смешанный"
-        app:layout_constraintBaseline_toBaselineOf="@id/city"
-        app:layout_constraintStart_toEndOf="@id/city"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/driving_regime"
+        app:layout_constraintStart_toEndOf="@id/driving_regime"
         app:layout_constraintEnd_toEndOf="parent"
         />
 
@@ -76,7 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/city" />
+        app:layout_constraintTop_toBottomOf="@id/driving_regime" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
