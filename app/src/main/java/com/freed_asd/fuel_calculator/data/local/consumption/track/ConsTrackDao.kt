@@ -1,9 +1,6 @@
 package com.freed_asd.fuel_calculator.data.local.consumption.track
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.freed_asd.fuel_calculator.data.local.consumption.city.ConsCity
 
 @Dao
@@ -13,11 +10,12 @@ interface ConsTrackDao {
     fun allValues() : List<ConsCity>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertValue(value: ConsTrack)
+     fun insertValue(value: ConsTrack)
 
-    @Query("DELETE FROM ConsTrackDB WHERE id = :id")
-    suspend fun deleteValue(id: Long)
+//    @Query("DELETE FROM ConsTrackDB WHERE id = :id")
+    @Delete
+     fun deleteValue(value: ConsTrack)
 
-    @Query("DELETE FROM ConsTrackDB")
-    suspend fun clearDataBase()
+//    @Query("DELETE FROM ConsTrackDB")
+//    suspend fun clearDataBase()
 }
