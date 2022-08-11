@@ -8,7 +8,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.core.BaseFragment
 import com.freed_asd.fuel_calculator.databinding.FragmentBaseConsumptionBinding
@@ -27,33 +26,59 @@ class ConsumptionBaseFragment : BaseFragment<FragmentBaseConsumptionBinding, Con
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val spinner = binding.spinner
-        spinner.onItemSelectedListener = this
+        initSpinners()
+        shouldAddToStats()
+    }
+
+    private fun shouldAddToStats() {
+        binding.checkSetStats.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                binding.drivingRegime.isVisible = true
+                binding.spinnerDriveRegime.isVisible = true
+            } else {
+                binding.drivingRegime.isVisible = false
+                binding.spinnerDriveRegime.isVisible = false
+            }
+        }
+    }
+
+    private fun initSpinners() {
+
+        val calcSpinner = binding.spinnerCalc
+        calcSpinner.onItemSelectedListener = this
         ArrayAdapter.createFromResource(
             requireContext(),
             R.array.calc_consumption_of,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
+            calcSpinner.adapter = adapter
+        }
+
+        val driveRegimeSpinner = binding.spinnerDriveRegime
+        driveRegimeSpinner.onItemSelectedListener = this
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.spinner_drive_regime,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            driveRegimeSpinner.adapter = adapter
         }
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val selectedItem = parent?.getItemAtPosition(position).toString()
-        when(selectedItem) {
-            "Пробегу" -> {
+        when(parent?.getItemAtPosition(position).toString()) {
+            CALC_BY_MILEAGE -> {
                 loadFragment(ConsMileageFragment.newInstance())
             }
-            "Расстоянию" -> {
+            CALC_BY_DISTANCE -> {
                 loadFragment(ConsDistanceFragment.newInstance())
             }
         }
     }
 
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-
-    }
+    override fun onNothingSelected(parent: AdapterView<*>?) {}
 
     private fun loadFragment(fragment: Fragment){
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -63,6 +88,9 @@ class ConsumptionBaseFragment : BaseFragment<FragmentBaseConsumptionBinding, Con
     }
 
     companion object {
+
+        private const val CALC_BY_MILEAGE = "Показаниям пробега"
+        private const val CALC_BY_DISTANCE = "Пройденному расстоянию"
 
         fun newInstance() = ConsumptionBaseFragment()
     }

@@ -29,8 +29,14 @@
     <string name="cons_litersOnKm">%s литров/100км</string>
 
     <string-array name="calc_consumption_of">
-        <item>Пробегу</item>
-        <item>Расстоянию</item>
+        <item>Показаниям пробега</item>
+        <item>Пройденному расстоянию</item>
+    </string-array>
+
+    <string-array name="spinner_drive_regime">
+        <item>Смешанный</item>
+        <item>Город</item>
+        <item>Трасса</item>
     </string-array>
 
 </resources>
