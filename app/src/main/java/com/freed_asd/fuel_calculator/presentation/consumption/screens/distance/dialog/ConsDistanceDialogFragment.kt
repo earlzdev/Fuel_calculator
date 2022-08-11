@@ -1,4 +1,4 @@
-package com.freed_asd.fuel_calculator.presentation.consumption.screens.dialog
+package com.freed_asd.fuel_calculator.presentation.consumption.screens.distance.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,27 +9,28 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.freed_asd.fuel_calculator.FuelCalcApp
 import com.freed_asd.fuel_calculator.R
-import com.freed_asd.fuel_calculator.databinding.FragmentDialogConsumptionBinding
+import com.freed_asd.fuel_calculator.databinding.FragmentDialogConsumptionDistanceBinding
 import com.freed_asd.fuel_calculator.presentation.consumption.ConsResultUi
 
-class ConsumptionDialogFragment : DialogFragment() {
+class ConsDistanceDialogFragment: DialogFragment() {
 
-    private var _binding: FragmentDialogConsumptionBinding? = null
-    private val binding: FragmentDialogConsumptionBinding get() = _binding!!
+    private var _binding: FragmentDialogConsumptionDistanceBinding? = null
+    private val binding: FragmentDialogConsumptionDistanceBinding get() = _binding!!
 
-    private lateinit var viewModel: ConsDialogViewModel
+    private lateinit var viewModel: DistanceDialogViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = (requireActivity().application as FuelCalcApp).factory
-        viewModel = ViewModelProvider(this, factory)[ConsDialogViewModel::class.java]
+        viewModel = ViewModelProvider(this, factory)[DistanceDialogViewModel::class.java]
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDialogConsumptionBinding.inflate(inflater, container, false)
+        _binding = FragmentDialogConsumptionDistanceBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -37,8 +38,8 @@ class ConsumptionDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.provideResult(onDetails())
-        viewModel.observe(viewLifecycleOwner){
-            binding.maxDistanceEd.text = getString(R.string.cons_litersOnKm, String.format("%.2f", it.consumption()))
+        viewModel.observe(viewLifecycleOwner) {
+            binding.edMaxDistance.text = getString(R.string.cons_litersOnKm, String.format("%.2f", it.consumption()))
         }
     }
 
@@ -49,12 +50,13 @@ class ConsumptionDialogFragment : DialogFragment() {
         super.onDestroy()
         _binding = null
     }
+
     companion object {
 
-        const val TAG = "ConsumptionDialogFragment"
+        const val TAG = "ConsDistanceDialogFragment"
         const val RESULT_KEY = "RESULT_KEY"
 
-        fun newInstance(result: ConsResultUi) = ConsumptionDialogFragment().apply {
+        fun newInstance(result: ConsResultUi) = ConsDistanceDialogFragment().apply {
             arguments = bundleOf(RESULT_KEY to result)
         }
     }

@@ -1,12 +1,10 @@
 package com.freed_asd.fuel_calculator.presentation.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.databinding.ActivityMainBinding
-import com.freed_asd.fuel_calculator.presentation.consumption.screens.ConsumptionFragment
 import com.freed_asd.fuel_calculator.presentation.main.viewpager.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 

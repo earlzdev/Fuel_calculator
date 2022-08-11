@@ -6,8 +6,8 @@ import com.freed_asd.fuel_calculator.presentation.consumption.mappers.ConsInputU
 class BaseConsInputUiToDomainMapper : ConsInputUiToDomainMapper<ConsInputDomain> {
 
     override fun map(
-        currentMileage: Float,
-        previousMileage: Float,
+        distance: Float,
         filledFuel: Float
-    ) = ConsInputDomain.Base(currentMileage, previousMileage, filledFuel)
+    ) = ConsInputDomain.Base(distance, filledFuel)
+
 }

@@ -1,4 +1,4 @@
-package com.freed_asd.fuel_calculator.presentation.consumption.screens
+package com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,40 +6,39 @@ import android.view.View
 import android.view.ViewGroup
 import com.freed_asd.fuel_calculator.core.BaseFragment
 import com.freed_asd.fuel_calculator.core.Event
-import com.freed_asd.fuel_calculator.databinding.FragmentBaseConsumptionBinding
+import com.freed_asd.fuel_calculator.databinding.FragmentBaseConsMileageBinding
 import com.freed_asd.fuel_calculator.presentation.consumption.ConsInputUi
 import com.freed_asd.fuel_calculator.presentation.consumption.ConsResultUi
-import com.freed_asd.fuel_calculator.presentation.consumption.ConsumptionValidation
-import com.freed_asd.fuel_calculator.presentation.consumption.screens.dialog.ConsumptionDialogFragment
+import com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage.dialog.ConsMileageDialogFragment
 
-class ConsumptionFragment : BaseFragment<FragmentBaseConsumptionBinding, ConsFragViewModel>() {
+class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMileageViewModel>() {
 
     override fun createViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentBaseConsumptionBinding.inflate(inflater, container, false)
+    ) = FragmentBaseConsMileageBinding.inflate(inflater, container, false)
 
-    override fun viewModelClass() = ConsFragViewModel::class.java
+    override fun viewModelClass() = ConsMileageViewModel::class.java
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val validation = ConsumptionValidation.Base(
+        val validation = ConsMileageValidation.Base(
             binding.etCurrentMileage,
             binding.etPreviousMileage,
             binding.etFilledFuel
         )
 
         binding.calcButton.setOnClickListener { calculate(validation)
-        viewModel.observe(viewLifecycleOwner, ::openResultDialog)
+            viewModel.observe(viewLifecycleOwner, ::openResultDialog)
         }
     }
 
-    fun calculate(validation: ConsumptionValidation.Base) {
+    fun calculate(validation: ConsMileageValidation.Base) {
         if (validation.validate()) {
+            val distance = binding.etCurrentMileage.text.toString().toFloat() - binding.etPreviousMileage.text.toString().toFloat()
             val input = ConsInputUi.Base(
-                binding.etCurrentMileage.text.toString().toFloat(),
-                binding.etPreviousMileage.text.toString().toFloat(),
+                distance,
                 binding.etFilledFuel.text.toString().toFloat()
             )
             viewModel.calculate(input)
@@ -48,14 +47,14 @@ class ConsumptionFragment : BaseFragment<FragmentBaseConsumptionBinding, ConsFra
 
     private fun openResultDialog(resultEvent: Event<ConsResultUi>) {
         val result = resultEvent.value ?: return
-        ConsumptionDialogFragment.newInstance(result).show(
+        ConsMileageDialogFragment.newInstance(result).show(
             parentFragmentManager,
-            ConsumptionDialogFragment.TAG
+            ConsMileageDialogFragment.TAG
         )
     }
 
     companion object {
 
-        fun newInstance() = ConsumptionFragment()
+        fun newInstance() = ConsMileageFragment()
     }
 }

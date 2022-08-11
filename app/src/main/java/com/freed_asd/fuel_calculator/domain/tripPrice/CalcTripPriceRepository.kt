@@ -6,5 +6,5 @@ import com.freed_asd.fuel_calculator.data.tripPrice.PriceResultData
 
 interface CalcTripPriceRepository : Repository{
 
-    fun calcTripPrice(input: PriceInputData) : PriceResultData
+    fun calcTripPrice(data: PriceInputData) : PriceResultData
 }

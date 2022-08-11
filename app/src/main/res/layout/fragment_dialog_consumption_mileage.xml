@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.freed_asd.fuel_calculator.presentation.consumption.screens.dialog.ConsumptionDialogFragment">
+    tools:context=".presentation.consumption.screens.mileage.dialog.ConsMileageDialogFragment">
 
 
     <TextView

@@ -10,7 +10,10 @@ import com.freed_asd.fuel_calculator.domain.tripPrice.interactor.PriceInteractor
 import com.freed_asd.fuel_calculator.domain.tripPrice.mappers.BasePriceInputUiToDomainMapper
 import com.freed_asd.fuel_calculator.presentation.consumption.mappers.BaseConsResultDomainToUiMapper
 import com.freed_asd.fuel_calculator.presentation.consumption.screens.ConsFragViewModel
-import com.freed_asd.fuel_calculator.presentation.consumption.screens.dialog.ConsDialogViewModel
+import com.freed_asd.fuel_calculator.presentation.consumption.screens.distance.ConsDistanceViewModel
+import com.freed_asd.fuel_calculator.presentation.consumption.screens.distance.dialog.DistanceDialogViewModel
+import com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage.ConsMileageViewModel
+import com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage.dialog.MileageDialogViewModel
 import com.freed_asd.fuel_calculator.presentation.distance.mappers.BaseResultDomainToUiMapper
 import com.freed_asd.fuel_calculator.presentation.distance.screens.DistanceViewModel
 import com.freed_asd.fuel_calculator.presentation.distance.screens.dialog.DialogFragmentViewModel
@@ -44,12 +47,23 @@ class ViewModelsFactory(
                 resultDistanceMapper
             )
             modelClass.isAssignableFrom(DialogFragmentViewModel::class.java) -> DialogFragmentViewModel()
+            modelClass.isAssignableFrom(ConsMileageViewModel::class.java) -> ConsMileageViewModel(
+                consInteractor,
+                inputConsMapper,
+                resultConsMapper
+            )
             modelClass.isAssignableFrom(ConsFragViewModel::class.java) -> ConsFragViewModel(
                 consInteractor,
                 inputConsMapper,
                 resultConsMapper
             )
-            modelClass.isAssignableFrom(ConsDialogViewModel::class.java) -> ConsDialogViewModel()
+            modelClass.isAssignableFrom(MileageDialogViewModel::class.java) -> MileageDialogViewModel()
+            modelClass.isAssignableFrom(ConsDistanceViewModel::class.java) -> ConsDistanceViewModel(
+                consInteractor,
+                inputConsMapper,
+                resultConsMapper
+            )
+            modelClass.isAssignableFrom(DistanceDialogViewModel::class.java) -> DistanceDialogViewModel()
             else -> throw IllegalStateException("model class $modelClass not found")
         } as T
     }

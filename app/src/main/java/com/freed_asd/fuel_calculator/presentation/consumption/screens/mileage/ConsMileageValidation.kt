@@ -1,9 +1,9 @@
-package com.freed_asd.fuel_calculator.presentation.consumption
+package com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage
 
 import android.widget.TextView
 import com.freed_asd.fuel_calculator.R
 
-interface ConsumptionValidation {
+interface ConsMileageValidation {
 
     fun validate() : Boolean
 
@@ -11,7 +11,7 @@ interface ConsumptionValidation {
         private val currentMileage: TextView,
         private val previousMileage: TextView,
         private val filledFuel: TextView
-    ) : ConsumptionValidation {
+    ) : ConsMileageValidation {
 
         val context = currentMileage.context
 

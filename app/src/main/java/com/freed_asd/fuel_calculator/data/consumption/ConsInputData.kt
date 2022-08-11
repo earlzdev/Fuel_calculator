@@ -5,12 +5,11 @@ interface ConsInputData {
     fun consumption() : Float
 
     class Base(
-        private val currentMileage: Float,
-        private val previousMileage: Float,
+        private val distance: Float,
         private val filledFuel: Float
     ): ConsInputData {
         override fun consumption(): Float {
-            return (filledFuel / (currentMileage - previousMileage)) * 100
+            return (filledFuel / (distance)) * 100
         }
     }
 }
