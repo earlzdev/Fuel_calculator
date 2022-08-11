@@ -4,9 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(
-    tableName = "ConsCityDB"
-)
+@Entity(tableName = "ConsCityDB")
 data class ConsCity (
     @PrimaryKey(autoGenerate = true) val id: Long,
     @ColumnInfo(name = "consumption")val consumption: Float,
