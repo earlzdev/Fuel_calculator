@@ -56,9 +56,13 @@ class ConsumptionBaseFragment : BaseFragment<FragmentBaseConsumptionBinding, Con
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         when(parent?.getItemAtPosition(position).toString()) {
             CALC_BY_MILEAGE -> {
+                binding.tvPushStats.isVisible = true
+                binding.checkSetStats.isVisible = true
                 loadFragment(ConsMileageFragment.newInstance())
             }
             CALC_BY_DISTANCE -> {
+                binding.tvPushStats.isVisible = false
+                binding.checkSetStats.isVisible = false
                 loadFragment(ConsDistanceFragment.newInstance())
             }
         }

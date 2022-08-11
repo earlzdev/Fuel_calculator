@@ -24,7 +24,7 @@ abstract class BaseFragment<VB : ViewBinding, V : ViewModel> : Fragment() {
         super.onCreate(savedInstanceState)
         val factory = (requireActivity().application as FuelCalcApp).factory
         viewModel = ViewModelProvider(this, factory)[viewModelClass()]
-
+        appDB = AppDataBase.localDataBase(requireContext())
     }
 
     override fun onCreateView(
