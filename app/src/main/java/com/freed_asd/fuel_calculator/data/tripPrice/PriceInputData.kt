@@ -1,13 +1,5 @@
 package com.freed_asd.fuel_calculator.data.tripPrice
 
-<<<<<<< HEAD
-data class PriceInputData (
-    val averageConsumption: Float,
-    val distance: Float,
-    var fuelPrice: Float = 1f,
-    var passengersCount: Float = 1f
-)
-=======
 interface PriceInputData {
 
     fun onePersonPrice() : Float
@@ -44,4 +36,3 @@ interface PriceInputData {
         override fun passengers() = passengersCount
     }
 }
->>>>>>> master

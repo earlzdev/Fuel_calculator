@@ -8,11 +8,7 @@ import android.widget.EditText
 import com.freed_asd.fuel_calculator.core.BaseFragment
 import com.freed_asd.fuel_calculator.core.Event
 import com.freed_asd.fuel_calculator.databinding.FragmentBasePriceBinding
-<<<<<<< HEAD
-import com.freed_asd.fuel_calculator.presentation.tripPrice.PriceInputDataUi
-=======
 import com.freed_asd.fuel_calculator.presentation.tripPrice.PriceInputUi
->>>>>>> master
 import com.freed_asd.fuel_calculator.presentation.tripPrice.PriceResultUi
 import com.freed_asd.fuel_calculator.presentation.tripPrice.TripValidation
 import com.freed_asd.fuel_calculator.presentation.tripPrice.screens.dialog.ResultDialogFragment

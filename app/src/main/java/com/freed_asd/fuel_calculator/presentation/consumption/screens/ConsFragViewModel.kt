@@ -1,10 +1,5 @@
 package com.freed_asd.fuel_calculator.presentation.consumption.screens
 
-<<<<<<< HEAD
-import androidx.lifecycle.ViewModel
-
-class ConsFragViewModel: ViewModel() {
-=======
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.freed_asd.fuel_calculator.core.BaseViewModel
@@ -31,5 +26,4 @@ class ConsFragViewModel(
         liveData.value = Event(result)
         return result
     }
->>>>>>> master
 }

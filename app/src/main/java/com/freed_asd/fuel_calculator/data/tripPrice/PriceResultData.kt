@@ -1,14 +1,5 @@
 package com.freed_asd.fuel_calculator.data.tripPrice
 
-<<<<<<< HEAD
-data class PriceResultData (
-    val distance: Float,
-    val needFuel: Float,
-    val generalTripPrice: Float,
-    val everyoneTripPrice: Float,
-    val passengers: Float
-)
-=======
 import com.freed_asd.fuel_calculator.data.tripPrice.mappers.PriceResultDataToDomainMapper
 
 interface PriceResultData {
@@ -26,4 +17,3 @@ interface PriceResultData {
             mapper.map(distance, needFuel, generalTripPrice, everyoneTripPrice, passengers)
     }
 }
->>>>>>> master

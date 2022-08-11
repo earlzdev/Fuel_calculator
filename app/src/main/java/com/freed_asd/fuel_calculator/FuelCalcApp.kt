@@ -2,37 +2,17 @@ package com.freed_asd.fuel_calculator
 
 import android.app.Application
 import com.freed_asd.fuel_calculator.core.ViewModelsFactory
-<<<<<<< HEAD
-=======
 import com.freed_asd.fuel_calculator.data.consumption.ConsumptionRepositoryImpl
 import com.freed_asd.fuel_calculator.data.consumption.mappers.BaseConsInputDomainToDataMapper
->>>>>>> master
 import com.freed_asd.fuel_calculator.data.distance.CalcMaxDistanceRepositoryImpl
 import com.freed_asd.fuel_calculator.data.distance.DistanceInputData
 import com.freed_asd.fuel_calculator.data.distance.mappers.BaseInputDomainToDataMapper
 import com.freed_asd.fuel_calculator.data.tripPrice.CalcTripPriceRepositoryImpl
-<<<<<<< HEAD
-import com.freed_asd.fuel_calculator.domain.distance.interactor.DistanceInteractor
-import com.freed_asd.fuel_calculator.domain.distance.mappers.BaseInputUiToDomainMapper
-import com.freed_asd.fuel_calculator.domain.distance.mappers.BaseResultDataToDomainMapper
-import com.freed_asd.fuel_calculator.domain.tripPrice.domainPriceMappers.InputDataDomainMapper
-import com.freed_asd.fuel_calculator.domain.tripPrice.domainPriceMappers.PriceResultDomainMapper
-import com.freed_asd.fuel_calculator.domain.tripPrice.usecase.CalcTripPriceUseCase
-import com.freed_asd.fuel_calculator.presentation.distance.mappers.BaseResultDomainToUiMapper
-import com.freed_asd.fuel_calculator.presentation.tripPrice.uiPriceMappers.PriceInputUiMapper
-import com.freed_asd.fuel_calculator.presentation.tripPrice.uiPriceMappers.PriceResultUiMapper
-import com.freed_asd.fuel_calculator.data.consumption.ConsumptionRepositoryImpl
-import com.freed_asd.fuel_calculator.data.consumption.mappers.BaseConsInputDomainToDataMapper
-=======
 import com.freed_asd.fuel_calculator.data.tripPrice.mappers.BasePriceInputDomainToDataMapper
->>>>>>> master
 import com.freed_asd.fuel_calculator.domain.consumption.ConsumptionRepository
 import com.freed_asd.fuel_calculator.domain.consumption.interactor.ConsInteractor
 import com.freed_asd.fuel_calculator.domain.consumption.mappers.BaseConsInputUiToDomainMapper
 import com.freed_asd.fuel_calculator.domain.consumption.mappers.BaseConsResultDataToDomainMapper
-<<<<<<< HEAD
-import com.freed_asd.fuel_calculator.presentation.consumption.mappers.BaseConsResultDomainToUiMapper
-=======
 import com.freed_asd.fuel_calculator.domain.distance.interactor.DistanceInteractor
 import com.freed_asd.fuel_calculator.domain.distance.mappers.BaseInputUiToDomainMapper
 import com.freed_asd.fuel_calculator.domain.distance.mappers.BaseResultDataToDomainMapper
@@ -42,7 +22,6 @@ import com.freed_asd.fuel_calculator.domain.tripPrice.mappers.BasePriceResultDat
 import com.freed_asd.fuel_calculator.presentation.consumption.mappers.BaseConsResultDomainToUiMapper
 import com.freed_asd.fuel_calculator.presentation.distance.mappers.BaseResultDomainToUiMapper
 import com.freed_asd.fuel_calculator.presentation.tripPrice.mappers.BasePriceResultDomainToUiMapper
->>>>>>> master
 
 class FuelCalcApp: Application() {
 

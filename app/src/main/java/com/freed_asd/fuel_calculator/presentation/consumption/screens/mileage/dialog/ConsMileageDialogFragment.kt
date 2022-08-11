@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:app/src/main/java/com/freed_asd/fuel_calculator/presentation/consumption/screens/mileage/dialog/ConsMileageDialogFragment.kt
 package com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage.dialog
-========
-package com.freed_asd.fuel_calculator.presentation.consumption.screens.dialog
->>>>>>>> master:app/src/main/java/com/freed_asd/fuel_calculator/presentation/consumption/screens/dialog/ConsumptionDialogFragment.kt
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,11 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.freed_asd.fuel_calculator.FuelCalcApp
 import com.freed_asd.fuel_calculator.R
-<<<<<<<< HEAD:app/src/main/java/com/freed_asd/fuel_calculator/presentation/consumption/screens/mileage/dialog/ConsMileageDialogFragment.kt
 import com.freed_asd.fuel_calculator.databinding.FragmentDialogConsumptionMileageBinding
-========
-import com.freed_asd.fuel_calculator.databinding.FragmentDialogConsumptionBinding
->>>>>>>> master:app/src/main/java/com/freed_asd/fuel_calculator/presentation/consumption/screens/dialog/ConsumptionDialogFragment.kt
 import com.freed_asd.fuel_calculator.presentation.consumption.ConsResultUi
 
 class ConsMileageDialogFragment : DialogFragment() {
