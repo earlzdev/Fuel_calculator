@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:app/src/main/java/com/freed_asd/fuel_calculator/presentation/consumption/screens/mileage/ConsMileageValidation.kt
 package com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage
+========
+package com.freed_asd.fuel_calculator.presentation.consumption
+>>>>>>>> master:app/src/main/java/com/freed_asd/fuel_calculator/presentation/consumption/ConsumptionValidation.kt
 
 import android.widget.TextView
 import com.freed_asd.fuel_calculator.R
