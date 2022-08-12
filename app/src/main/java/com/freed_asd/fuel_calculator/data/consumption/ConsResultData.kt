@@ -9,6 +9,7 @@ interface ConsResultData {
     class Base(
         private val consumption: Float
     ) : ConsResultData {
+
         override fun <T> map(mapper: ConsResultDataToDomainMapper<T>) =
            mapper.map(consumption)
     }

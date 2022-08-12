@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.core.BaseFragment
@@ -26,23 +25,10 @@ class ConsumptionBaseFragment : BaseFragment<FragmentBaseConsumptionBinding, Con
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initSpinners()
-        shouldAddToStats()
+        initSpinner()
     }
 
-    private fun shouldAddToStats() {
-        binding.checkSetStats.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                binding.drivingRegime.isVisible = true
-                binding.spinnerDriveRegime.isVisible = true
-            } else {
-                binding.drivingRegime.isVisible = false
-                binding.spinnerDriveRegime.isVisible = false
-            }
-        }
-    }
-
-    private fun initSpinners() {
+    private fun initSpinner() {
 
         val calcSpinner = binding.spinnerCalc
         calcSpinner.onItemSelectedListener = this
@@ -54,29 +40,15 @@ class ConsumptionBaseFragment : BaseFragment<FragmentBaseConsumptionBinding, Con
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             calcSpinner.adapter = adapter
         }
-
-        val driveRegimeSpinner = binding.spinnerDriveRegime
-        driveRegimeSpinner.onItemSelectedListener = this
-        ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.spinner_drive_regime,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            driveRegimeSpinner.adapter = adapter
-        }
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
         when(parent?.getItemAtPosition(position).toString()) {
             CALC_BY_MILEAGE -> {
-                binding.tvPushStats.isVisible = true
-                binding.checkSetStats.isVisible = true
                 loadFragment(ConsMileageFragment.newInstance())
             }
             CALC_BY_DISTANCE -> {
-                binding.tvPushStats.isVisible = false
-                binding.checkSetStats.isVisible = false
                 loadFragment(ConsDistanceFragment.newInstance())
             }
         }
@@ -84,7 +56,7 @@ class ConsumptionBaseFragment : BaseFragment<FragmentBaseConsumptionBinding, Con
 
     override fun onNothingSelected(parent: AdapterView<*>?) {}
 
-    private fun loadFragment(fragment: Fragment){
+    private fun loadFragment(fragment: Fragment) {
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, fragment)
         transaction.disallowAddToBackStack()

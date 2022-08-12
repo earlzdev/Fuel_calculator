@@ -7,6 +7,7 @@ import com.freed_asd.fuel_calculator.data.consumption.mappers.BaseConsInputDomai
 import com.freed_asd.fuel_calculator.data.distance.CalcMaxDistanceRepositoryImpl
 import com.freed_asd.fuel_calculator.data.distance.DistanceInputData
 import com.freed_asd.fuel_calculator.data.distance.mappers.BaseInputDomainToDataMapper
+import com.freed_asd.fuel_calculator.data.local.AppDataBase
 import com.freed_asd.fuel_calculator.data.tripPrice.CalcTripPriceRepositoryImpl
 import com.freed_asd.fuel_calculator.data.tripPrice.mappers.BasePriceInputDomainToDataMapper
 import com.freed_asd.fuel_calculator.domain.consumption.ConsumptionRepository
@@ -44,6 +45,7 @@ class FuelCalcApp: Application() {
 
 
     //consumption
+    private lateinit var appDataBase: AppDataBase
     private lateinit var consRepository: ConsumptionRepository
     private lateinit var inputConsInteractorMapper: BaseConsInputDomainToDataMapper
     private lateinit var resultConsInteractorMapper: BaseConsResultDataToDomainMapper
@@ -77,7 +79,8 @@ class FuelCalcApp: Application() {
         distanceInteractor = DistanceInteractor.Base(distanceRepository, distanceInputDomainMapper, distanceResultDomainMapper)
 
         //consumption
-        consRepository = ConsumptionRepositoryImpl()
+        appDataBase = AppDataBase.localDataBase(this)
+        consRepository = ConsumptionRepositoryImpl(appDataBase)
         inputConsInteractorMapper = BaseConsInputDomainToDataMapper()
         resultConsInteractorMapper = BaseConsResultDataToDomainMapper()
         consInteractor = ConsInteractor.Base(consRepository, inputConsInteractorMapper, resultConsInteractorMapper)

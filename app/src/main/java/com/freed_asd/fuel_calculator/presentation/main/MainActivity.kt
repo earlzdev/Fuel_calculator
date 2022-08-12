@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun viewPager() {
+
         binding.viewpager.adapter = ViewPagerAdapter(this)
         binding.tableLayout.tabIconTint = null
 
