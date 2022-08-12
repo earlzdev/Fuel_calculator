@@ -10,5 +10,5 @@ import androidx.room.PrimaryKey
 data class ConsTrack (
     @PrimaryKey(autoGenerate = true) val id: Long,
     @ColumnInfo(name = "consumption")val consumption: Float,
-    @ColumnInfo(name = "mileage")val mileage: Int
+    @ColumnInfo(name = "mileage")val mileage: Float
 )

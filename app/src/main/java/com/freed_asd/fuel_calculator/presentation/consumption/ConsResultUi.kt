@@ -11,6 +11,7 @@ interface ConsResultUi {
     class Base(
         private val consumption: Float
     ) : ConsResultUi, Parcelable {
+
         override fun consumption() = consumption
     }
 }

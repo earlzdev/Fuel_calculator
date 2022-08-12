@@ -4,20 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.core.BaseFragment
 import com.freed_asd.fuel_calculator.core.Event
-import com.freed_asd.fuel_calculator.data.local.AppDataBase
 import com.freed_asd.fuel_calculator.databinding.FragmentBaseConsMileageBinding
 import com.freed_asd.fuel_calculator.presentation.consumption.ConsInputUi
 import com.freed_asd.fuel_calculator.presentation.consumption.ConsResultUi
 import com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage.dialog.ConsMileageDialogFragment
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMileageViewModel>(), AdapterView.OnItemSelectedListener {
+class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMileageViewModel>() {
 
     override fun createViewBinding(
         inflater: LayoutInflater,
@@ -30,7 +31,7 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
         super.onViewCreated(view, savedInstanceState)
 
         initSpinner()
-        shouldAddIntoStats()
+        showRegimeSpinner()
 
         val validation = ConsMileageValidation.Base(
             binding.etCurrentMileage,
@@ -38,12 +39,20 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
             binding.etFilledFuel
         )
 
-        binding.calcButton.setOnClickListener { calculate(validation)
-            viewModel.observe(viewLifecycleOwner, ::openResultDialog)
+        val shouldAddIntoStats = ShouldAddIntoStats.Base(
+            binding.checkSetStats
+        )
+
+        binding.calcButton.setOnClickListener {
+            calculate(validation)
+            lifecycleScope.launch {
+                setIntoStats(shouldAddIntoStats)
+            }
         }
+        viewModel.observe(viewLifecycleOwner) { openResultDialog(it, shouldAddIntoStats) }
     }
 
-    fun calculate(validation: ConsMileageValidation.Base) {
+    private fun calculate(validation: ConsMileageValidation.Base) {
         if (validation.validate()) {
             val distance = binding.etCurrentMileage.text.toString().toFloat() - binding.etPreviousMileage.text.toString().toFloat()
             val input = ConsInputUi.Base(
@@ -57,7 +66,6 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
     private fun initSpinner() {
 
         val driveRegimeSpinner = binding.spinnerDriveRegime
-        driveRegimeSpinner.onItemSelectedListener = this
         ArrayAdapter.createFromResource(
             requireContext(),
             R.array.spinner_drive_regime,
@@ -68,12 +76,13 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
         }
     }
 
-    private fun shouldAddIntoStats() {
+    private fun showRegimeSpinner() {
 
         binding.checkSetStats.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 binding.drivingRegime.isVisible = true
                 binding.spinnerDriveRegime.isVisible = true
+
             } else {
                 binding.drivingRegime.isVisible = false
                 binding.spinnerDriveRegime.isVisible = false
@@ -81,26 +90,23 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
         }
     }
 
-    private fun setResultIntoStats() {
+    private fun setIntoStats(check: ShouldAddIntoStats.Base) {
 
-
-
+        if (check.shouldlAddIntoStats()) {
+            val driveRegime = binding.spinnerDriveRegime.selectedItem.toString()
+            val mileage = binding.etCurrentMileage.text.toString().toFloat()
+            viewModel.setIntoStats(driveRegime, mileage)
+        }
     }
 
-    private fun openResultDialog(resultEvent: Event<ConsResultUi>) {
+    private fun openResultDialog(resultEvent: Event<ConsResultUi>, checkSetStats: ShouldAddIntoStats.Base) {
+
+        val shouldSetIntoStats = checkSetStats.shouldlAddIntoStats()
         val result = resultEvent.value ?: return
-        ConsMileageDialogFragment.newInstance(result).show(
+        ConsMileageDialogFragment.newInstance(result, shouldSetIntoStats).show(
             parentFragmentManager,
             ConsMileageDialogFragment.TAG
         )
-    }
-
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
-    }
-
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-
     }
 
     companion object {

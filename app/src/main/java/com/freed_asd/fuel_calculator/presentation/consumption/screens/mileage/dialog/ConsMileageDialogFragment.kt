@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.freed_asd.fuel_calculator.FuelCalcApp
@@ -36,14 +37,29 @@ class ConsMileageDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.provideResult(onDetails())
+        statsPrompt(onCheckStats())
+
+        viewModel.provideResult(onResult())
         viewModel.observe(viewLifecycleOwner){
             binding.maxDistanceEd.text = getString(R.string.cons_litersOnKm, String.format("%.2f", it.consumption()))
         }
     }
 
-    private fun onDetails() = requireArguments().getParcelable<ConsResultUi.Base>(RESULT_KEY)
+    private fun statsPrompt(check: Boolean) {
+        when (check) {
+            true -> {
+                binding.tvResultAddedIntoStats.isVisible = true
+            }
+            false -> {
+                binding.tvResultDidNotAddedIntoStats.isVisible = true
+            }
+        }
+    }
+
+    private fun onResult() = requireArguments().getParcelable<ConsResultUi.Base>(RESULT_KEY)
         ?: throw IllegalStateException("calculation result can not be null")
+
+    private fun onCheckStats() = requireArguments().getBoolean(CHECK_KEY)
 
     override fun onDestroy() {
         super.onDestroy()
@@ -53,9 +69,10 @@ class ConsMileageDialogFragment : DialogFragment() {
 
         const val TAG = "ConsumptionDialogFragment"
         const val RESULT_KEY = "RESULT_KEY"
+        const val CHECK_KEY = "CHECK_KEY"
 
-        fun newInstance(result: ConsResultUi) = ConsMileageDialogFragment().apply {
-            arguments = bundleOf(RESULT_KEY to result)
+        fun newInstance(result: ConsResultUi, shouldSetIntoStats: Boolean) = ConsMileageDialogFragment().apply {
+            arguments = bundleOf(RESULT_KEY to result, CHECK_KEY to shouldSetIntoStats)
         }
     }
 }
