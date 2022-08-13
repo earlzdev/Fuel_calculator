@@ -17,6 +17,8 @@ import com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage.di
 import com.freed_asd.fuel_calculator.presentation.distance.mappers.BaseResultDomainToUiMapper
 import com.freed_asd.fuel_calculator.presentation.distance.screens.DistanceViewModel
 import com.freed_asd.fuel_calculator.presentation.distance.screens.dialog.DialogFragmentViewModel
+import com.freed_asd.fuel_calculator.presentation.statistic.mileage.MileageStatsViewModel
+import com.freed_asd.fuel_calculator.presentation.statistic.trips.TripStatsViewModel
 import com.freed_asd.fuel_calculator.presentation.tripPrice.mappers.BasePriceResultDomainToUiMapper
 import com.freed_asd.fuel_calculator.presentation.tripPrice.screens.PriceFragmentViewModel
 import com.freed_asd.fuel_calculator.presentation.tripPrice.screens.dialog.ResultViewModel
@@ -68,6 +70,11 @@ class ViewModelsFactory(
                 resultConsMapper
             )
             modelClass.isAssignableFrom(DistanceDialogViewModel::class.java) -> DistanceDialogViewModel()
+            modelClass.isAssignableFrom(MileageStatsViewModel::class.java) -> MileageStatsViewModel()
+            modelClass.isAssignableFrom(TripStatsViewModel::class.java) -> TripStatsViewModel(
+                distanceInteractor,
+                priceInteractor
+            )
             else -> throw IllegalStateException("model class $modelClass not found")
         } as T
     }
