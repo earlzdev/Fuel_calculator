@@ -40,13 +40,17 @@ class ViewModelsFactory(
                 inputTripMapper,
                 resultTripMapper
             )
-            modelClass.isAssignableFrom(ResultViewModel::class.java) -> ResultViewModel()
+            modelClass.isAssignableFrom(ResultViewModel::class.java) -> ResultViewModel(
+                priceInteractor
+            )
             modelClass.isAssignableFrom(DistanceViewModel::class.java) -> DistanceViewModel(
                 distanceInteractor,
                 inputDistanceMapper,
                 resultDistanceMapper
             )
-            modelClass.isAssignableFrom(DialogFragmentViewModel::class.java) -> DialogFragmentViewModel()
+            modelClass.isAssignableFrom(DialogFragmentViewModel::class.java) -> DialogFragmentViewModel(
+                distanceInteractor
+            )
             modelClass.isAssignableFrom(ConsMileageViewModel::class.java) -> ConsMileageViewModel(
                 consInteractor,
                 inputConsMapper,

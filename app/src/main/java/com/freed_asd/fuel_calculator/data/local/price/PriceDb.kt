@@ -1,0 +1,17 @@
+package com.freed_asd.fuel_calculator.data.local.price
+
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(
+    tableName = "priceDb"
+)
+data class PriceDb (
+    @PrimaryKey(autoGenerate = true) val id: Long,
+    @ColumnInfo(name = "consumption") val consumption: Float,
+    @ColumnInfo(name = "distance") val distance: Float,
+    @ColumnInfo(name = "fuelPrice") val fuelPrice: Float,
+    @ColumnInfo(name = "generalPrice") val generalPrice: Float,
+    @ColumnInfo(name = "everyonePrice") var everyonePrice: Float
+)

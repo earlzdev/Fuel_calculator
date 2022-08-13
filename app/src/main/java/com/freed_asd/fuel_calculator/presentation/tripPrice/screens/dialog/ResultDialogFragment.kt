@@ -58,6 +58,10 @@ class ResultDialogFragment : DialogFragment() {
                 String.format("%.2f", it.everyonePrice())
             )
         }
+        binding.saveBtnPrice.setOnClickListener {
+            viewModel.insertIntoDb()
+            binding.isSavedPrice.isVisible = true
+        }
     }
 
     private fun onDetails() = requireArguments().getParcelable<PriceResultUi.Base>(RESULT_DETAILS)
