@@ -27,6 +27,8 @@
     <string name="kilometers">%s километров</string>
     <string name="rubles">%s рублей</string>
     <string name="cons_litersOnKm">%s литров/100км</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
     <string-array name="calc_consumption_of">
         <item>Показаниям пробега</item>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/statistic"
+        android:title="Статистика"
+        />
+
+    <item
+        android:id="@+id/about"
+        android:title="О приложении"
+        />
+
+    <item
+        android:id="@+id/share"
+        android:title="Рассказать другу"
+        />
+
+    <item
+        android:id="@+id/communicate"
+        android:title="Связаться"
+        />
+
+    <item
+        android:id="@+id/rate"
+        android:title="Оценить"
+        />
+
+</menu>
