@@ -23,6 +23,7 @@ interface PriceResultUi {
         private val everyoneTripPrice: Float,
         private val passengers: Float
     ) : PriceResultUi, Parcelable {
+
         override fun distance() = distance
 
         override fun needFuel() = needFuel

@@ -61,8 +61,10 @@ class FuelCalcApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
+        appDataBase = AppDataBase.localDataBase(this)
+
         //trip price
-        priceRepository = CalcTripPriceRepositoryImpl()
+        priceRepository = CalcTripPriceRepositoryImpl(appDataBase)
         inputDomainMapper = BasePriceInputDomainToDataMapper()
         resultDomainMapper = BasePriceResultDataToDomainMapper()
         inputUiMapper = BasePriceInputUiToDomainMapper()
@@ -72,14 +74,13 @@ class FuelCalcApp: Application() {
         // distance
         priceMapper = DistanceInputData.TripPriceMapper.Base()
         distanceMapper = DistanceInputData.MaxDistanceMapper.Base()
-        distanceRepository = CalcMaxDistanceRepositoryImpl(distanceMapper, priceMapper)
+        distanceRepository = CalcMaxDistanceRepositoryImpl(appDataBase, distanceMapper, priceMapper)
 
         distanceInputDomainMapper = BaseInputDomainToDataMapper()
         distanceResultDomainMapper = BaseResultDataToDomainMapper()
         distanceInteractor = DistanceInteractor.Base(distanceRepository, distanceInputDomainMapper, distanceResultDomainMapper)
 
         //consumption
-        appDataBase = AppDataBase.localDataBase(this)
         consRepository = ConsumptionRepositoryImpl(appDataBase)
         inputConsInteractorMapper = BaseConsInputDomainToDataMapper()
         resultConsInteractorMapper = BaseConsResultDataToDomainMapper()

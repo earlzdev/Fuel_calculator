@@ -2,6 +2,7 @@ package com.freed_asd.fuel_calculator.presentation.distance.screens
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import androidx.lifecycle.viewModelScope
 import com.freed_asd.fuel_calculator.core.BaseViewModel
 import com.freed_asd.fuel_calculator.core.Event
 import com.freed_asd.fuel_calculator.data.Repository
@@ -10,6 +11,8 @@ import com.freed_asd.fuel_calculator.domain.distance.mappers.BaseInputUiToDomain
 import com.freed_asd.fuel_calculator.presentation.distance.DistanceInputUi
 import com.freed_asd.fuel_calculator.presentation.distance.DistanceResultUi
 import com.freed_asd.fuel_calculator.presentation.distance.mappers.BaseResultDomainToUiMapper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class DistanceViewModel(
     private val distanceInteractor: DistanceInteractor,

@@ -14,6 +14,7 @@ interface DistanceResultUi {
         private val maxDistance: Float,
         private val tripPrice: Float
     ) : DistanceResultUi, Parcelable {
+
         override fun distance() = maxDistance
         override fun price() = tripPrice
     }

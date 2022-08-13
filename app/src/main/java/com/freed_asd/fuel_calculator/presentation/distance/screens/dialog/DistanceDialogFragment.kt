@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.freed_asd.fuel_calculator.FuelCalcApp
@@ -47,6 +48,10 @@ class DistanceDialogFragment : DialogFragment() {
                 R.string.rubles,
                 String.format("%.2f", it.price()
             ))
+        }
+        binding.saveBtnDistance.setOnClickListener {
+            viewModel.insertIntoDb()
+            binding.isSavedDistance.isVisible = true
         }
     }
 
