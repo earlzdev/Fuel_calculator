@@ -15,7 +15,7 @@ import com.freed_asd.fuel_calculator.data.local.distance.DistanceDb
 import com.freed_asd.fuel_calculator.data.local.price.PriceDao
 import com.freed_asd.fuel_calculator.data.local.price.PriceDb
 
-@Database(entities = [ConsCity::class, ConsMixed::class, ConsTrack::class, PriceDb::class, DistanceDb::class], version = 2)
+@Database(entities = [ConsCity::class, ConsMixed::class, ConsTrack::class, PriceDb::class, DistanceDb::class], version = 4)
 abstract class AppDataBase : RoomDatabase() {
 
     abstract fun cityDao() : ConsCityDao

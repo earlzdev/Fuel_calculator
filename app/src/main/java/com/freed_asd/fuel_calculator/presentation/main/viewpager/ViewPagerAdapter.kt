@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.freed_asd.fuel_calculator.presentation.consumption.screens.ConsumptionBaseFragment
 import com.freed_asd.fuel_calculator.presentation.distance.screens.DistanceFragment
-import com.freed_asd.fuel_calculator.presentation.tripPrice.screens.PriceFragment
+import com.freed_asd.fuel_calculator.presentation.price.screens.PriceFragment
 
 class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
 

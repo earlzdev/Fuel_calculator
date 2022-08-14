@@ -1,7 +1,7 @@
 package com.freed_asd.fuel_calculator.domain.tripPrice.mappers
 
 import com.freed_asd.fuel_calculator.domain.tripPrice.PriceInputDomain
-import com.freed_asd.fuel_calculator.presentation.tripPrice.mappers.PriceInputUiToDomainMapper
+import com.freed_asd.fuel_calculator.presentation.price.mappers.PriceInputUiToDomainMapper
 
 class BasePriceInputUiToDomainMapper : PriceInputUiToDomainMapper<PriceInputDomain> {
 

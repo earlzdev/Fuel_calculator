@@ -1,4 +1,4 @@
-package com.freed_asd.fuel_calculator.presentation.tripPrice
+package com.freed_asd.fuel_calculator.presentation.price
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

@@ -10,6 +10,7 @@ import androidx.room.PrimaryKey
 data class DistanceDb (
 
     @PrimaryKey(autoGenerate = true)  val id: Long,
+    @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "distance") val distance: Float,
     @ColumnInfo(name = "price") val price: Float
 )
