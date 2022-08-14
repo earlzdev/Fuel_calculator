@@ -4,8 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.freed_asd.fuel_calculator.domain.consumption.interactor.ConsInteractor
 import com.freed_asd.fuel_calculator.domain.consumption.mappers.BaseConsInputUiToDomainMapper
+import com.freed_asd.fuel_calculator.domain.distance.dbItem.BaseDistanceDbItemUiMapper
 import com.freed_asd.fuel_calculator.domain.distance.interactor.DistanceInteractor
 import com.freed_asd.fuel_calculator.domain.distance.mappers.BaseInputUiToDomainMapper
+import com.freed_asd.fuel_calculator.domain.tripPrice.dbItem.BasePriceDbItemUiMapper
 import com.freed_asd.fuel_calculator.domain.tripPrice.interactor.PriceInteractor
 import com.freed_asd.fuel_calculator.domain.tripPrice.mappers.BasePriceInputUiToDomainMapper
 import com.freed_asd.fuel_calculator.presentation.consumption.mappers.BaseConsResultDomainToUiMapper
@@ -17,11 +19,11 @@ import com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage.di
 import com.freed_asd.fuel_calculator.presentation.distance.mappers.BaseResultDomainToUiMapper
 import com.freed_asd.fuel_calculator.presentation.distance.screens.DistanceViewModel
 import com.freed_asd.fuel_calculator.presentation.distance.screens.dialog.DialogFragmentViewModel
+import com.freed_asd.fuel_calculator.presentation.price.mappers.BasePriceResultDomainToUiMapper
+import com.freed_asd.fuel_calculator.presentation.price.screens.PriceFragmentViewModel
+import com.freed_asd.fuel_calculator.presentation.price.screens.dialog.ResultViewModel
 import com.freed_asd.fuel_calculator.presentation.statistic.mileage.MileageStatsViewModel
 import com.freed_asd.fuel_calculator.presentation.statistic.trips.TripStatsViewModel
-import com.freed_asd.fuel_calculator.presentation.tripPrice.mappers.BasePriceResultDomainToUiMapper
-import com.freed_asd.fuel_calculator.presentation.tripPrice.screens.PriceFragmentViewModel
-import com.freed_asd.fuel_calculator.presentation.tripPrice.screens.dialog.ResultViewModel
 
 class ViewModelsFactory(
     private val priceInteractor: PriceInteractor,
@@ -32,7 +34,9 @@ class ViewModelsFactory(
     private val resultDistanceMapper: BaseResultDomainToUiMapper,
     private val consInteractor: ConsInteractor,
     private val inputConsMapper: BaseConsInputUiToDomainMapper,
-    private val resultConsMapper: BaseConsResultDomainToUiMapper
+    private val resultConsMapper: BaseConsResultDomainToUiMapper,
+    private val distanceDbItemUiMapper: BaseDistanceDbItemUiMapper,
+    private val priceDbUiMapper: BasePriceDbItemUiMapper
 ): ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -43,7 +47,8 @@ class ViewModelsFactory(
                 resultTripMapper
             )
             modelClass.isAssignableFrom(ResultViewModel::class.java) -> ResultViewModel(
-                priceInteractor
+                priceInteractor,
+                priceDbUiMapper
             )
             modelClass.isAssignableFrom(DistanceViewModel::class.java) -> DistanceViewModel(
                 distanceInteractor,
@@ -51,7 +56,8 @@ class ViewModelsFactory(
                 resultDistanceMapper
             )
             modelClass.isAssignableFrom(DialogFragmentViewModel::class.java) -> DialogFragmentViewModel(
-                distanceInteractor
+                distanceInteractor,
+                distanceDbItemUiMapper
             )
             modelClass.isAssignableFrom(ConsMileageViewModel::class.java) -> ConsMileageViewModel(
                 consInteractor,

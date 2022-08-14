@@ -1,5 +1,7 @@
 package com.freed_asd.fuel_calculator.data.distance
 
+import com.freed_asd.fuel_calculator.data.distance.dbItem.DistanceDbItemData
+import com.freed_asd.fuel_calculator.data.distance.dbItem.DistanceDbItemMapper
 import com.freed_asd.fuel_calculator.data.local.AppDataBase
 import com.freed_asd.fuel_calculator.data.local.distance.DistanceDb
 import com.freed_asd.fuel_calculator.domain.distance.CalcMaxDistanceRepository
@@ -10,7 +12,8 @@ import kotlinx.coroutines.launch
 class CalcMaxDistanceRepositoryImpl(
     private val appDB: AppDataBase,
     private val distanceMapper: DistanceInputData.MaxDistanceMapper,
-    private val priceMapper: DistanceInputData.TripPriceMapper
+    private val priceMapper: DistanceInputData.TripPriceMapper,
+    private val dbDataMapper: DistanceDbItemMapper<DistanceDb>
 ) : CalcMaxDistanceRepository {
 
     override fun calcMaxDistance(data: DistanceInputData): DistanceResultData {
@@ -28,9 +31,9 @@ class CalcMaxDistanceRepositoryImpl(
         return data.tripPrice(priceMapper)
     }
 
-    override suspend fun insertIntoDb(value: DistanceDb) {
+    override suspend fun insertIntoDb(value: DistanceDbItemData) {
         GlobalScope.launch(Dispatchers.IO) {
-            appDB.distanceDao().insertValue(value)
+            appDB.distanceDao().insertValue(value.mapToDb(dbDataMapper))
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.freed_asd.fuel_calculator.presentation.tripPrice
+package com.freed_asd.fuel_calculator.presentation.price
 
 import android.widget.EditText
 import com.freed_asd.fuel_calculator.R

@@ -1,4 +1,4 @@
-package com.freed_asd.fuel_calculator.presentation.tripPrice.screens
+package com.freed_asd.fuel_calculator.presentation.price.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,10 @@ import android.widget.EditText
 import com.freed_asd.fuel_calculator.core.BaseFragment
 import com.freed_asd.fuel_calculator.core.Event
 import com.freed_asd.fuel_calculator.databinding.FragmentBasePriceBinding
-import com.freed_asd.fuel_calculator.presentation.tripPrice.PriceInputUi
-import com.freed_asd.fuel_calculator.presentation.tripPrice.PriceResultUi
-import com.freed_asd.fuel_calculator.presentation.tripPrice.TripValidation
-import com.freed_asd.fuel_calculator.presentation.tripPrice.screens.dialog.ResultDialogFragment
+import com.freed_asd.fuel_calculator.presentation.price.PriceInputUi
+import com.freed_asd.fuel_calculator.presentation.price.PriceResultUi
+import com.freed_asd.fuel_calculator.presentation.price.TripValidation
+import com.freed_asd.fuel_calculator.presentation.price.screens.dialog.ResultDialogFragment
 
 class PriceFragment :
     BaseFragment<FragmentBasePriceBinding, PriceFragmentViewModel>() {

@@ -3,11 +3,8 @@ package com.freed_asd.fuel_calculator.presentation.statistic.viewpagerStats
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.freed_asd.fuel_calculator.presentation.consumption.screens.ConsumptionBaseFragment
-import com.freed_asd.fuel_calculator.presentation.distance.screens.DistanceFragment
 import com.freed_asd.fuel_calculator.presentation.statistic.mileage.MileageStatsFragment
 import com.freed_asd.fuel_calculator.presentation.statistic.trips.TripStatsFragment
-import com.freed_asd.fuel_calculator.presentation.tripPrice.screens.PriceFragment
 
 class ViewPagerStatsAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
 

@@ -9,9 +9,9 @@ import androidx.room.PrimaryKey
 )
 data class PriceDb (
     @PrimaryKey(autoGenerate = true) val id: Long,
-    @ColumnInfo(name = "consumption") val consumption: Float,
-    @ColumnInfo(name = "distance") val distance: Float,
-    @ColumnInfo(name = "fuelPrice") val fuelPrice: Float,
+    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "consumption") val distance: Float,
+    @ColumnInfo(name = "distance") val needFuel: Float,
     @ColumnInfo(name = "generalPrice") val generalPrice: Float,
     @ColumnInfo(name = "everyonePrice") var everyonePrice: Float
 )

@@ -1,4 +1,4 @@
-package com.freed_asd.fuel_calculator.presentation.tripPrice.screens
+package com.freed_asd.fuel_calculator.presentation.price.screens
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -7,9 +7,9 @@ import com.freed_asd.fuel_calculator.core.Event
 import com.freed_asd.fuel_calculator.data.Repository
 import com.freed_asd.fuel_calculator.domain.tripPrice.interactor.PriceInteractor
 import com.freed_asd.fuel_calculator.domain.tripPrice.mappers.BasePriceInputUiToDomainMapper
-import com.freed_asd.fuel_calculator.presentation.tripPrice.PriceInputUi
-import com.freed_asd.fuel_calculator.presentation.tripPrice.PriceResultUi
-import com.freed_asd.fuel_calculator.presentation.tripPrice.mappers.BasePriceResultDomainToUiMapper
+import com.freed_asd.fuel_calculator.presentation.price.PriceInputUi
+import com.freed_asd.fuel_calculator.presentation.price.PriceResultUi
+import com.freed_asd.fuel_calculator.presentation.price.mappers.BasePriceResultDomainToUiMapper
 
 class PriceFragmentViewModel(
     private val interactor: PriceInteractor,

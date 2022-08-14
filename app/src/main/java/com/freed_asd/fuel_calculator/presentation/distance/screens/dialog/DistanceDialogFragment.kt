@@ -43,15 +43,20 @@ class DistanceDialogFragment : DialogFragment() {
             binding.maxDistanceEd.text = getString(
                 R.string.kilometers,
                 String.format("%.2f", it.distance()
-            ))
+                ))
             binding.distancePriceEd.text = getString(
                 R.string.rubles,
                 String.format("%.2f", it.price()
-            ))
+                ))
         }
         binding.saveBtnDistance.setOnClickListener {
-            viewModel.insertIntoDb()
-            binding.isSavedDistance.isVisible = true
+            binding.tvAddName.isVisible = true
+            binding.saveName.isVisible = true
+            binding.distanceSaveBtn.isVisible = true
+            binding.distanceSaveBtn.setOnClickListener {
+                viewModel.insertIntoDb(binding.saveName.text.toString())
+                binding.isSavedDistance.isVisible = true
+            }
         }
     }
 
@@ -61,7 +66,7 @@ class DistanceDialogFragment : DialogFragment() {
     }
 
     private fun details() = requireArguments().getParcelable<DistanceResultUi.Base>(RESULT_KEY)
-            ?: throw IllegalStateException("calculation result can not be null")
+        ?: throw IllegalStateException("calculation result can not be null")
 
     override fun onStart() {
         super.onStart()

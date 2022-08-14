@@ -1,4 +1,4 @@
-package com.freed_asd.fuel_calculator.presentation.tripPrice.screens.dialog
+package com.freed_asd.fuel_calculator.presentation.price.screens.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.freed_asd.fuel_calculator.FuelCalcApp
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.databinding.FragmentDialogPriceBinding
-import com.freed_asd.fuel_calculator.presentation.tripPrice.PriceResultUi
+import com.freed_asd.fuel_calculator.presentation.price.PriceResultUi
 
 class ResultDialogFragment : DialogFragment() {
 
@@ -49,7 +49,7 @@ class ResultDialogFragment : DialogFragment() {
                 R.string.distance_example,
                 it.distance().toInt()
             )
-            binding.distancePriceEd.text = getString(
+            binding.generalPriceEd.text = getString(
                 R.string.general_price_example,
                 String.format("%.2f", it.generalPrice())
             )
@@ -58,9 +58,16 @@ class ResultDialogFragment : DialogFragment() {
                 String.format("%.2f", it.everyonePrice())
             )
         }
+
         binding.saveBtnPrice.setOnClickListener {
-            viewModel.insertIntoDb()
-            binding.isSavedPrice.isVisible = true
+            binding.tvAddName.isVisible = true
+            binding.saveNameEd.isVisible = true
+            binding.priceSaveBtn.isVisible = true
+            binding.priceSaveBtn.setOnClickListener {
+                viewModel.insertIntoDb(binding.saveNameEd.text.toString())
+                binding.isSavedPrice.isVisible = true
+            }
+
         }
     }
 

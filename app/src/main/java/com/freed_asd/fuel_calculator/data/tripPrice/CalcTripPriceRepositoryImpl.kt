@@ -1,14 +1,17 @@
 package com.freed_asd.fuel_calculator.data.tripPrice
 
 import com.freed_asd.fuel_calculator.data.local.AppDataBase
+import com.freed_asd.fuel_calculator.data.local.price.BasePriceItemDbMapper
 import com.freed_asd.fuel_calculator.data.local.price.PriceDb
+import com.freed_asd.fuel_calculator.data.tripPrice.dbItem.PriceDbItemData
 import com.freed_asd.fuel_calculator.domain.tripPrice.CalcTripPriceRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class CalcTripPriceRepositoryImpl(
-    private val appDb: AppDataBase
+    private val appDb: AppDataBase,
+    private val priceDbDataToDbMapper: BasePriceItemDbMapper
 ): CalcTripPriceRepository {
 
     override fun calcTripPrice(input: PriceInputData): PriceResultData {
@@ -27,9 +30,9 @@ class CalcTripPriceRepositoryImpl(
 
     private fun calcNeedOfFuel(input: PriceInputData) = input.needFuel()
 
-    override suspend fun insertIntoDb(value: PriceDb) {
+    override suspend fun insertIntoDb(value: PriceDbItemData) {
         GlobalScope.launch(Dispatchers.IO) {
-            appDb.priceDao().insertValue(value)
+            appDb.priceDao().insertValue(value.mapToDb(priceDbDataToDbMapper))
         }
     }
 }

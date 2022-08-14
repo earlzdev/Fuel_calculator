@@ -1,4 +1,4 @@
-package com.freed_asd.fuel_calculator.presentation.tripPrice.mappers
+package com.freed_asd.fuel_calculator.presentation.price.mappers
 
 interface PriceInputUiToDomainMapper<T> {
 

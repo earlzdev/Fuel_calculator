@@ -1,6 +1,6 @@
-package com.freed_asd.fuel_calculator.presentation.tripPrice
+package com.freed_asd.fuel_calculator.presentation.price
 
-import com.freed_asd.fuel_calculator.presentation.tripPrice.mappers.PriceInputUiToDomainMapper
+import com.freed_asd.fuel_calculator.presentation.price.mappers.PriceInputUiToDomainMapper
 
 interface PriceInputUi {
 

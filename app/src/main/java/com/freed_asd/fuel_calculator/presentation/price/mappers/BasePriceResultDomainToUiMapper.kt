@@ -1,7 +1,7 @@
-package com.freed_asd.fuel_calculator.presentation.tripPrice.mappers
+package com.freed_asd.fuel_calculator.presentation.price.mappers
 
 import com.freed_asd.fuel_calculator.domain.tripPrice.mappers.PriceResultDomainToUiMapper
-import com.freed_asd.fuel_calculator.presentation.tripPrice.PriceResultUi
+import com.freed_asd.fuel_calculator.presentation.price.PriceResultUi
 
 class BasePriceResultDomainToUiMapper: PriceResultDomainToUiMapper<PriceResultUi> {
 
