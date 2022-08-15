@@ -11,7 +11,6 @@ interface DistanceDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertValue(value: DistanceDb)
 
-    //    @Query("DELETE FROM ConsCityDB WHERE id = :id")
-    @Delete
-    fun deleteValue(value: DistanceDb)
+    @Query("DELETE FROM ConsCityDB WHERE id = :itemId")
+    fun deleteValue(itemId: Long)
 }

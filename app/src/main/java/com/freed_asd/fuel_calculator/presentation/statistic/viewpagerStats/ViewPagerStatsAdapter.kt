@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.freed_asd.fuel_calculator.presentation.statistic.mileage.MileageStatsFragment
-import com.freed_asd.fuel_calculator.presentation.statistic.trips.TripStatsFragment
+import com.freed_asd.fuel_calculator.presentation.statistic.trips.TripsStatsFragment
 
 class ViewPagerStatsAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
 
@@ -13,7 +13,7 @@ class ViewPagerStatsAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> MileageStatsFragment.newInstance()
-            else -> TripStatsFragment.newInstance()
+            else -> TripsStatsFragment.newInstance()
         }
     }
 
