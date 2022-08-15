@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginBottom="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardUseCompatPadding="true"
+    android:background="#D3D3D3">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2F4F4F"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <ImageView
+            android:id="@+id/price_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/price_name"
+            app:layout_constraintBottom_toBottomOf="@id/price_info"
+            android:padding="4dp"
+            />
+
+        <TextView
+            android:id="@+id/price_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="6"
+            android:text="Price"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@id/price_image"
+            app:layout_constraintStart_toEndOf="@id/price_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="4dp"
+            />
+
+        <TextView
+            android:id="@+id/price_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Price info"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/price_name"
+            app:layout_constraintStart_toStartOf="@id/price_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/price_image"
+            android:padding="4dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -23,7 +23,7 @@ import com.freed_asd.fuel_calculator.presentation.price.mappers.BasePriceResultD
 import com.freed_asd.fuel_calculator.presentation.price.screens.PriceFragmentViewModel
 import com.freed_asd.fuel_calculator.presentation.price.screens.dialog.ResultViewModel
 import com.freed_asd.fuel_calculator.presentation.statistic.mileage.MileageStatsViewModel
-import com.freed_asd.fuel_calculator.presentation.statistic.trips.TripStatsViewModel
+import com.freed_asd.fuel_calculator.presentation.statistic.trips.TripsStatsViewModel
 
 class ViewModelsFactory(
     private val priceInteractor: PriceInteractor,
@@ -77,7 +77,7 @@ class ViewModelsFactory(
             )
             modelClass.isAssignableFrom(DistanceDialogViewModel::class.java) -> DistanceDialogViewModel()
             modelClass.isAssignableFrom(MileageStatsViewModel::class.java) -> MileageStatsViewModel()
-            modelClass.isAssignableFrom(TripStatsViewModel::class.java) -> TripStatsViewModel(
+            modelClass.isAssignableFrom(TripsStatsViewModel::class.java) -> TripsStatsViewModel(
                 distanceInteractor,
                 priceInteractor
             )
