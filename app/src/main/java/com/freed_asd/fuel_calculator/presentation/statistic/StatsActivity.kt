@@ -29,12 +29,17 @@ class StatsActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tableLayout, binding.viewpagerStats) { tab, pos ->
             when(pos) {
                 0 -> {
-                    tab.text = "Мой пробег"
+                    tab.text = "Смешанный режим"
                     tab.setIcon(R.drawable.ic_test1)
                     tab.icon?.setTint(ContextCompat.getColor(this, R.color.black))
                 }
                 1 -> {
-                    tab.text = "Мои поездки"
+                    tab.text = "Город"
+                    tab.setIcon(R.drawable.ic_test2)
+                    tab.icon?.setTint(ContextCompat.getColor(this, R.color.black))
+                }
+                2 -> {
+                    tab.text = "Трасса"
                     tab.setIcon(R.drawable.ic_test2)
                     tab.icon?.setTint(ContextCompat.getColor(this, R.color.black))
                 }

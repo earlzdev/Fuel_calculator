@@ -10,6 +10,11 @@
         />
 
     <item
+        android:id="@+id/trips"
+        android:title="Мои поездки"
+        />
+
+    <item
         android:id="@+id/about"
         android:title="О приложении"
         />

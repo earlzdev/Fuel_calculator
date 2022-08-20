@@ -9,6 +9,6 @@ import androidx.room.PrimaryKey
 )
 data class ConsMixed (
     @PrimaryKey(autoGenerate = true) val id: Long,
-    @ColumnInfo(name = "consumption")val Consumption: Float,
+    @ColumnInfo(name = "consumption")val consumption: Float,
     @ColumnInfo(name = "mileage")val mileage: Float
 )
