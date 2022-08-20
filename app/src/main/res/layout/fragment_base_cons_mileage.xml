@@ -25,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_height="48dp"
             app:layout_constraintHorizontal_weight="1.5"
-            android:text="120000"
+
             android:hint="@string/hint_average_fuel_consumption"
             android:gravity="center_horizontal"
             android:inputType="numberDecimal"
@@ -44,7 +44,7 @@
             app:layout_constraintHorizontal_weight="3"
             android:text="Текущее показание пробега в километрах"
             android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@id/tv_previous_mileage"
+            app:layout_constraintTop_toBottomOf="@id/should_save_mileage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/et_current_mileage"
             android:layout_marginTop="20dp"
@@ -56,7 +56,7 @@
             android:layout_width="0dp"
             android:layout_height="48dp"
             app:layout_constraintHorizontal_weight="1.7"
-            android:text="120345"
+
             android:hint="@string/hint_distance_ed"
             android:gravity="center_horizontal"
             android:inputType="number"
@@ -83,7 +83,7 @@
             android:id="@+id/et_filled_fuel"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:text="40"
+
             android:hint="@string/hint_fuel_price_ed"
             android:gravity="center_horizontal"
             android:inputType="numberDecimal"
@@ -92,6 +92,17 @@
             app:layout_constraintStart_toEndOf="@id/tv_filled_fuel"
             app:layout_constraintEnd_toEndOf="parent"
             />
+
+    <TextView
+        android:id="@+id/tv_is_previous_mileage_saved"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ваше прошлое показание пробега уже сохранено в базе"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tv_filled_fuel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
         <Button
             android:id="@+id/calc_button"
@@ -107,25 +118,25 @@
 
     <TextView
         android:id="@+id/tv_pushStats"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Добавить этот расчет в статистику"
-        android:textSize="22sp"
+        android:text="Добавить результат в статистику"
+        android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/stats_spinner"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         />
 
-    <CheckBox
-        android:id="@+id/check_setStats"
+    <Spinner
+        android:id="@+id/stats_spinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/tv_pushStats"
         app:layout_constraintStart_toEndOf="@id/tv_pushStats"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_pushStats"
         />
 
     <TextView
@@ -149,6 +160,28 @@
         android:visibility="gone"
         app:layout_constraintTop_toTopOf="@id/driving_regime"
         app:layout_constraintStart_toEndOf="@id/driving_regime"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/should_save_mileage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Сохранять предыдущий пробег"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_previous_mileage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/check_save_prevMileage"
+        android:layout_marginTop="20dp"
+        />
+
+    <CheckBox
+        android:id="@+id/check_save_prevMileage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintTop_toTopOf="@id/should_save_mileage"
+        app:layout_constraintBottom_toBottomOf="@id/should_save_mileage"
+        app:layout_constraintStart_toStartOf="@id/et_previous_mileage"
         app:layout_constraintEnd_toEndOf="parent"
         />
 

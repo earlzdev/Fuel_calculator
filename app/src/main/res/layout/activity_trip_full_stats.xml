@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.statistic.trips.fullStats.TripFullStatsActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <TextView
+            android:id="@+id/price_name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Название поездки"
+            android:textSize="22sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            />
+
+        <EditText
+            android:id="@+id/price_name_ed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Trip name"
+            android:textSize="22sp"
+            app:layout_constraintTop_toBottomOf="@id/price_name_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            />
+
+        <TextView
+            android:id="@+id/price_distance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="5"
+            android:text="Для расстояния"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/price_name_ed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/price_distance_value"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:padding="6dp"
+            />
+
+        <TextView
+            android:id="@+id/price_distance_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="1"
+            android:text="450"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="@id/price_distance"
+            app:layout_constraintStart_toEndOf="@id/price_distance"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:padding="6dp"
+            />
+
+        <TextView
+            android:id="@+id/price_needFuel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="5"
+            android:text="Вам нужно"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/price_distance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/price_needFuel_value"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:padding="6dp"
+            />
+
+        <TextView
+            android:id="@+id/price_needFuel_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="1"
+            android:text="54"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="@id/price_needFuel"
+            app:layout_constraintStart_toEndOf="@id/price_needFuel"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:padding="6dp"
+            />
+
+        <TextView
+            android:id="@+id/price_generalPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="5"
+            android:text="Общая стоимость"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/price_needFuel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/price_needFuel_value"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:padding="6dp"
+            />
+
+        <TextView
+            android:id="@+id/price_generalPrice_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="1"
+            android:text="1700"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="@id/price_generalPrice"
+            app:layout_constraintStart_toEndOf="@id/price_needFuel"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:padding="6dp"
+            />
+
+        <TextView
+            android:id="@+id/price_everyonePrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="5"
+            android:text="С человека по"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/price_generalPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/price_needFuel_value"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:padding="6dp"
+            />
+
+        <TextView
+            android:id="@+id/price_everyonePrice_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="1"
+            android:text="600"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="@id/price_everyonePrice"
+            app:layout_constraintStart_toEndOf="@id/price_needFuel"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:padding="6dp"
+            />
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Сохранить"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/price_everyonePrice_value"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="4dp"
+            android:layout_margin="16dp"
+            android:enabled="false"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

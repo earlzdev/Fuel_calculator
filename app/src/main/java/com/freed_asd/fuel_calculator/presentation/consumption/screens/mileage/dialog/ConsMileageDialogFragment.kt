@@ -37,11 +37,9 @@ class ConsMileageDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        statsPrompt(onCheckStats())
-
         viewModel.provideResult(onResult())
         viewModel.observe(viewLifecycleOwner){
-            binding.maxDistanceEd.text = getString(R.string.cons_litersOnKm, String.format("%.2f", it.consumption()))
+                binding.maxDistanceEd.text = getString(R.string.cons_litersOnKm, String.format("%.2f", it.consumption()))
         }
     }
 
@@ -59,8 +57,6 @@ class ConsMileageDialogFragment : DialogFragment() {
     private fun onResult() = requireArguments().getParcelable<ConsResultUi.Base>(RESULT_KEY)
         ?: throw IllegalStateException("calculation result can not be null")
 
-    private fun onCheckStats() = requireArguments().getBoolean(CHECK_KEY)
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
@@ -71,8 +67,8 @@ class ConsMileageDialogFragment : DialogFragment() {
         const val RESULT_KEY = "RESULT_KEY"
         const val CHECK_KEY = "CHECK_KEY"
 
-        fun newInstance(result: ConsResultUi, shouldSetIntoStats: Boolean) = ConsMileageDialogFragment().apply {
-            arguments = bundleOf(RESULT_KEY to result, CHECK_KEY to shouldSetIntoStats)
+        fun newInstance(result: ConsResultUi) = ConsMileageDialogFragment().apply {
+            arguments = bundleOf(RESULT_KEY to result)
         }
     }
 }

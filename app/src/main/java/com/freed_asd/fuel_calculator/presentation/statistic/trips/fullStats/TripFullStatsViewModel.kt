@@ -1,0 +1,32 @@
+package com.freed_asd.fuel_calculator.presentation.statistic.trips.fullStats
+
+import androidx.lifecycle.*
+import com.freed_asd.fuel_calculator.core.BaseViewModel
+import com.freed_asd.fuel_calculator.data.Repository
+import com.freed_asd.fuel_calculator.domain.tripPrice.interactor.PriceInteractor
+import com.freed_asd.fuel_calculator.presentation.price.dbItem.BasePriceDbItemDomainMapperUi
+import com.freed_asd.fuel_calculator.presentation.price.dbItem.PriceDbItemUi
+import kotlinx.coroutines.launch
+
+class TripFullStatsViewModel(
+    private val priceInteractor: PriceInteractor,
+    private val priceDomainToUiDbMapper: BasePriceDbItemDomainMapperUi,
+) : BaseViewModel<Repository, PriceDbItemUi>() {
+
+    override fun observe(owner: LifecycleOwner, observer: Observer<PriceDbItemUi>) {
+        liveData.observe(owner, observer)
+    }
+
+    fun getItemById(id: Long) {
+        viewModelScope.launch {
+            val item = priceInteractor.dbItemById(id)
+            liveData.value = item.mapToUi(priceDomainToUiDbMapper)
+        }
+    }
+
+    fun updateItem(item: Long, newName: String) {
+        viewModelScope.launch {
+            priceInteractor.updateItem(item, newName)
+        }
+    }
+}

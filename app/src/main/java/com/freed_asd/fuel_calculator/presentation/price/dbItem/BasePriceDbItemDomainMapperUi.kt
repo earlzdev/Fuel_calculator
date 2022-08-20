@@ -2,7 +2,7 @@ package com.freed_asd.fuel_calculator.presentation.price.dbItem
 
 import com.freed_asd.fuel_calculator.domain.tripPrice.dbItem.PriceItemDbDomainMapper
 
-class BasePriceDbItemDomainMapper: PriceItemDbDomainMapper<PriceDbItemUi> {
+class BasePriceDbItemDomainMapperUi: PriceItemDbDomainMapper<PriceDbItemUi> {
 
     override fun mapToUi(
         id: Long,

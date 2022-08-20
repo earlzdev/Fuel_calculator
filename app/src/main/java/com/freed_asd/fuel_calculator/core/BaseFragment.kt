@@ -1,5 +1,6 @@
 package com.freed_asd.fuel_calculator.core
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

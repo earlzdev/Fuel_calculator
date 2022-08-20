@@ -29,16 +29,18 @@
     <string name="cons_litersOnKm">%s литров/100км</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="values_cannot_be_same">Значения пробегов не могут быть одинаковыми!</string>
 
     <string-array name="calc_consumption_of">
         <item>Показаниям пробега</item>
         <item>Пройденному расстоянию</item>
     </string-array>
 
-    <string-array name="spinner_drive_regime">
-        <item>Смешанный</item>
-        <item>Город</item>
-        <item>Трасса</item>
+    <string-array name="stats_spinner">
+        <item>Не добавлять</item>
+        <item>Смешанный режим езды</item>
+        <item>Городской режим езды</item>
+        <item>Трассовый режим езды</item>
     </string-array>
 
 </resources>

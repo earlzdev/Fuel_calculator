@@ -32,6 +32,10 @@ interface ConsMileageValidation {
                     filledFuel.error = errorMsg
                     false
                 }
+                currentMileage.text == previousMileage.text -> {
+                    currentMileage.error = context.getString(R.string.values_cannot_be_same)
+                    false
+                }
                 else -> true
             }
         }

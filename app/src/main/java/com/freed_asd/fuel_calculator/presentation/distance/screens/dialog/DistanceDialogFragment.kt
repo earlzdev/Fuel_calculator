@@ -49,15 +49,6 @@ class DistanceDialogFragment : DialogFragment() {
                 String.format("%.2f", it.price()
                 ))
         }
-        binding.saveBtnDistance.setOnClickListener {
-            binding.tvAddName.isVisible = true
-            binding.saveName.isVisible = true
-            binding.distanceSaveBtn.isVisible = true
-            binding.distanceSaveBtn.setOnClickListener {
-                viewModel.insertIntoDb(binding.saveName.text.toString())
-                binding.isSavedDistance.isVisible = true
-            }
-        }
     }
 
     override fun onDestroy() {

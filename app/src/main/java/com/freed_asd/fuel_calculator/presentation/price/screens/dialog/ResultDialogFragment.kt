@@ -1,9 +1,10 @@
 package com.freed_asd.fuel_calculator.presentation.price.screens.dialog
 
+import android.app.Dialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
@@ -12,6 +13,7 @@ import com.freed_asd.fuel_calculator.FuelCalcApp
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.databinding.FragmentDialogPriceBinding
 import com.freed_asd.fuel_calculator.presentation.price.PriceResultUi
+import com.freed_asd.fuel_calculator.presentation.statistic.trips.fullStats.TripFullStatsActivity
 
 class ResultDialogFragment : DialogFragment() {
 
@@ -32,6 +34,9 @@ class ResultDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDialogPriceBinding.inflate(inflater, container, false)
+
+        dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+
         return binding.root
     }
 
@@ -59,15 +64,20 @@ class ResultDialogFragment : DialogFragment() {
             )
         }
 
-        binding.saveBtnPrice.setOnClickListener {
-            binding.tvAddName.isVisible = true
-            binding.saveNameEd.isVisible = true
-            binding.priceSaveBtn.isVisible = true
-            binding.priceSaveBtn.setOnClickListener {
-                viewModel.insertIntoDb(binding.saveNameEd.text.toString())
-                binding.isSavedPrice.isVisible = true
-            }
+// 10.1.32.210
 
+        binding.saveBtnPrice.setOnClickListener {
+
+            viewModel.insertIntoDb(onDetails().distance().toString())
+            binding.isSavedPrice.isVisible = true
+
+//            binding.tvAddName.isVisible = true
+//            binding.saveNameEd.isVisible = true
+//            binding.priceSaveBtn.isVisible = true
+//            binding.priceSaveBtn.setOnClickListener {
+//                viewModel.insertIntoDb(binding.saveNameEd.text.toString())
+//                binding.isSavedPrice.isVisible = true
+//            }
         }
     }
 
@@ -93,6 +103,7 @@ class ResultDialogFragment : DialogFragment() {
     }
 
     companion object {
+
         const val TAG = "RESULT_FRAGMENT_TAG"
         const val RESULT_DETAILS = "RESULT_DETAILS"
 
