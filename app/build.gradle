@@ -72,4 +72,10 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.5.0"
     implementation 'androidx.fragment:fragment-ktx:1.5.0'
 
+    //mpAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'andoridx.test.ext:junit:1.1.2'
+    androidTestImplementation 'andoridx.test.espresso:espresso-core:3.3.0'
+
 }

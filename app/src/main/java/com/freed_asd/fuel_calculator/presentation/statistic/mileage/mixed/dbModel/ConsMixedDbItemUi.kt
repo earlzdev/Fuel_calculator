@@ -6,6 +6,10 @@ interface ConsMixedDbItemUi {
 
     fun <T> mapToDomain(mapper: ConsMixedUiToDomainMapper<T>) : T
 
+    fun cons() : Float
+
+    fun mileage() : Float
+
     class Base(
         val id: Long,
         val consumption: Float,
@@ -14,6 +18,9 @@ interface ConsMixedDbItemUi {
 
         override fun <T> mapToDomain(mapper: ConsMixedUiToDomainMapper<T>) = mapper.mapToUi(id, consumption, mileage)
 
+        override fun cons(): Float = consumption
+
+        override fun mileage(): Float = mileage
     }
 }
 
