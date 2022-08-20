@@ -1,5 +1,6 @@
 package com.freed_asd.fuel_calculator.domain.consumption.interactor
 
+import android.util.Log
 import com.freed_asd.fuel_calculator.data.consumption.mappers.BaseConsInputDomainToDataMapper
 import com.freed_asd.fuel_calculator.data.local.AppDataBase
 import com.freed_asd.fuel_calculator.data.local.consumption.city.ConsCity
@@ -49,8 +50,8 @@ interface ConsInteractor {
 
     companion object {
 
-        private const val MIXED = "Смешанный"
-        private const val CITY = "Город"
-        private const val TRACK = "Трасса"
+        private const val MIXED = "Смешанный режим езды"
+        private const val CITY = "Городской режим езды"
+        private const val TRACK = "Трассовый режим езды"
     }
 }

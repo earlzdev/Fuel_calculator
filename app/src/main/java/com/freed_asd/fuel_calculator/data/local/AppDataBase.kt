@@ -6,16 +6,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.freed_asd.fuel_calculator.data.local.consumption.city.ConsCity
 import com.freed_asd.fuel_calculator.data.local.consumption.city.ConsCityDao
+import com.freed_asd.fuel_calculator.data.local.consumption.mileage.MileageDbModel
 import com.freed_asd.fuel_calculator.data.local.consumption.mixed.ConsMixed
 import com.freed_asd.fuel_calculator.data.local.consumption.mixed.ConsMixedDao
 import com.freed_asd.fuel_calculator.data.local.consumption.track.ConsTrack
 import com.freed_asd.fuel_calculator.data.local.consumption.track.ConsTrackDao
-import com.freed_asd.fuel_calculator.data.local.distance.DistanceDao
-import com.freed_asd.fuel_calculator.data.local.distance.DistanceDb
 import com.freed_asd.fuel_calculator.data.local.price.PriceDao
 import com.freed_asd.fuel_calculator.data.local.price.PriceDb
 
-@Database(entities = [ConsCity::class, ConsMixed::class, ConsTrack::class, PriceDb::class, DistanceDb::class], version = 4)
+@Database(entities = [ConsCity::class, ConsMixed::class, ConsTrack::class, PriceDb::class, MileageDbModel::class], version = 6)
 abstract class AppDataBase : RoomDatabase() {
 
     abstract fun cityDao() : ConsCityDao
@@ -23,8 +22,6 @@ abstract class AppDataBase : RoomDatabase() {
     abstract fun trackDao() : ConsTrackDao
 
     abstract fun mixedDao() : ConsMixedDao
-
-    abstract fun distanceDao() : DistanceDao
 
     abstract fun priceDao() : PriceDao
 
@@ -45,6 +42,7 @@ abstract class AppDataBase : RoomDatabase() {
                     "consumption_dataBase"
                 )
                     .fallbackToDestructiveMigration()
+                    .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
                 return instance

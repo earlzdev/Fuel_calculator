@@ -1,6 +1,8 @@
 package com.freed_asd.fuel_calculator.presentation.consumption.screens
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,9 +46,18 @@ class ConsumptionBaseFragment : BaseFragment<FragmentBaseConsumptionBinding, Con
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
+//        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+//        val firstStart = sharedPref.getBoolean(FIRST_START, true)
+
         when(parent?.getItemAtPosition(position).toString()) {
             CALC_BY_MILEAGE -> {
-                loadFragment(ConsMileageFragment.newInstance())
+
+                    loadFragment(ConsMileageFragment.newInstance())
+
+//                if (requireActivity().supportFragmentManager.findFragmentByTag(ConsMileageFragment.TAG) == null) {
+//                    loadFragment(ConsMileageFragment.newInstance())
+//                }
+
             }
             CALC_BY_DISTANCE -> {
                 loadFragment(ConsDistanceFragment.newInstance())
@@ -65,6 +76,7 @@ class ConsumptionBaseFragment : BaseFragment<FragmentBaseConsumptionBinding, Con
 
     companion object {
 
+        private const val FIRST_START = "FIRST START"
         private const val CALC_BY_MILEAGE = "Показаниям пробега"
         private const val CALC_BY_DISTANCE = "Пройденному расстоянию"
 

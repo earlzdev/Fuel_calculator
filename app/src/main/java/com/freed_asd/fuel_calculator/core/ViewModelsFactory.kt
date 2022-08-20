@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.freed_asd.fuel_calculator.domain.consumption.interactor.ConsInteractor
 import com.freed_asd.fuel_calculator.domain.consumption.mappers.BaseConsInputUiToDomainMapper
-import com.freed_asd.fuel_calculator.domain.distance.dbItem.BaseDistanceDbItemUiMapper
 import com.freed_asd.fuel_calculator.domain.distance.interactor.DistanceInteractor
 import com.freed_asd.fuel_calculator.domain.distance.mappers.BaseInputUiToDomainMapper
 import com.freed_asd.fuel_calculator.domain.tripPrice.dbItem.BasePriceDbItemUiMapper
@@ -19,11 +18,13 @@ import com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage.di
 import com.freed_asd.fuel_calculator.presentation.distance.mappers.BaseResultDomainToUiMapper
 import com.freed_asd.fuel_calculator.presentation.distance.screens.DistanceViewModel
 import com.freed_asd.fuel_calculator.presentation.distance.screens.dialog.DialogFragmentViewModel
+import com.freed_asd.fuel_calculator.presentation.price.dbItem.BasePriceDbItemDomainMapperUi
 import com.freed_asd.fuel_calculator.presentation.price.mappers.BasePriceResultDomainToUiMapper
 import com.freed_asd.fuel_calculator.presentation.price.screens.PriceFragmentViewModel
 import com.freed_asd.fuel_calculator.presentation.price.screens.dialog.ResultViewModel
 import com.freed_asd.fuel_calculator.presentation.statistic.mileage.MileageStatsViewModel
 import com.freed_asd.fuel_calculator.presentation.statistic.trips.TripsStatsViewModel
+import com.freed_asd.fuel_calculator.presentation.statistic.trips.fullStats.TripFullStatsViewModel
 
 class ViewModelsFactory(
     private val priceInteractor: PriceInteractor,
@@ -35,8 +36,8 @@ class ViewModelsFactory(
     private val consInteractor: ConsInteractor,
     private val inputConsMapper: BaseConsInputUiToDomainMapper,
     private val resultConsMapper: BaseConsResultDomainToUiMapper,
-    private val distanceDbItemUiMapper: BaseDistanceDbItemUiMapper,
-    private val priceDbUiMapper: BasePriceDbItemUiMapper
+    private val priceDbUiMapper: BasePriceDbItemUiMapper,
+    private val priceDbDomainMapper: BasePriceDbItemDomainMapperUi,
 ): ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -55,10 +56,7 @@ class ViewModelsFactory(
                 inputDistanceMapper,
                 resultDistanceMapper
             )
-            modelClass.isAssignableFrom(DialogFragmentViewModel::class.java) -> DialogFragmentViewModel(
-                distanceInteractor,
-                distanceDbItemUiMapper
-            )
+            modelClass.isAssignableFrom(DialogFragmentViewModel::class.java) -> DialogFragmentViewModel()
             modelClass.isAssignableFrom(ConsMileageViewModel::class.java) -> ConsMileageViewModel(
                 consInteractor,
                 inputConsMapper,
@@ -78,8 +76,12 @@ class ViewModelsFactory(
             modelClass.isAssignableFrom(DistanceDialogViewModel::class.java) -> DistanceDialogViewModel()
             modelClass.isAssignableFrom(MileageStatsViewModel::class.java) -> MileageStatsViewModel()
             modelClass.isAssignableFrom(TripsStatsViewModel::class.java) -> TripsStatsViewModel(
-                distanceInteractor,
-                priceInteractor
+                priceInteractor,
+                priceDbDomainMapper,
+            )
+            modelClass.isAssignableFrom(TripFullStatsViewModel::class.java) -> TripFullStatsViewModel(
+                priceInteractor,
+                priceDbDomainMapper
             )
             else -> throw IllegalStateException("model class $modelClass not found")
         } as T
