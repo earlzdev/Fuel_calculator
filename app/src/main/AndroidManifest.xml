@@ -17,7 +17,7 @@
         <activity
             android:name=".presentation.statistic.StatsActivity"
             android:exported="false" />
-        <activity android:name=".presentation.statistic.trips.fullStats.TripFullStatsActivity"
+        <activity android:name=".presentation.statistic.trips.TripsStatsActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.main.MainActivity"
@@ -30,5 +30,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

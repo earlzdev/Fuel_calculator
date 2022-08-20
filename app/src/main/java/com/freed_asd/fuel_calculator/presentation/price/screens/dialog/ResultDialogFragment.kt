@@ -1,8 +1,5 @@
 package com.freed_asd.fuel_calculator.presentation.price.screens.dialog
 
-import android.app.Dialog
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.core.os.bundleOf
@@ -13,7 +10,6 @@ import com.freed_asd.fuel_calculator.FuelCalcApp
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.databinding.FragmentDialogPriceBinding
 import com.freed_asd.fuel_calculator.presentation.price.PriceResultUi
-import com.freed_asd.fuel_calculator.presentation.statistic.trips.fullStats.TripFullStatsActivity
 
 class ResultDialogFragment : DialogFragment() {
 

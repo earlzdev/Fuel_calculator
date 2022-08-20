@@ -2,6 +2,7 @@ package com.freed_asd.fuel_calculator.core
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.freed_asd.fuel_calculator.domain.consumption.dbItem.mixed.ConsMixedDomainToUiMapper
 import com.freed_asd.fuel_calculator.domain.consumption.interactor.ConsInteractor
 import com.freed_asd.fuel_calculator.domain.consumption.mappers.BaseConsInputUiToDomainMapper
 import com.freed_asd.fuel_calculator.domain.distance.interactor.DistanceInteractor
@@ -22,7 +23,7 @@ import com.freed_asd.fuel_calculator.presentation.price.dbItem.BasePriceDbItemDo
 import com.freed_asd.fuel_calculator.presentation.price.mappers.BasePriceResultDomainToUiMapper
 import com.freed_asd.fuel_calculator.presentation.price.screens.PriceFragmentViewModel
 import com.freed_asd.fuel_calculator.presentation.price.screens.dialog.ResultViewModel
-import com.freed_asd.fuel_calculator.presentation.statistic.mileage.MileageStatsViewModel
+import com.freed_asd.fuel_calculator.presentation.statistic.mileage.mixed.MixedMileageStatsViewModel
 import com.freed_asd.fuel_calculator.presentation.statistic.trips.TripsStatsViewModel
 import com.freed_asd.fuel_calculator.presentation.statistic.trips.fullStats.TripFullStatsViewModel
 
@@ -38,6 +39,7 @@ class ViewModelsFactory(
     private val resultConsMapper: BaseConsResultDomainToUiMapper,
     private val priceDbUiMapper: BasePriceDbItemUiMapper,
     private val priceDbDomainMapper: BasePriceDbItemDomainMapperUi,
+    private val consMixedDomainToUiMapper: ConsMixedDomainToUiMapper.Base
 ): ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -74,7 +76,10 @@ class ViewModelsFactory(
                 resultConsMapper
             )
             modelClass.isAssignableFrom(DistanceDialogViewModel::class.java) -> DistanceDialogViewModel()
-            modelClass.isAssignableFrom(MileageStatsViewModel::class.java) -> MileageStatsViewModel()
+            modelClass.isAssignableFrom(MixedMileageStatsViewModel::class.java) -> MixedMileageStatsViewModel(
+                consInteractor,
+                consMixedDomainToUiMapper
+            )
             modelClass.isAssignableFrom(TripsStatsViewModel::class.java) -> TripsStatsViewModel(
                 priceInteractor,
                 priceDbDomainMapper,

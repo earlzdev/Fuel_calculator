@@ -1,30 +1,26 @@
 package com.freed_asd.fuel_calculator.presentation.statistic.trips.fullStats
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.EditText
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.ViewModelProvider
-import com.freed_asd.fuel_calculator.FuelCalcApp
-import com.freed_asd.fuel_calculator.databinding.ActivityTripFullStatsBinding
+import com.freed_asd.fuel_calculator.core.BaseFragment
+import com.freed_asd.fuel_calculator.databinding.FragmentTripFullStatsBinding
 import com.freed_asd.fuel_calculator.presentation.price.dbItem.PriceDbItemUi
-import com.google.android.material.internal.TextWatcherAdapter
 
-class TripFullStatsActivity : AppCompatActivity() {
+class TripFullStatsFragment : BaseFragment<FragmentTripFullStatsBinding, TripFullStatsViewModel>() {
 
-    private val binding by lazy {
-        ActivityTripFullStatsBinding.inflate(layoutInflater)
-    }
+    override fun createViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = FragmentTripFullStatsBinding.inflate(inflater, container, false)
 
-    private lateinit var viewModel: TripFullStatsViewModel
+    override fun viewModelClass(): Class<TripFullStatsViewModel> = TripFullStatsViewModel::class.java
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-        val factory = (application as FuelCalcApp).factory
-        viewModel = ViewModelProvider(this, factory)[TripFullStatsViewModel::class.java]
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         viewModel.getItemById(itemId())
         viewModel.observe(this) {
@@ -37,13 +33,12 @@ class TripFullStatsActivity : AppCompatActivity() {
             binding.saveButton.setOnClickListener { _ ->
                 if (isNameChanged(it.name(), binding.priceNameEd.text.toString())) {
                     updateItem(it.id(), binding.priceNameEd.text.toString())
-                    finish()
                 }
             }
         }
     }
 
-    private fun itemId() = intent.getLongExtra(ITEM, 0)
+    private fun itemId() = requireArguments().getLong(ITEM)
 
     private fun initViews(item: PriceDbItemUi) {
         binding.priceNameEd.setText(item.name())
@@ -63,5 +58,9 @@ class TripFullStatsActivity : AppCompatActivity() {
 
         const val TAG = "Full stats fragment tag"
         const val ITEM = "Item"
+
+        fun newInstance(item: Long) = TripFullStatsFragment().apply {
+            arguments = bundleOf(ITEM to item)
+        }
     }
 }
