@@ -26,7 +26,6 @@ class MixedMileageStatsFragment: BaseFragment<FragmentStatsMixedMileageBinding, 
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.valueList.observe(viewLifecycleOwner) {
-            Log.d("tag", "onViewCreated: $it")
 
             val lineDataSet = LineDataSet(consValues(it), "First")
             lineDataSet.circleRadius = 10f
@@ -40,18 +39,9 @@ class MixedMileageStatsFragment: BaseFragment<FragmentStatsMixedMileageBinding, 
         }
 
     }
-//
-//    public int compare(YourObject o1, YourObject o2) {
-//        return o1.getId().compareTo(o2.getId());
 
     private fun mileageValues(value: List<ConsMixedDbItemUi>) : List<String> {
         return value.map { it.mileage().toString() }
-//        val xvalue = ArrayList<String>()
-//        xvalue.add("11.00")
-//        xvalue.add("14.00")
-//        xvalue.add("17.00")
-//        xvalue.add("19.00")
-//        return xvalue
     }
 
     private fun consValues(value: List<ConsMixedDbItemUi>) : ArrayList<Entry> {
@@ -76,19 +66,6 @@ class MixedMileageStatsFragment: BaseFragment<FragmentStatsMixedMileageBinding, 
             entryList.add(Entry(combinedList.getValue(i), i))
         }
         return entryList
-//        Log.d("tag", "consValues: entryList = $entryList")
-//        Log.d("tag", "consValues: combinedlist $combinedList")
-////        for (i in sizeList) {
-////            for (k in consList){
-////                val entry = Entry(k, i)
-////                entryList.add(entry)
-////            }
-////        }
-//
-//        Log.d("tag", "consValues: entrylist $entryList")
-//
-//        Log.d("tag", "consValues: size $sizeList")
-//        Log.d("tag", "consValues cons: $consList")
     }
 
 
@@ -101,13 +78,8 @@ class MixedMileageStatsFragment: BaseFragment<FragmentStatsMixedMileageBinding, 
             return lineDataSet
         }
 
-
-
-
     companion object {
 
         fun newInstance() = MixedMileageStatsFragment()
     }
 }
-
-// 450 and 8.57

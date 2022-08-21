@@ -6,6 +6,7 @@ class Event<T>(private val data: T) {
 
     val value: T? get() {
         if (handled) return null
+        handled = true
         return data
     }
 }

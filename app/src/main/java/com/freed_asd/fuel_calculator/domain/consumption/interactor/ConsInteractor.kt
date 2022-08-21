@@ -1,17 +1,19 @@
 package com.freed_asd.fuel_calculator.domain.consumption.interactor
 
-import android.util.Log
 import com.freed_asd.fuel_calculator.data.Repository
+import com.freed_asd.fuel_calculator.data.consumption.dbItems.city.ConsCityDataToDomainMapper
 import com.freed_asd.fuel_calculator.data.consumption.dbItems.mixed.ConsMixedDataToDomainMapper
+import com.freed_asd.fuel_calculator.data.consumption.dbItems.track.ConsTrackDataToDomainMapper
 import com.freed_asd.fuel_calculator.data.consumption.mappers.BaseConsInputDomainToDataMapper
-import com.freed_asd.fuel_calculator.data.local.AppDataBase
 import com.freed_asd.fuel_calculator.data.local.consumption.city.ConsCity
 import com.freed_asd.fuel_calculator.data.local.consumption.mixed.ConsMixed
 import com.freed_asd.fuel_calculator.data.local.consumption.track.ConsTrack
 import com.freed_asd.fuel_calculator.domain.consumption.ConsInputDomain
 import com.freed_asd.fuel_calculator.domain.consumption.ConsResultDomain
 import com.freed_asd.fuel_calculator.domain.consumption.ConsumptionRepository
+import com.freed_asd.fuel_calculator.domain.consumption.dbItem.city.ConsCityDbItemDomain
 import com.freed_asd.fuel_calculator.domain.consumption.dbItem.mixed.ConsMixedDbItemDomain
+import com.freed_asd.fuel_calculator.domain.consumption.dbItem.track.ConsTrackDbItemDomain
 import com.freed_asd.fuel_calculator.domain.consumption.mappers.BaseConsResultDataToDomainMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -24,11 +26,17 @@ interface ConsInteractor : Repository{
 
     fun allMixedDbValues() : Flow<List<ConsMixedDbItemDomain>>
 
+    fun allCityDbValues() : Flow<List<ConsCityDbItemDomain>>
+
+    fun allTrackDbValues() : Flow<List<ConsTrackDbItemDomain>>
+
     class Base(
         private val repository: ConsumptionRepository,
         private val inputMapper: BaseConsInputDomainToDataMapper,
         private val resultMapper: BaseConsResultDataToDomainMapper,
-        private val mixedDataToDomainMapper: ConsMixedDataToDomainMapper.Base
+        private val mixedDataToDomainMapper: ConsMixedDataToDomainMapper.Base,
+        private val cityDataToDomainMapper: ConsCityDataToDomainMapper.Base,
+        private val trackDataToDomainMapper: ConsTrackDataToDomainMapper.Base
     ) : ConsInteractor {
 
         override fun calcConsumption(input: ConsInputDomain) : ConsResultDomain {
@@ -56,6 +64,18 @@ interface ConsInteractor : Repository{
         override fun allMixedDbValues(): Flow<List<ConsMixedDbItemDomain>> {
             return repository.allDbMixedValues().map { list ->
                 list.map { it.mapToDomain(mixedDataToDomainMapper) }
+            }
+        }
+
+        override fun allCityDbValues(): Flow<List<ConsCityDbItemDomain>> {
+            return repository.allDbCityValues().map { list ->
+                list.map { it.mapToDomain(cityDataToDomainMapper) }
+            }
+        }
+
+        override fun allTrackDbValues(): Flow<List<ConsTrackDbItemDomain>> {
+            return repository.allDbTrackValues().map { list ->
+                list.map { it.mapToDomain(trackDataToDomainMapper) }
             }
         }
     }

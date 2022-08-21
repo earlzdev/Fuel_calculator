@@ -1,7 +1,6 @@
 package com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage
 
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.freed_asd.fuel_calculator.core.BaseViewModel
@@ -20,13 +19,8 @@ class ConsMileageViewModel (
     private val resultMapper: BaseConsResultDomainToUiMapper
 ) : BaseViewModel<Repository, Event<ConsResultUi>>() {
 
-//    private var prevMileageLd: MutableLiveData<Boolean> = MutableLiveData()
-
-//    fun observeMileage(owner: LifecycleOwner, observer: Observer<Boolean>) {
-//        prevMileageLd.observe(owner, observer)
-//    }
-
     override fun observe(owner: LifecycleOwner, observer: Observer<Event<ConsResultUi>>) {
+        super.observe(owner, observer)
         liveData.observe(owner, observer)
     }
 
@@ -36,15 +30,10 @@ class ConsMileageViewModel (
         return result
     }
 
-    fun setIntoStats(driveRegime: String, mileage: Float) {
+    fun setIntoStats(consumption: Float, driveRegime: String, mileage: Float) {
 
-        val consumption = liveData.value?.value?.consumption()
         viewModelScope.launch {
-            consInteractor.insertValueToDb(driveRegime, mileage, consumption!!)
+            consInteractor.insertValueToDb(driveRegime, mileage, consumption)
         }
     }
-
-//    fun savePreviousMileage(prevMileage: Boolean) {
-//        prevMileageLd.value = prevMileage
-//    }
 }

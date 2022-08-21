@@ -2,12 +2,13 @@ package com.freed_asd.fuel_calculator.data.local.consumption.track
 
 import androidx.room.*
 import com.freed_asd.fuel_calculator.data.local.consumption.city.ConsCity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ConsTrackDao {
 
     @Query("SELECT * FROM ConsTrackDB")
-    fun allValues() : List<ConsCity>
+    fun allValues() : Flow<List<ConsTrack>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
      fun insertValue(value: ConsTrack)

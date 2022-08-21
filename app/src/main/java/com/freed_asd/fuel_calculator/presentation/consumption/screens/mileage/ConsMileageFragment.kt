@@ -19,6 +19,7 @@ import com.freed_asd.fuel_calculator.databinding.FragmentBaseConsMileageBinding
 import com.freed_asd.fuel_calculator.presentation.consumption.ConsInputUi
 import com.freed_asd.fuel_calculator.presentation.consumption.ConsResultUi
 import com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage.dialog.ConsMileageDialogFragment
+import com.freed_asd.fuel_calculator.presentation.statistic.mileage.mixed.dbModel.ConsMixedDbItemUi
 import kotlinx.coroutines.launch
 
 class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMileageViewModel>() {
@@ -26,6 +27,7 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
     private lateinit var pref: SharedPreferences
     private var previousMileage: Float = 0f
     private var shouldSave: Boolean = false
+    private var consumption: Float = 0f
 
     override fun createViewBinding(
         inflater: LayoutInflater,
@@ -38,12 +40,10 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
         super.onViewCreated(view, savedInstanceState)
 
         pref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        init()
 
+        init()
         showPrevMileage()
         checkSavePrevMileageListener()
-
-        viewModel.observe(viewLifecycleOwner, ::openResultDialog)
     }
 
     private fun calculate(validation: ConsMileageValidation.Base) {
@@ -58,6 +58,7 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
 
     private fun openResultDialog(resultEvent: Event<ConsResultUi>) {
         val result = resultEvent.value ?: return
+        consumption = result.consumption()
         ConsMileageDialogFragment.newInstance(result).show(
             parentFragmentManager,
             ConsMileageDialogFragment.TAG
@@ -66,9 +67,7 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
 
     private fun savePrevMileage() {
         shouldSave = pref.getBoolean(SAVE_PREV_MILEAGE_CHECK, false)
-        Log.d("tag", "savePrevMileage: checkSave - $shouldSave")
         if (shouldSave) {
-
             previousMileage = binding.etCurrentMileage.text.toString().toFloat()
             binding.etPreviousMileage.setText(previousMileage.toString())
             pref.edit()?.putFloat(PREVIOUS_MILEAGE, previousMileage)?.apply()
@@ -126,30 +125,40 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
                     binding.etFilledFuel
                 )
                 binding.calcButton.setOnClickListener { calculate(validation)
-
+                    viewModel.observe(viewLifecycleOwner, ::openResultDialog)
                     when (parent?.getItemAtPosition(position).toString()) {
                         DO_NOT_ADD -> {
                             return@setOnClickListener
                         }
                         MIXED_REGIME -> {
-                            viewModel.setIntoStats(
-                                MIXED_REGIME,
-                                binding.etCurrentMileage.text.toString().toFloat()
-                            )
+                            if (validation.validate()) {
+                                viewModel.setIntoStats(
+                                    consumption,
+                                    MIXED_REGIME,
+                                    binding.etCurrentMileage.text.toString().toFloat()
+                                )
+                            }
                         }
                         CITY_REGIME -> {
-                            viewModel.setIntoStats(
-                                CITY_REGIME,
-                                binding.etCurrentMileage.text.toString().toFloat()
-                            )
+                            if (validation.validate()) {
+                                viewModel.setIntoStats(
+                                    consumption,
+                                    CITY_REGIME,
+                                    binding.etCurrentMileage.text.toString().toFloat()
+                                )
+                            }
                         }
                         TRACK_REGIME -> {
-                            viewModel.setIntoStats(
-                                TRACK_REGIME,
-                                binding.etCurrentMileage.text.toString().toFloat()
-                            )
+                            if (validation.validate()) {
+                                viewModel.setIntoStats(
+                                    consumption,
+                                    TRACK_REGIME,
+                                    binding.etCurrentMileage.text.toString().toFloat()
+                                )
+                            }
                         }
                     }
+
                 }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {
