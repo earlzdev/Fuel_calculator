@@ -131,7 +131,7 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
                             return@setOnClickListener
                         }
                         MIXED_REGIME -> {
-                            if (validation.validate()) {
+                            if (validation.validate() ) {
                                 viewModel.setIntoStats(
                                     consumption,
                                     MIXED_REGIME,
