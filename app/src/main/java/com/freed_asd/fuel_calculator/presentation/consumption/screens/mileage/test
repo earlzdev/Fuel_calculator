@@ -41,23 +41,19 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
 
         pref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
 
-        val validation = ConsMileageValidation.Base(
-                    binding.etCurrentMileage,
-                    binding.etPreviousMileage,
-                    binding.etFilledFuel
-                )
-
-        init(validation)
+        init()
         showPrevMileage()
         checkSavePrevMileageListener()
     }
 
-    private fun calculate() {
+    private fun calculate(validation: ConsMileageValidation.Base) {
+        if (validation.validate()) {
             viewModel.calculate(ConsInputUi.Base(
                 binding.etCurrentMileage.text.toString().toFloat() - binding.etPreviousMileage.text.toString().toFloat(),
                 binding.etFilledFuel.text.toString().toFloat()
             ))
             savePrevMileage()
+        }
     }
 
     private fun openResultDialog(resultEvent: Event<ConsResultUi>) {
@@ -113,7 +109,7 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
         }
     }
 
-    private fun init(validation: ConsMileageValidation.Base) {
+    private fun init() {
 
         val spinner = binding.statsSpinner
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -123,22 +119,19 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
                 position: Int,
                 id: Long
             ) {
-//                val validation = ConsMileageValidation.Base(
-//                    binding.etCurrentMileage,
-//                    binding.etPreviousMileage,
-//                    binding.etFilledFuel
-//                )
-                binding.calcButton.setOnClickListener {
-                    if (validation.validate()) {
-                        calculate()
-                        viewModel.observe(viewLifecycleOwner, ::openResultDialog)
+                val validation = ConsMileageValidation.Base(
+                    binding.etCurrentMileage,
+                    binding.etPreviousMileage,
+                    binding.etFilledFuel
+                )
+                binding.calcButton.setOnClickListener { calculate(validation)
+                    viewModel.observe(viewLifecycleOwner, ::openResultDialog)
 
-
-                        when (parent?.getItemAtPosition(position).toString()) {
-                            DO_NOT_ADD -> {
-                                return@setOnClickListener
-                            }
-                            MIXED_REGIME -> {
+                    when (parent?.getItemAtPosition(position).toString()) {
+                        DO_NOT_ADD -> {
+                            return@setOnClickListener
+                        }
+                        MIXED_REGIME -> {
 //                            if (validation.validate() ) {
                                 viewModel.setIntoStats(
                                     consumption,
@@ -146,8 +139,8 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
                                     binding.etCurrentMileage.text.toString().toFloat()
                                 )
 //                            }
-                            }
-                            CITY_REGIME -> {
+                        }
+                        CITY_REGIME -> {
 //                            if (validation.validate()) {
                                 viewModel.setIntoStats(
                                     consumption,
@@ -155,8 +148,8 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
                                     binding.etCurrentMileage.text.toString().toFloat()
                                 )
 //                            }
-                            }
-                            TRACK_REGIME -> {
+                        }
+                        TRACK_REGIME -> {
 //                            if (validation.validate()) {
                                 viewModel.setIntoStats(
                                     consumption,
@@ -164,13 +157,8 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
                                     binding.etCurrentMileage.text.toString().toFloat()
                                 )
 //                            }
-                            }
                         }
-
                     }
-
-
-
 
                 }
             }

@@ -30,6 +30,7 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="values_cannot_be_same">Значения пробегов не могут быть одинаковыми!</string>
+    <string name="calc_by_consumption">Посчитать по:</string>
 
     <string-array name="calc_consumption_of">
         <item>Показаниям пробега</item>
