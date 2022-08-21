@@ -3,8 +3,12 @@ package com.freed_asd.fuel_calculator
 import android.app.Application
 import com.freed_asd.fuel_calculator.core.ViewModelsFactory
 import com.freed_asd.fuel_calculator.data.consumption.ConsumptionRepositoryImpl
+import com.freed_asd.fuel_calculator.data.consumption.dbItems.city.ConsCityDataToDomainMapper
+import com.freed_asd.fuel_calculator.data.consumption.dbItems.city.ConsCityDbToDataMapper
 import com.freed_asd.fuel_calculator.data.consumption.dbItems.mixed.ConsMixedDataToDomainMapper
 import com.freed_asd.fuel_calculator.data.consumption.dbItems.mixed.ConsMixedDbToDataMapper
+import com.freed_asd.fuel_calculator.data.consumption.dbItems.track.ConsTrackDataToDomainMapper
+import com.freed_asd.fuel_calculator.data.consumption.dbItems.track.ConsTrackDbToDataMapper
 import com.freed_asd.fuel_calculator.data.consumption.mappers.BaseConsInputDomainToDataMapper
 import com.freed_asd.fuel_calculator.data.distance.CalcMaxDistanceRepositoryImpl
 import com.freed_asd.fuel_calculator.data.distance.DistanceInputData
@@ -16,7 +20,9 @@ import com.freed_asd.fuel_calculator.data.tripPrice.dbItem.BasePriceDbITemDomain
 import com.freed_asd.fuel_calculator.data.tripPrice.dbItem.BasePriceDbToDataItemMapper
 import com.freed_asd.fuel_calculator.data.tripPrice.mappers.BasePriceInputDomainToDataMapper
 import com.freed_asd.fuel_calculator.domain.consumption.ConsumptionRepository
+import com.freed_asd.fuel_calculator.domain.consumption.dbItem.city.ConsCityDomainToUiMapper
 import com.freed_asd.fuel_calculator.domain.consumption.dbItem.mixed.ConsMixedDomainToUiMapper
+import com.freed_asd.fuel_calculator.domain.consumption.dbItem.track.ConsTrackDomainToUiMapper
 import com.freed_asd.fuel_calculator.domain.consumption.interactor.ConsInteractor
 import com.freed_asd.fuel_calculator.domain.consumption.mappers.BaseConsInputUiToDomainMapper
 import com.freed_asd.fuel_calculator.domain.consumption.mappers.BaseConsResultDataToDomainMapper
@@ -71,12 +77,19 @@ class FuelCalcApp: Application() {
 
     private lateinit var mixedDataToDomainMapper: ConsMixedDataToDomainMapper.Base
     private lateinit var consMixedDbToDataMapper: ConsMixedDbToDataMapper.Base
+    private lateinit var cityDataToDomainMapper: ConsCityDataToDomainMapper.Base
+    private lateinit var cityDbToDataMapper: ConsCityDbToDataMapper.Base
+    private lateinit var trackDbToDataMapper: ConsTrackDbToDataMapper.Base
+    private lateinit var trackDataToDomainMapper: ConsTrackDataToDomainMapper.Base
 
     //viewModelsFactory
     private lateinit var inputDistanceMapper: BaseInputUiToDomainMapper
     private lateinit var resultDistanceMapper: BaseResultDomainToUiMapper
     private lateinit var priceDbDomainMapper: BasePriceDbItemDomainMapperUi
     private lateinit var consMixedDomainToUiMapper : ConsMixedDomainToUiMapper.Base
+    private lateinit var cityDomainToUiMapper: ConsCityDomainToUiMapper.Base
+    private lateinit var trackDomainToUiMapper: ConsTrackDomainToUiMapper.Base
+
 
     override fun onCreate() {
         super.onCreate()
@@ -105,14 +118,18 @@ class FuelCalcApp: Application() {
         distanceInteractor = DistanceInteractor.Base(distanceRepository, distanceInputDomainMapper, distanceResultDomainMapper)
 
         //consumption
+        trackDbToDataMapper = ConsTrackDbToDataMapper.Base()
+        trackDataToDomainMapper = ConsTrackDataToDomainMapper.Base()
+        cityDbToDataMapper = ConsCityDbToDataMapper.Base()
         consMixedDbToDataMapper = ConsMixedDbToDataMapper.Base()
-        consRepository = ConsumptionRepositoryImpl(appDataBase, consMixedDbToDataMapper)
+        consRepository = ConsumptionRepositoryImpl(appDataBase, consMixedDbToDataMapper, cityDbToDataMapper, trackDbToDataMapper)
         inputConsInteractorMapper = BaseConsInputDomainToDataMapper()
         resultConsInteractorMapper = BaseConsResultDataToDomainMapper()
 
         mixedDataToDomainMapper = ConsMixedDataToDomainMapper.Base()
+        cityDataToDomainMapper = ConsCityDataToDomainMapper.Base()
 
-        consInteractor = ConsInteractor.Base(consRepository, inputConsInteractorMapper, resultConsInteractorMapper, mixedDataToDomainMapper)
+        consInteractor = ConsInteractor.Base(consRepository, inputConsInteractorMapper, resultConsInteractorMapper, mixedDataToDomainMapper, cityDataToDomainMapper, trackDataToDomainMapper)
 
         inputConsMapper = BaseConsInputUiToDomainMapper()
         resultConsMapper = BaseConsResultDomainToUiMapper()
@@ -123,6 +140,8 @@ class FuelCalcApp: Application() {
 
         priceDbDomainMapper = BasePriceDbItemDomainMapperUi()
         consMixedDomainToUiMapper = ConsMixedDomainToUiMapper.Base()
+        cityDomainToUiMapper = ConsCityDomainToUiMapper.Base()
+        trackDomainToUiMapper = ConsTrackDomainToUiMapper.Base()
     }
 
     val factory by lazy {
@@ -138,7 +157,9 @@ class FuelCalcApp: Application() {
             resultConsMapper,
             priceDbUiMapper,
             priceDbDomainMapper,
-            consMixedDomainToUiMapper
+            consMixedDomainToUiMapper,
+            cityDomainToUiMapper,
+            trackDomainToUiMapper
         )
     }
 }

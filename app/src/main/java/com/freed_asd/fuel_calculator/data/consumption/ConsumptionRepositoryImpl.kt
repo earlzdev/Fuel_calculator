@@ -1,7 +1,11 @@
 package com.freed_asd.fuel_calculator.data.consumption
 
+import com.freed_asd.fuel_calculator.data.consumption.dbItems.city.ConsCityDbItemData
+import com.freed_asd.fuel_calculator.data.consumption.dbItems.city.ConsCityDbToDataMapper
 import com.freed_asd.fuel_calculator.data.consumption.dbItems.mixed.ConsMixedDbItemData
 import com.freed_asd.fuel_calculator.data.consumption.dbItems.mixed.ConsMixedDbToDataMapper
+import com.freed_asd.fuel_calculator.data.consumption.dbItems.track.ConsTrackDbItemData
+import com.freed_asd.fuel_calculator.data.consumption.dbItems.track.ConsTrackDbToDataMapper
 import com.freed_asd.fuel_calculator.data.local.AppDataBase
 import com.freed_asd.fuel_calculator.data.local.consumption.city.ConsCity
 import com.freed_asd.fuel_calculator.data.local.consumption.mixed.ConsMixed
@@ -15,7 +19,9 @@ import kotlinx.coroutines.launch
 
 class ConsumptionRepositoryImpl(
     private val appDB: AppDataBase,
-    private val dbToDataMapper: ConsMixedDbToDataMapper.Base
+    private val mixedDbToDataMapper: ConsMixedDbToDataMapper.Base,
+    private val cityDbToDataMapper: ConsCityDbToDataMapper.Base,
+    private val trackDbToDataMapper: ConsTrackDbToDataMapper.Base
 ) : ConsumptionRepository {
 
     override fun calcConsumption(input: ConsInputData): ConsResultData {
@@ -44,6 +50,16 @@ class ConsumptionRepositoryImpl(
 
     override fun allDbMixedValues(): Flow<List<ConsMixedDbItemData>> =
         appDB.mixedDao().allValues().map { list ->
-            list.map { dbToDataMapper.mapToData(it) }
+            list.map { mixedDbToDataMapper.mapToData(it) }
     }
+
+    override fun allDbCityValues(): Flow<List<ConsCityDbItemData>> =
+        appDB.cityDao().allValues().map { list ->
+            list.map { cityDbToDataMapper.mapToData(it) }
+        }
+
+    override fun allDbTrackValues(): Flow<List<ConsTrackDbItemData>> =
+        appDB.trackDao().allValues().map { list ->
+            list.map { trackDbToDataMapper.mapToData(it) }
+        }
 }
