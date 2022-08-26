@@ -30,6 +30,12 @@ interface ConsInteractor : Repository{
 
     fun allTrackDbValues() : Flow<List<ConsTrackDbItemDomain>>
 
+    suspend fun deleteMixedValue(id: Long)
+
+    suspend fun deleteCityValue(id: Long)
+
+    suspend fun deleteTrackValue(id: Long)
+
     class Base(
         private val repository: ConsumptionRepository,
         private val inputMapper: BaseConsInputDomainToDataMapper,
@@ -77,6 +83,18 @@ interface ConsInteractor : Repository{
             return repository.allDbTrackValues().map { list ->
                 list.map { it.mapToDomain(trackDataToDomainMapper) }
             }
+        }
+
+        override suspend fun deleteMixedValue(id: Long) {
+            repository.deleteMixedValue(id)
+        }
+
+        override suspend fun deleteCityValue(id: Long) {
+            repository.deleteCityValue(id)
+        }
+
+        override suspend fun deleteTrackValue(id: Long) {
+            repository.deleteTrackValue(id)
         }
     }
 

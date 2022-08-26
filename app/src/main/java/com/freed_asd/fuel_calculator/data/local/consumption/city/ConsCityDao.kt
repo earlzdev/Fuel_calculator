@@ -12,9 +12,8 @@ interface ConsCityDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertValue(value: ConsCity)
 
-//    @Query("DELETE FROM ConsCityDB WHERE id = :id")
-    @Delete
-    fun deleteValue(value: ConsCity)
+    @Query("DELETE FROM ConsCityDB WHERE id = :itemId")
+    fun deleteValue(itemId: Long)
 //
 //    @Query("DELETE FROM ConsCityDB")
 //    suspend fun clearDataBase()

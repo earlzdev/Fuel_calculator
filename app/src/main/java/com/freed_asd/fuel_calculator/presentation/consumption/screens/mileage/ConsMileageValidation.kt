@@ -36,6 +36,10 @@ interface ConsMileageValidation {
                     currentMileage.error = context.getString(R.string.values_cannot_be_same)
                     false
                 }
+                currentMileage.text.toString().toFloat() < previousMileage.text.toString().toFloat() -> {
+                    currentMileage.error = context.getString(R.string.error_msg_current_mileage_less_then_previous)
+                    false
+                }
                 else -> true
             }
         }

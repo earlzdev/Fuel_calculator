@@ -62,4 +62,16 @@ class ConsumptionRepositoryImpl(
         appDB.trackDao().allValues().map { list ->
             list.map { trackDbToDataMapper.mapToData(it) }
         }
+
+    override suspend fun deleteMixedValue(id: Long) {
+        appDB.mixedDao().deleteValue(id)
+    }
+
+    override suspend fun deleteCityValue(id: Long) {
+        appDB.cityDao().deleteValue(id)
+    }
+
+    override suspend fun deleteTrackValue(id: Long) {
+        appDB.trackDao().deleteValue(id)
+    }
 }

@@ -14,8 +14,28 @@
         android:textSize="22sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="50dp"
+        />
+
+    <TextView
+        android:id="@+id/test_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="text"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@id/textview"
+        app:layout_constraintEnd_toStartOf="@id/delete_btn"
+        app:layout_constraintTop_toTopOf="@id/textview"
+        />
+
+    <ImageButton
+        android:id="@+id/delete_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/test_text"
+        app:layout_constraintTop_toTopOf="@id/test_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_delete"
         />
 
     <com.github.mikephil.charting.charts.LineChart
