@@ -7,6 +7,7 @@ import com.freed_asd.fuel_calculator.domain.consumption.interactor.ConsInteracto
 import com.freed_asd.fuel_calculator.presentation.statistic.mileage.city.dbModel.ConsCityDbItemUi
 import com.freed_asd.fuel_calculator.presentation.statistic.mileage.mixed.dbModel.ConsMixedDbItemUi
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 class CityMileageStatsViewModel(
     private val consInteractor: ConsInteractor,
@@ -16,4 +17,10 @@ class CityMileageStatsViewModel(
     val valueList: LiveData<List<ConsCityDbItemUi>> = consInteractor.allCityDbValues().map { list ->
         list.map { it.mapToUi(cityDomainToUiMapper) }
     }.asLiveData()
+
+    fun removeValue(id: Long) {
+        viewModelScope.launch {
+            consInteractor.deleteCityValue(id)
+        }
+    }
 }

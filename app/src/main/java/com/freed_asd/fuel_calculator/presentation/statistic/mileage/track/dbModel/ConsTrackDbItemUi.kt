@@ -6,6 +6,8 @@ interface ConsTrackDbItemUi {
 
     fun <T> mapToDomain(mapper: ConsTrackUiToDomainMapper<T>) : T
 
+    fun id() : Long
+
     fun cons() : Float
 
     fun mileage() : Float
@@ -16,6 +18,8 @@ interface ConsTrackDbItemUi {
         private val mileage: Float
     ) : ConsTrackDbItemUi {
         override fun <T> mapToDomain(mapper: ConsTrackUiToDomainMapper<T>) = mapper.mapToDb(id, consumption, mileage)
+
+        override fun id(): Long = id
 
         override fun cons(): Float = consumption
 

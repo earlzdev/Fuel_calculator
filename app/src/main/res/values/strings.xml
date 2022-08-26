@@ -31,6 +31,7 @@
     <string name="close">Close</string>
     <string name="values_cannot_be_same">Значения пробегов не могут быть одинаковыми!</string>
     <string name="calc_by_consumption">Посчитать по:</string>
+    <string name="error_msg_current_mileage_less_then_previous">Значение текущего пробега не может быть меньше предыдущего!</string>
 
     <string-array name="calc_consumption_of">
         <item>Показаниям пробега</item>

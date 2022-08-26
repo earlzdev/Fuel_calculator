@@ -11,8 +11,12 @@ import com.freed_asd.fuel_calculator.presentation.statistic.mileage.track.dbMode
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.highlight.Highlight
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 
 class TrackMileageStatsFragment : BaseFragment<FragmentStatsTrackMileageBinding, TrackMileageStartViewModel>() {
+
+    private val parentList: MutableMap<Int, Long> = mutableMapOf()
 
     override fun createViewBinding(
         inflater: LayoutInflater,
@@ -25,17 +29,46 @@ class TrackMileageStatsFragment : BaseFragment<FragmentStatsTrackMileageBinding,
         super.onViewCreated(view, savedInstanceState)
         viewModel.valueList.observe(viewLifecycleOwner) {
 
-            val lineDataSet = LineDataSet(consValues(it), "First")
-            lineDataSet.circleRadius = 10f
-            lineDataSet.setDrawFilled(true)
-            lineDataSet.fillColor = resources.getColor(R.color.green)
-            lineDataSet.valueTextSize = 18f
+            val lineData = lineDataSet(it)
 
-            val data = LineData(mileageValues(it), lineDataSet(it))
+            val data = LineData(mileageValues(it), lineData)
             binding.lineChart.data = data
-            binding.lineChart.animateXY(2000, 2000)
+
+            with(binding.lineChart) {
+
+                animateXY(2000, 2000)
+                axisRight.setDrawGridLines(false)
+                axisLeft.setDrawGridLines(false)
+                setVisibleXRangeMaximum(7f)
+
+                binding.lineChart.setOnChartValueSelectedListener(object :
+                    OnChartValueSelectedListener {
+                    override fun onValueSelected(e: Entry?, dataSetIndex: Int, h: Highlight?) {
+                        binding.testText.isEnabled = true
+                        binding.text.isEnabled = true
+                        val index = lineData.getEntryIndex(e)
+                        val cons = lineData.getYValForXIndex(index)
+                        val mileage = binding.lineChart.getXValue(index)
+                        binding.text.text = cons.toString()
+                        binding.testText.text = mileage.toString()
+
+                        binding.deleteBtn.setOnClickListener {
+
+                            lineData.removeEntry(e)
+                            viewModel.removeValue(initRemovedEntry(e!!.xIndex)!!)
+                        }
+                    }
+
+                    override fun onNothingSelected() {
+                        binding.testText.isEnabled = false
+                        binding.text.isEnabled = false
+                    }
+                })
+            }
         }
     }
+
+    private fun initRemovedEntry(eIndex: Int) = parentList[eIndex]
 
     private fun mileageValues(value: List<ConsTrackDbItemUi>) : List<String> {
         return value.map { it.mileage().toString() }
@@ -48,6 +81,7 @@ class TrackMileageStatsFragment : BaseFragment<FragmentStatsTrackMileageBinding,
 
         val sizeList = mutableListOf<Int>()
         val consList = value.map { it.cons() }.toMutableList()
+        val valuesIdList = value.map { it.id() }.toMutableList()
 
         for (i in 0 until size) {
             sizeList.add(i, i)
@@ -57,6 +91,10 @@ class TrackMileageStatsFragment : BaseFragment<FragmentStatsTrackMileageBinding,
 
         for (i in sizeList) {
             combinedList[i] = consList[i]
+        }
+
+        for (i in sizeList) {
+            parentList[i] = valuesIdList[i]
         }
 
         for (i in sizeList) {

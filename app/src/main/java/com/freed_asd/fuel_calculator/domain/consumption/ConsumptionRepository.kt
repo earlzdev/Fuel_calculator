@@ -25,4 +25,10 @@ interface ConsumptionRepository {
     fun allDbCityValues() : Flow<List<ConsCityDbItemData>>
 
     fun allDbTrackValues() : Flow<List<ConsTrackDbItemData>>
+
+    suspend fun deleteMixedValue(id: Long)
+
+    suspend fun deleteCityValue(id: Long)
+
+    suspend fun deleteTrackValue(id: Long)
 }

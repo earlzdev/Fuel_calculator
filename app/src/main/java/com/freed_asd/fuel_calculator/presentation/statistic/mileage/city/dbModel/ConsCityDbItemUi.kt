@@ -6,6 +6,8 @@ interface ConsCityDbItemUi {
 
     fun <T> mapToDomain(mapper: ConsCityUiToDomainMapper<T>) : T
 
+    fun id() : Long
+
     fun cons() : Float
 
     fun mileage() : Float
@@ -16,6 +18,8 @@ interface ConsCityDbItemUi {
         val mileage: Float
     ) : ConsCityDbItemUi {
         override fun <T> mapToDomain(mapper: ConsCityUiToDomainMapper<T>) = mapper.mapToUi(id, consumption, mileage)
+
+        override fun id(): Long = id
 
         override fun cons(): Float = consumption
 

@@ -13,9 +13,8 @@ interface ConsTrackDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
      fun insertValue(value: ConsTrack)
 
-//    @Query("DELETE FROM ConsTrackDB WHERE id = :id")
-    @Delete
-     fun deleteValue(value: ConsTrack)
+    @Query("DELETE FROM ConsTrackDB WHERE id = :itemId")
+     fun deleteValue(itemId: Long)
 
 //    @Query("DELETE FROM ConsTrackDB")
 //    suspend fun clearDataBase()
