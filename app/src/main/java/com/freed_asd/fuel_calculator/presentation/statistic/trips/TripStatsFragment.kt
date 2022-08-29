@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.core.BaseFragment
@@ -51,6 +52,8 @@ class TripStatsFragment: BaseFragment<FragmentStatsTripBinding, TripsStatsViewMo
         helper.attachToRecyclerView(binding.recyclerView)
         viewModel.itemList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+
+            binding.recyclerListIsEmpty.isVisible = it.isEmpty()
         }
     }
 

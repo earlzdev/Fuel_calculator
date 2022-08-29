@@ -1,9 +1,14 @@
 package com.freed_asd.fuel_calculator.presentation.statistic.mileage.city
 
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.core.BaseFragment
 import com.freed_asd.fuel_calculator.databinding.FragmentStatsCityMileageBinding
@@ -31,6 +36,19 @@ class CityMileageStatsFragment : BaseFragment<FragmentStatsCityMileageBinding, C
 
         viewModel.valueList.observe(viewLifecycleOwner) {
 
+            if (it.isEmpty()) {
+                binding.noData.isVisible = true
+                binding.testText.isVisible = false
+                binding.textview.isVisible = false
+                binding.lineChart.isVisible = false
+                binding.deleteBtn.isVisible = false
+            } else {
+                binding.noData.isVisible = false
+                binding.testText.isVisible = true
+                binding.textview.isVisible = true
+                binding.lineChart.isVisible = true
+                binding.deleteBtn.isVisible = true
+
             val lineData = lineDataSet(it)
 
             val data = LineData(mileageValues(it), lineData)
@@ -42,6 +60,7 @@ class CityMileageStatsFragment : BaseFragment<FragmentStatsCityMileageBinding, C
                 axisRight.setDrawGridLines(false)
                 axisLeft.setDrawGridLines(false)
                 setVisibleXRangeMaximum(7f)
+                moveViewToX(7f)
 
                 binding.lineChart.setOnChartValueSelectedListener(object :
                     OnChartValueSelectedListener {
@@ -56,8 +75,7 @@ class CityMileageStatsFragment : BaseFragment<FragmentStatsCityMileageBinding, C
 
                         binding.deleteBtn.setOnClickListener {
 
-                            lineData.removeEntry(e)
-                            viewModel.removeValue(initRemovedEntry(e!!.xIndex)!!)
+                            alertDialog(requireContext(), e!!)
                         }
                     }
 
@@ -67,7 +85,23 @@ class CityMileageStatsFragment : BaseFragment<FragmentStatsCityMileageBinding, C
                     }
                 })
             }
+            }
         }
+    }
+
+    private fun alertDialog(context: Context, e: Entry): AlertDialog {
+        val builder = AlertDialog.Builder(context)
+            .setCancelable(true)
+            .setMessage("Da ili net?" + binding.testText.text.toString() + binding.textview.text.toString())
+            .setTitle("Udalit?")
+            .setPositiveButton("Da, Udalit") { dialog, wich ->
+                viewModel.removeValue(initRemovedEntry(e.xIndex)!!)
+            }
+            .setNegativeButton("Ne, ne udalay") { dialog, wich ->
+                Toast.makeText(context, "Ne udalyau )", Toast.LENGTH_SHORT).show()
+            }
+            .show()
+        return builder
     }
 
     private fun initRemovedEntry(eIndex: Int) = parentList[eIndex]

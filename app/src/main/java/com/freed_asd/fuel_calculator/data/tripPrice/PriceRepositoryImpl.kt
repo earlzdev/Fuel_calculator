@@ -5,13 +5,10 @@ import com.freed_asd.fuel_calculator.data.local.price.BasePriceItemDbMapper
 import com.freed_asd.fuel_calculator.data.tripPrice.dbItem.BasePriceDbToDataItemMapper
 import com.freed_asd.fuel_calculator.data.tripPrice.dbItem.PriceDbItemData
 import com.freed_asd.fuel_calculator.domain.tripPrice.CalcTripPriceRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 
-class CalcTripPriceRepositoryImpl(
+class PriceRepositoryImpl(
     private val appDb: AppDataBase,
     private val priceDbDataToDbMapper: BasePriceItemDbMapper,
     private val dbToDataMapper: BasePriceDbToDataItemMapper
@@ -20,18 +17,18 @@ class CalcTripPriceRepositoryImpl(
     override fun calcTripPrice(input: PriceInputData): PriceResultData {
         return PriceResultData.Base(
             distance = input.distance(),
-            needFuel = calcNeedOfFuel(input),
-            generalTripPrice = calcGeneralTripPrice(input),
-            everyoneTripPrice = calcTripPriceForOnePerson(input),
+            needFuel = amountOfFuel(input),
+            generalTripPrice = generalPrice(input),
+            everyoneTripPrice = priceForOnePerson(input),
             passengers = input.passengers()
         )
     }
 
-    private fun calcTripPriceForOnePerson(input: PriceInputData) = input.onePersonPrice()
+    private fun priceForOnePerson(input: PriceInputData) = input.onePersonPrice()
 
-    private fun calcGeneralTripPrice(input: PriceInputData) = input.generalPrice()
+    private fun generalPrice(input: PriceInputData) = input.generalPrice()
 
-    private fun calcNeedOfFuel(input: PriceInputData) = input.needFuel()
+    private fun amountOfFuel(input: PriceInputData) = input.needFuel()
 
     override suspend fun insertIntoDb(value: PriceDbItemData) {
         appDb.priceDao().insertValue(value.mapToDb(priceDbDataToDbMapper))
