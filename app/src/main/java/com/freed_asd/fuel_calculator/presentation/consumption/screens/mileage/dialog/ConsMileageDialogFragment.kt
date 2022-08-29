@@ -22,7 +22,7 @@ class ConsMileageDialogFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = (requireActivity().application as FuelCalcApp).factory
+        val factory = (requireActivity().application as FuelCalcApp).provide()
         viewModel = ViewModelProvider(this, factory)[MileageDialogViewModel::class.java]
     }
 
