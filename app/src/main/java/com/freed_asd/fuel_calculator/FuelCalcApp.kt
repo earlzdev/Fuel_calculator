@@ -15,7 +15,7 @@ import com.freed_asd.fuel_calculator.data.distance.DistanceInputData
 import com.freed_asd.fuel_calculator.data.distance.mappers.BaseInputDomainToDataMapper
 import com.freed_asd.fuel_calculator.data.local.AppDataBase
 import com.freed_asd.fuel_calculator.data.local.price.BasePriceItemDbMapper
-import com.freed_asd.fuel_calculator.data.tripPrice.CalcTripPriceRepositoryImpl
+import com.freed_asd.fuel_calculator.data.tripPrice.PriceRepositoryImpl
 import com.freed_asd.fuel_calculator.data.tripPrice.dbItem.BasePriceDbITemDomainMapper
 import com.freed_asd.fuel_calculator.data.tripPrice.dbItem.BasePriceDbToDataItemMapper
 import com.freed_asd.fuel_calculator.data.tripPrice.mappers.BasePriceInputDomainToDataMapper
@@ -45,7 +45,7 @@ class FuelCalcApp: Application() {
     private lateinit var priceInteractor: PriceInteractor
     private lateinit var inputUiMapper: BasePriceInputUiToDomainMapper
     private lateinit var resultUIMapper: BasePriceResultDomainToUiMapper
-    private lateinit var priceRepository: CalcTripPriceRepositoryImpl
+    private lateinit var priceRepository: PriceRepositoryImpl
     private lateinit var inputDomainMapper: BasePriceInputDomainToDataMapper
     private lateinit var resultDomainMapper: BasePriceResultDataToDomainMapper
 
@@ -99,7 +99,7 @@ class FuelCalcApp: Application() {
         priceDbItemToDataMapper = BasePriceDbToDataItemMapper()
         priceDbUiMapper = BasePriceDbItemUiMapper()
         priceDbDataToDbMapper = BasePriceItemDbMapper()
-        priceRepository = CalcTripPriceRepositoryImpl(appDataBase, priceDbDataToDbMapper, priceDbItemToDataMapper)
+        priceRepository = PriceRepositoryImpl(appDataBase, priceDbDataToDbMapper, priceDbItemToDataMapper)
         inputDomainMapper = BasePriceInputDomainToDataMapper()
         resultDomainMapper = BasePriceResultDataToDomainMapper()
         inputUiMapper = BasePriceInputUiToDomainMapper()

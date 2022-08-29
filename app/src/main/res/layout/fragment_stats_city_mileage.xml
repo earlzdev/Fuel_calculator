@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="50dp"
+        android:visibility="gone"
         />
 
     <TextView
@@ -26,6 +27,7 @@
         app:layout_constraintStart_toEndOf="@id/textview"
         app:layout_constraintEnd_toStartOf="@id/delete_btn"
         app:layout_constraintTop_toTopOf="@id/textview"
+        android:visibility="gone"
         />
 
     <ImageButton
@@ -36,6 +38,7 @@
         app:layout_constraintTop_toTopOf="@id/test_text"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_delete"
+        android:visibility="gone"
         />
 
     <com.github.mikephil.charting.charts.LineChart
@@ -46,6 +49,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No data"
+        android:textSize="22sp"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
