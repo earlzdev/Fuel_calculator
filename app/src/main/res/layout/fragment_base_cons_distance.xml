@@ -1,57 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.consumption.screens.distance.ConsDistanceFragment">
 
         <TextView
             android:id="@+id/tv_distance"
-            android:layout_width="220dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/distance_gone"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/et_distance"
             android:layout_marginTop="30dp"
-            android:text="Пройденное расстояние в километрах"
-            android:textSize="18sp" />
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="20dp"
+            />
 
         <EditText
             android:id="@+id/et_distance"
-            android:layout_width="80dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="30dp"
-            android:hint="@string/hint_average_fuel_consumption"
-            android:inputType="numberDecimal"
-            android:text="400"
-            android:textSize="18sp" />
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_distance_gone"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="@id/tv_distance"
+            app:layout_constraintStart_toEndOf="@id/tv_distance"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="20dp"
+            tools:ignore="LabelFor"
+            />
 
         <TextView
             android:id="@+id/tv_filled_fuel_distance"
-            android:layout_width="220dp"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Fuel_went"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_distance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/et_filled_fuel_distance"
+            android:layout_marginTop="30dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="100dp"
-            android:text="Затраченно литров топлива"
-            android:textSize="18sp" />
+            android:layout_marginEnd="10dp"
+            />
 
         <EditText
             android:id="@+id/et_filled_fuel_distance"
-            android:layout_width="80dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="100dp"
-            android:hint="@string/hint_fuel_price_ed"
-            android:inputType="numberDecimal"
-            android:text="40"
-            android:textSize="18sp" />
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/fuel_went_hint"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="@id/tv_filled_fuel_distance"
+            app:layout_constraintStart_toEndOf="@id/tv_filled_fuel_distance"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="20dp"
+            />
 
         <Button
             android:id="@+id/calc_button_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="150dp"
-            android:text="@string/calculate_button_trip_price" />
+            android:text="@string/calculate_button_trip_price"
+            app:layout_constraintTop_toBottomOf="@id/tv_filled_fuel_distance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="40dp"
+            />
 
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

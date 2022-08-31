@@ -30,6 +30,14 @@ interface DistanceValidation {
                     fuelPrice.error = emptyErrorMsg
                     false
                 }
+                fuelConsumption.text.toString() == context.getString(R.string.dot) -> {
+                    fuelConsumption.error = context.getString(R.string.incorrect_value)
+                    false
+                }
+                fuelPrice.text.toString() == context.getString(R.string.dot) -> {
+                    fuelPrice.error = context.getString(R.string.incorrect_value)
+                    false
+                }
                 else -> true
             }
         }

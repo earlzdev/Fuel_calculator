@@ -40,7 +40,7 @@
             android:textSize="17sp"
             app:layout_constraintTop_toTopOf="@id/price_image"
             app:layout_constraintStart_toEndOf="@id/price_image"
-            app:layout_constraintEnd_toStartOf="@id/price_delete_button"
+            app:layout_constraintEnd_toEndOf="parent"
             android:padding="4dp"
             />
 
@@ -56,18 +56,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/price_image"
             android:padding="4dp"
-            />
-
-        <ImageButton
-            android:id="@+id/price_delete_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintHorizontal_weight="1.2"
-            android:src="@drawable/ic_delete"
-            app:layout_constraintTop_toTopOf="@id/price_name"
-            app:layout_constraintBottom_toBottomOf="@id/price_info"
-            app:layout_constraintStart_toEndOf="@id/price_name"
-            app:layout_constraintEnd_toEndOf="parent"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

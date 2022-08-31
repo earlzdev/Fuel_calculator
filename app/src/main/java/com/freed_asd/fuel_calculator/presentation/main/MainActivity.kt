@@ -5,15 +5,16 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.databinding.ActivityMainBinding
 import com.freed_asd.fuel_calculator.presentation.main.viewpager.ViewPagerAdapter
-import com.freed_asd.fuel_calculator.presentation.statistic.StatsActivity
+import com.freed_asd.fuel_calculator.presentation.statistic.mileage.MileageStatsActivity
 import com.freed_asd.fuel_calculator.presentation.statistic.trips.TripsStatsActivity
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         viewPager()
         drawer()
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
     private fun viewPager() {
@@ -34,19 +37,32 @@ class MainActivity : AppCompatActivity() {
         binding.viewpager.adapter = ViewPagerAdapter(this)
         binding.tableLayout.tabIconTint = null
 
+        binding.tableLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                supportActionBar?.title = tab?.contentDescription
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) = Unit
+
+            override fun onTabReselected(tab: TabLayout.Tab?) = Unit
+        })
+
         TabLayoutMediator(binding.tableLayout, binding.viewpager) { tab, pos ->
             when(pos) {
                 0 -> {
-                    tab.setIcon(R.drawable.ic_test1)
+                    tab.setIcon(R.drawable.ic_cons_toolbar)
                     tab.icon?.setTint(ContextCompat.getColor(this, R.color.black))
+                    tab.contentDescription = getString(R.string.calc_cons_toolbar)
                 }
                 1 -> {
-                    tab.setIcon(R.drawable.ic_test2)
+                    tab.setIcon(R.drawable.ic_price_toolbar)
                     tab.icon?.setTint(ContextCompat.getColor(this, R.color.black))
+                    tab.contentDescription = getString(R.string.calc_price_toolbar)
                 }
                 2 -> {
-                    tab.setIcon(R.drawable.ic_test3)
+                    tab.setIcon(R.drawable.ic_distance_toolbar)
                     tab.icon?.setTint(ContextCompat.getColor(this, R.color.black))
+                    tab.contentDescription = getString(R.string.calc_distance_toolbar)
                 }
             }
         }.attach()
@@ -67,10 +83,12 @@ class MainActivity : AppCompatActivity() {
 
             when(it.itemId) {
                 R.id.statistic -> {
-                    startActivity(Intent(this, StatsActivity::class.java))
+                    startActivity(Intent(this, MileageStatsActivity::class.java))
+                    drawerLayout.closeDrawers()
                 }
                 R.id.trips -> {
                     startActivity(Intent(this, TripsStatsActivity::class.java))
+                    drawerLayout.closeDrawers()
                 }
             }
             true

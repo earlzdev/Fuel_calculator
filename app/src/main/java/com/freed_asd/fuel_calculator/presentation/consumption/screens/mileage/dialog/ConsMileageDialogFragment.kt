@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.freed_asd.fuel_calculator.FuelCalcApp
@@ -19,6 +18,13 @@ class ConsMileageDialogFragment : DialogFragment() {
     private val binding: FragmentDialogConsumptionMileageBinding get() = _binding!!
 
     private lateinit var viewModel: MileageDialogViewModel
+
+    override fun onStart() {
+        super.onStart()
+        val width = resources.displayMetrics.widthPixels
+        val height = resources.displayMetrics.heightPixels * DEFAULT_COEFF
+        dialog?.window?.setLayout(width, height.toInt())
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,17 +49,6 @@ class ConsMileageDialogFragment : DialogFragment() {
         }
     }
 
-    private fun statsPrompt(check: Boolean) {
-        when (check) {
-            true -> {
-                binding.tvResultAddedIntoStats.isVisible = true
-            }
-            false -> {
-                binding.tvResultDidNotAddedIntoStats.isVisible = true
-            }
-        }
-    }
-
     private fun onResult() = requireArguments().getParcelable<ConsResultUi.Base>(RESULT_KEY)
         ?: throw IllegalStateException("calculation result can not be null")
 
@@ -65,7 +60,7 @@ class ConsMileageDialogFragment : DialogFragment() {
 
         const val TAG = "ConsumptionDialogFragment"
         const val RESULT_KEY = "RESULT_KEY"
-        const val CHECK_KEY = "CHECK_KEY"
+        const val DEFAULT_COEFF = 0.28
 
         fun newInstance(result: ConsResultUi) = ConsMileageDialogFragment().apply {
             arguments = bundleOf(RESULT_KEY to result)

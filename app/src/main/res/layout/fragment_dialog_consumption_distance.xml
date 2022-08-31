@@ -3,31 +3,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.consumption.screens.mileage.dialog.ConsMileageDialogFragment">
+    tools:context=".presentation.consumption.screens.distance.dialog.ConsDistanceDialogFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_max_distance"
+        app:title="Расчет расхода топлива"
+        app:navigationIcon="@drawable/ic_cons_toolbar"
+        android:background="#DCDCDC"
+        />
 
     <TextView
         android:id="@+id/tv_max_distance"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Расход"
+        android:text="@string/fuel_cons_is"
         android:textSize="22sp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="100dp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="40dp"
         />
 
     <TextView
         android:id="@+id/ed_max_distance"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/cons_litersOnKm"
         android:textSize="22sp"
         app:layout_constraintTop_toBottomOf="@id/tv_max_distance"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="45dp"
+        app:layout_constraintStart_toStartOf="@id/tv_max_distance"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="50dp"
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
