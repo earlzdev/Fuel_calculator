@@ -100,6 +100,9 @@
     <string name="calc_max_distance_fun">- Посчитать максимальное расстояние;</string>
     <string name="calc_cons_fun">- Посчитать расход топлива автомобиля;</string>
     <string name="stats_fun">- Вести учет полученных показаний пробега и запоминать стоимости поездок</string>
+    <string name="mixed_regime_string">Смешанный режим езды</string>
+    <string name="city_drive_regime">Городской режим езды</string>
+    <string name="track_drive_regime">Режим езды по трассе</string>
 
     <string-array name="calc_consumption_of">
         <item>Показаниям пробега</item>

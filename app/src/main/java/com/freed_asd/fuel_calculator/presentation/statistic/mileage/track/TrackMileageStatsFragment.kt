@@ -141,10 +141,13 @@ class TrackMileageStatsFragment : BaseFragment<FragmentStatsTrackMileageBinding,
 
 
     private fun lineDataSet(value: List<ConsTrackDbItemUi>) : LineDataSet {
-        val lineDataSet = LineDataSet(consValues(value), "first")
+        val lineDataSet = LineDataSet(consValues(value), getString(R.string.track_drive_regime))
         lineDataSet.circleRadius = 10f
         lineDataSet.setDrawFilled(true)
         lineDataSet.valueTextSize = 18f
+        lineDataSet.fillAlpha = 30
+        lineDataSet.isHighlightEnabled = true
+        lineDataSet.setDrawHighlightIndicators(true)
         return lineDataSet
     }
 
