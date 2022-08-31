@@ -142,7 +142,7 @@ class MixedMileageStatsFragment: BaseFragment<FragmentStatsMixedMileageBinding, 
     }
 
         private fun lineDataSet(value: List<ConsMixedDbItemUi>) : LineDataSet {
-            val lineDataSet = LineDataSet(consValues(value), "Consumption Mixed drive regime")
+            val lineDataSet = LineDataSet(consValues(value), getString(R.string.mixed_regime_string))
             lineDataSet.circleRadius = 10f
             lineDataSet.setDrawFilled(true)
             lineDataSet.valueTextSize = 18f

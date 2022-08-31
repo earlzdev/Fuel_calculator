@@ -150,7 +150,7 @@ class CityMileageStatsFragment : BaseFragment<FragmentStatsCityMileageBinding, C
     }
 
     private fun lineDataSet(value: List<ConsCityDbItemUi>) : LineDataSet {
-        val lineDataSet = LineDataSet(consValues(value), "Consumption Mixed drive regime")
+        val lineDataSet = LineDataSet(consValues(value), getString(R.string.city_drive_regime))
         lineDataSet.circleRadius = 10f
         lineDataSet.setDrawFilled(true)
         lineDataSet.valueTextSize = 18f
