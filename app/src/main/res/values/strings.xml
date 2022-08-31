@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fuel_calculator</string>
+    <string name="app_name">Калькулятор топлива</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="average_fuel_consumption_string">Средний расход топлива, литров/100км</string>
@@ -71,6 +71,18 @@
     <string name="remove">Удалить</string>
     <string name="accept_removing">Подтвердите удаление вершины</string>
     <string name="choose_dot">Выберите вершину</string>
+    <string name="rub">руб.</string>
+    <string name="km">км</string>
+    <string name="liters">литров</string>
+    <string name="test_price_hint">Price</string>
+    <string name="trip_name">Название поездки</string>
+    <string name="for_distance_km">Для расстояния, км</string>
+    <string name="need_fuel_liters">Вам нужно литров топлива</string>
+    <string name="general_price_rub">Общая стоимость, руб</string>
+    <string name="by_everypne_rub">С человека по, руб</string>
+    <string name="save_btn">Сохранить</string>
+    <string name="list_is_empty">Список пуст</string>
+    <string name="trip_name_default">Поездка длительностью %s километров</string>
 
     <string-array name="calc_consumption_of">
         <item>Показаниям пробега</item>

@@ -17,7 +17,7 @@
         android:id="@+id/recycler_list_is_empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="List is empty"
+        android:text="@string/list_is_empty"
         android:textSize="22sp"
         android:gravity="center_horizontal"
         android:visibility="gone"

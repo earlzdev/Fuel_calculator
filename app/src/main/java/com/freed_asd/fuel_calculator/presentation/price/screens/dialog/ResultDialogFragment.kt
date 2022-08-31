@@ -66,7 +66,8 @@ class ResultDialogFragment : DialogFragment() {
             )
         }
         binding.saveBtnPrice.setOnClickListener {
-            viewModel.insertIntoDb(onDetails().distance().toString())
+            val defaultName = getString(R.string.trip_name_default, String.format("%.2f", onDetails().distance()))
+            viewModel.insertIntoDb(defaultName)
             binding.isSavedPrice.isVisible = true
         }
     }
