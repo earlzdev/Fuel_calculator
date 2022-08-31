@@ -19,6 +19,13 @@ class ConsDistanceDialogFragment: DialogFragment() {
 
     private lateinit var viewModel: DistanceDialogViewModel
 
+    override fun onStart() {
+        super.onStart()
+        val width = resources.displayMetrics.widthPixels
+        val height = resources.displayMetrics.heightPixels * DEFAULT_COEFF
+        dialog?.window?.setLayout(width, height.toInt())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = (requireActivity().application as FuelCalcApp).provide()
@@ -55,6 +62,7 @@ class ConsDistanceDialogFragment: DialogFragment() {
 
         const val TAG = "ConsDistanceDialogFragment"
         const val RESULT_KEY = "RESULT_KEY"
+        const val DEFAULT_COEFF = 0.28
 
         fun newInstance(result: ConsResultUi) = ConsDistanceDialogFragment().apply {
             arguments = bundleOf(RESULT_KEY to result)

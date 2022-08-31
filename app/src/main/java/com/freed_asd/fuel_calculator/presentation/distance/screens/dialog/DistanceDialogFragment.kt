@@ -20,6 +20,13 @@ class DistanceDialogFragment : DialogFragment() {
 
     private lateinit var viewModel: DialogFragmentViewModel
 
+    override fun onStart() {
+        super.onStart()
+        val width = resources.displayMetrics.widthPixels * DEFAULT_WIDTH_COEFF
+        val height = resources.displayMetrics.heightPixels * DEFAULT_HEIGHT_COEFF
+        dialog?.window?.setLayout(width.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = (requireActivity().application as FuelCalcApp).provide()
@@ -59,16 +66,12 @@ class DistanceDialogFragment : DialogFragment() {
     private fun details() = requireArguments().getParcelable<DistanceResultUi.Base>(RESULT_KEY)
         ?: throw IllegalStateException("calculation result can not be null")
 
-    override fun onStart() {
-        super.onStart()
-        val width = resources.displayMetrics.widthPixels * 0.85
-        dialog?.window?.setLayout(width.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
-    }
-
     companion object {
 
         const val TAG = "DistanceDialogFragment"
         const val RESULT_KEY = "RESULT_KEY"
+        const val DEFAULT_HEIGHT_COEFF = 0.45
+        const val DEFAULT_WIDTH_COEFF = 0.95
 
         fun newInstance(result: DistanceResultUi) = DistanceDialogFragment().apply {
             arguments = bundleOf(RESULT_KEY to result)

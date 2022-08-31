@@ -1,6 +1,7 @@
 package com.freed_asd.fuel_calculator.presentation.statistic.mileage.city
 
 import android.app.AlertDialog
+import android.app.TaskStackBuilder
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.withCreated
+import androidx.loader.content.AsyncTaskLoader
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.core.BaseFragment
 import com.freed_asd.fuel_calculator.databinding.FragmentStatsCityMileageBinding
@@ -19,6 +23,9 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CityMileageStatsFragment : BaseFragment<FragmentStatsCityMileageBinding, CityMileageStatsViewModel>() {
 
@@ -38,14 +45,16 @@ class CityMileageStatsFragment : BaseFragment<FragmentStatsCityMileageBinding, C
 
             if (it.isEmpty()) {
                 binding.noData.isVisible = true
-                binding.testText.isVisible = false
-                binding.textview.isVisible = false
+                binding.mileage.isVisible = false
+                binding.cons.isVisible = false
+                binding.entryDetailsTv.isVisible = false
                 binding.lineChart.isVisible = false
                 binding.deleteBtn.isVisible = false
             } else {
                 binding.noData.isVisible = false
-                binding.testText.isVisible = true
-                binding.textview.isVisible = true
+                binding.mileage.isVisible = true
+                binding.cons.isVisible = true
+                binding.entryDetailsTv.isVisible = true
                 binding.lineChart.isVisible = true
                 binding.deleteBtn.isVisible = true
 
@@ -65,24 +74,18 @@ class CityMileageStatsFragment : BaseFragment<FragmentStatsCityMileageBinding, C
                 binding.lineChart.setOnChartValueSelectedListener(object :
                     OnChartValueSelectedListener {
                     override fun onValueSelected(e: Entry?, dataSetIndex: Int, h: Highlight?) {
-                        binding.textview.isEnabled = true
-                        binding.testText.isEnabled = true
+                        binding.mileage.isEnabled = true
+                        binding.cons.isEnabled = true
                         val index = lineData.getEntryIndex(e)
                         val cons = lineData.getYValForXIndex(index)
                         val mileage = binding.lineChart.getXValue(index)
-                        binding.testText.text = cons.toString()
-                        binding.textview.text = mileage.toString()
+                        binding.mileage.text = getString(R.string.mileage_stats, String.format("%s", mileage))
+                        binding.cons.text = getString(R.string.cons_stats, String.format("%.2f", cons))
 
-                        binding.deleteBtn.setOnClickListener {
-
-                            alertDialog(requireContext(), e!!)
-                        }
+                        binding.deleteBtn.setOnClickListener { alertDialog(requireContext(), e!!) }
                     }
 
-                    override fun onNothingSelected() {
-                        binding.textview.isEnabled = false
-                        binding.testText.isEnabled = false
-                    }
+                    override fun onNothingSelected() {}
                 })
             }
             }
@@ -92,13 +95,17 @@ class CityMileageStatsFragment : BaseFragment<FragmentStatsCityMileageBinding, C
     private fun alertDialog(context: Context, e: Entry): AlertDialog {
         val builder = AlertDialog.Builder(context)
             .setCancelable(true)
-            .setMessage("Da ili net?" + binding.testText.text.toString() + binding.textview.text.toString())
-            .setTitle("Udalit?")
-            .setPositiveButton("Da, Udalit") { dialog, wich ->
+            .setMessage(
+                """Удалить вершину графика со следующими данными: 
+    ${binding.mileage.text} 
+    ${binding.cons.text} ?"""
+            )
+            .setTitle(getString(R.string.accept_removing))
+            .setPositiveButton(getString(R.string.remove)) { dialog, wich ->
                 viewModel.removeValue(initRemovedEntry(e.xIndex)!!)
             }
-            .setNegativeButton("Ne, ne udalay") { dialog, wich ->
-                Toast.makeText(context, "Ne udalyau )", Toast.LENGTH_SHORT).show()
+            .setNegativeButton(getString(R.string.dont_remove)) { dialog, wich ->
+                Toast.makeText(context, getString(R.string.stoped_removing), Toast.LENGTH_SHORT).show()
             }
             .show()
         return builder
@@ -146,10 +153,7 @@ class CityMileageStatsFragment : BaseFragment<FragmentStatsCityMileageBinding, C
         val lineDataSet = LineDataSet(consValues(value), "Consumption Mixed drive regime")
         lineDataSet.circleRadius = 10f
         lineDataSet.setDrawFilled(true)
-        lineDataSet.fillColor = resources.getColor(R.color.green)
         lineDataSet.valueTextSize = 18f
-        lineDataSet.setDrawValues(false)
-        lineDataSet.fillColor = resources.getColor(R.color.green)
         lineDataSet.fillAlpha = 30
         lineDataSet.isHighlightEnabled = true
         lineDataSet.setDrawHighlightIndicators(true)

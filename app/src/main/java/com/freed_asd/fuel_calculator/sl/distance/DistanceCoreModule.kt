@@ -7,10 +7,9 @@ import com.freed_asd.fuel_calculator.data.distance.mappers.BaseInputDomainToData
 import com.freed_asd.fuel_calculator.data.local.AppDataBase
 import com.freed_asd.fuel_calculator.domain.distance.interactor.DistanceInteractor
 import com.freed_asd.fuel_calculator.domain.distance.mappers.BaseResultDataToDomainMapper
-import com.freed_asd.fuel_calculator.sl.CoreModule
 import com.freed_asd.fuel_calculator.sl.ResourceProvider
 
-class DistanceCoreModule() {
+class DistanceCoreModule {
 
     lateinit var interactor: DistanceInteractor
     lateinit var resourceProvider: ResourceProvider

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.statistic.StatsActivity">
+    tools:context=".presentation.statistic.mileage.MileageStatsActivity">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tableLayout"
@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/viewpager_stats"
-        android:backgroundTint="#C0C0C0"
+        android:backgroundTint="#DCDCDC"
         />
 
     <androidx.viewpager2.widget.ViewPager2

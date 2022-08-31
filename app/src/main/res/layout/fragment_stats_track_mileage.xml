@@ -7,64 +7,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/entry_details_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="developing.."
-        android:gravity="center_horizontal"
-        android:textSize="30sp"
+        android:text="@string/entry_details"
+        android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/test_text"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="50dp"
-        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
         />
 
     <TextView
-        android:id="@+id/test_text"
+        android:id="@+id/mileage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="test text"
-        android:textSize="22sp"
-        app:layout_constraintTop_toTopOf="@id/text"
-        app:layout_constraintStart_toEndOf="@id/text"
-        app:layout_constraintEnd_toStartOf="@id/delete_btn"
-        android:visibility="gone"
+        android:text="@string/choose_dot"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/entry_details_tv"
+        app:layout_constraintStart_toStartOf="@id/entry_details_tv"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/cons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/mileage"
+        app:layout_constraintStart_toStartOf="@id/mileage"
+        android:layout_marginTop="10dp"
         />
 
     <ImageButton
         android:id="@+id/delete_btn"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/test_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/text"
         android:src="@drawable/ic_delete"
-        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/white"
         />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/text"
+        app:layout_constraintTop_toBottomOf="@id/cons"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="gone"
+        android:layout_margin="10dp"
         />
 
     <TextView
         android:id="@+id/no_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No Data"
+        android:text="@string/no_data"
         android:textSize="22sp"
         android:gravity="center_horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

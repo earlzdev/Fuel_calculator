@@ -1,4 +1,4 @@
-package com.freed_asd.fuel_calculator.presentation.statistic.viewpagerStats
+package com.freed_asd.fuel_calculator.presentation.statistic.mileage.viewpagerStats
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

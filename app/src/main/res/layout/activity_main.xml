@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         tools:context=".presentation.main.MainActivity">
 
-
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
@@ -21,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/viewpager"
-            android:backgroundTint="#C0C0C0"
+            android:backgroundTint="#DCDCDC"
             />
 
         <androidx.viewpager2.widget.ViewPager2

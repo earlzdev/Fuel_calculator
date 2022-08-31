@@ -18,6 +18,12 @@ class ResultDialogFragment : DialogFragment() {
 
     private lateinit var viewModel: ResultViewModel
 
+    override fun onStart() {
+        super.onStart()
+        val width = resources.displayMetrics.widthPixels * DEFAULT_COEFF
+        dialog?.window?.setLayout(width.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = (requireActivity().application as FuelCalcApp).provide()
@@ -59,21 +65,9 @@ class ResultDialogFragment : DialogFragment() {
                 String.format("%.2f", it.everyonePrice())
             )
         }
-
-// 10.1.32.210
-
         binding.saveBtnPrice.setOnClickListener {
-
             viewModel.insertIntoDb(onDetails().distance().toString())
             binding.isSavedPrice.isVisible = true
-
-//            binding.tvAddName.isVisible = true
-//            binding.saveNameEd.isVisible = true
-//            binding.priceSaveBtn.isVisible = true
-//            binding.priceSaveBtn.setOnClickListener {
-//                viewModel.insertIntoDb(binding.saveNameEd.text.toString())
-//                binding.isSavedPrice.isVisible = true
-//            }
         }
     }
 
@@ -81,7 +75,7 @@ class ResultDialogFragment : DialogFragment() {
         ?: throw  IllegalStateException("calculation result cannot be null")
 
     private fun isPassengerAlone() {
-        if (onDetails().passengers() == 1f) {
+        if (onDetails().passengers() == ONE_PASSENGER) {
             binding.tvValuePriceForEveryone.isVisible = false
             binding.tvForEveryoneTripPrice.isVisible = false
         }
@@ -92,16 +86,12 @@ class ResultDialogFragment : DialogFragment() {
         _binding = null
     }
 
-    override fun onStart() {
-        super.onStart()
-        val width = resources.displayMetrics.widthPixels * 0.85
-        dialog?.window?.setLayout(width.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
-    }
-
     companion object {
 
         const val TAG = "RESULT_FRAGMENT_TAG"
         const val RESULT_DETAILS = "RESULT_DETAILS"
+        const val ONE_PASSENGER = 1F
+        const val DEFAULT_COEFF = 0.95
 
         fun newInstance(result: PriceResultUi) = ResultDialogFragment().apply {
             arguments = bundleOf(RESULT_DETAILS to result)
