@@ -4,34 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item
-        android:id="@+id/statistic"
-        android:title="Статистика"
-        />
+    <item android:title="@string/stats_string">
 
-    <item
-        android:id="@+id/trips"
-        android:title="Мои поездки"
-        />
+        <menu>
 
-    <item
-        android:id="@+id/about"
-        android:title="О приложении"
-        />
+            <item
+                android:id="@+id/statistic"
+                android:title="@string/cons_stats_string"
+                />
 
-    <item
-        android:id="@+id/share"
-        android:title="Рассказать другу"
-        />
+            <item
+                android:id="@+id/trips"
+                android:title="@string/trips_string"
+                />
 
-    <item
-        android:id="@+id/communicate"
-        android:title="Связаться"
-        />
+        </menu>
 
-    <item
-        android:id="@+id/rate"
-        android:title="Оценить"
-        />
+    </item>
+
+
+    <item android:title="@string/communicate_strings">
+
+        <menu>
+
+            <item
+                android:id="@+id/about"
+                android:title="@string/about_string"
+                />
+
+            <item
+                android:id="@+id/share"
+                android:title="@string/share_string"
+                />
+
+            <item
+                android:id="@+id/communicate"
+                android:title="@string/communicate_string"
+                />
+
+            <item
+                android:id="@+id/rate"
+                android:title="@string/rate_string"
+                />
+
+        </menu>
+
+    </item>
 
 </menu>

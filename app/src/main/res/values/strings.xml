@@ -83,6 +83,23 @@
     <string name="save_btn">Сохранить</string>
     <string name="list_is_empty">Список пуст</string>
     <string name="trip_name_default">Поездка длительностью %s километров</string>
+    <string name="mail_topic">Топливный калькулятор</string>
+    <string name="no_emails_client">There are no email clients installed.</string>
+    <string name="send_email">Отправить письмо</string>
+    <string name="stats_string">Статистика</string>
+    <string name="trips_string">Мои поездки</string>
+    <string name="about_string">О приложении</string>
+    <string name="share_string">Рассказать другу</string>
+    <string name="communicate_string">Связь с разработчиком</string>
+    <string name="rate_string">Оценить</string>
+    <string name="cons_stats_string">Показания расхода</string>
+    <string name="communicate_strings">Связь</string>
+    <string name="fuel_calculator">Топливный калькулятор</string>
+    <string name="this_app_helps">Это приложение поможет:</string>
+    <string name="calc_trip_price_fun">- Посчитать стоимость поездки;</string>
+    <string name="calc_max_distance_fun">- Посчитать максимальное расстояние;</string>
+    <string name="calc_cons_fun">- Посчитать расход топлива автомобиля;</string>
+    <string name="stats_fun">- Вести учет полученных показаний пробега и запоминать стоимости поездок</string>
 
     <string-array name="calc_consumption_of">
         <item>Показаниям пробега</item>
