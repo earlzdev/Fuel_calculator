@@ -1,6 +1,6 @@
 package com.freed_asd.fuel_calculator.presentation.statistic.mileage.track.dbModel
 
-import com.freed_asd.fuel_calculator.domain.consumption.dbItem.track.ConsTrackDbItemDomain
+import com.freed_asd.fuel_calculator.domain.consumption.models.SavedTrackConsDomain
 
 interface ConsTrackDbItemUi {
 
@@ -32,8 +32,8 @@ interface ConsTrackUiToDomainMapper<T> {
 
     fun mapToDb(id: Long, consumption: Float, mileage: Float) : T
 
-    class Base() : ConsTrackUiToDomainMapper<ConsTrackDbItemDomain> {
+    class Base() : ConsTrackUiToDomainMapper<SavedTrackConsDomain> {
 
-        override fun mapToDb(id: Long, consumption: Float, mileage: Float) = ConsTrackDbItemDomain.Base(id, consumption, mileage)
+        override fun mapToDb(id: Long, consumption: Float, mileage: Float) = SavedTrackConsDomain.Base(id, consumption, mileage)
     }
 }

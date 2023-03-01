@@ -3,13 +3,12 @@ package com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
-import com.freed_asd.fuel_calculator.core.BaseViewModel
-import com.freed_asd.fuel_calculator.core.Event
-import com.freed_asd.fuel_calculator.data.Repository
-import com.freed_asd.fuel_calculator.domain.consumption.interactor.ConsInteractor
+import com.freed_asd.fuel_calculator.presentation.core.BaseViewModel
+import com.freed_asd.fuel_calculator.presentation.core.Event
+import com.freed_asd.fuel_calculator.domain.consumption.ConsInteractor
 import com.freed_asd.fuel_calculator.domain.consumption.mappers.BaseConsInputUiToDomainMapper
-import com.freed_asd.fuel_calculator.presentation.consumption.ConsInputUi
-import com.freed_asd.fuel_calculator.presentation.consumption.ConsResultUi
+import com.freed_asd.fuel_calculator.presentation.consumption.models.ConsCalcValuesUi
+import com.freed_asd.fuel_calculator.presentation.consumption.models.ConsCalcResultUi
 import com.freed_asd.fuel_calculator.presentation.consumption.mappers.BaseConsResultDomainToUiMapper
 import kotlinx.coroutines.launch
 
@@ -17,14 +16,14 @@ class ConsMileageViewModel (
     private val consInteractor: ConsInteractor,
     private val inputMapper: BaseConsInputUiToDomainMapper,
     private val resultMapper: BaseConsResultDomainToUiMapper
-) : BaseViewModel<Repository, Event<ConsResultUi>>() {
+) : BaseViewModel<Event<ConsCalcResultUi>>() {
 
-    override fun observe(owner: LifecycleOwner, observer: Observer<Event<ConsResultUi>>) {
+    override fun observe(owner: LifecycleOwner, observer: Observer<Event<ConsCalcResultUi>>) {
         super.observe(owner, observer)
         liveData.observe(owner, observer)
     }
 
-    fun calculate(input: ConsInputUi.Base) : ConsResultUi {
+    fun calculate(input: ConsCalcValuesUi.Base) : ConsCalcResultUi {
         val result = consInteractor.calcConsumption(input.map(inputMapper)).map(resultMapper)
         liveData.value = Event(result)
         return result

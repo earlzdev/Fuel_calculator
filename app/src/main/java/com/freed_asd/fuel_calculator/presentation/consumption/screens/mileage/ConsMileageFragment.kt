@@ -3,24 +3,18 @@ package com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.lifecycle.lifecycleScope
 import com.freed_asd.fuel_calculator.R
-import com.freed_asd.fuel_calculator.core.BaseFragment
-import com.freed_asd.fuel_calculator.core.Event
+import com.freed_asd.fuel_calculator.presentation.core.BaseFragment
+import com.freed_asd.fuel_calculator.presentation.core.Event
 import com.freed_asd.fuel_calculator.databinding.FragmentBaseConsMileageBinding
-import com.freed_asd.fuel_calculator.presentation.consumption.ConsInputUi
-import com.freed_asd.fuel_calculator.presentation.consumption.ConsResultUi
+import com.freed_asd.fuel_calculator.presentation.consumption.models.ConsCalcValuesUi
+import com.freed_asd.fuel_calculator.presentation.consumption.models.ConsCalcResultUi
 import com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage.dialog.ConsMileageDialogFragment
-import com.freed_asd.fuel_calculator.presentation.statistic.mileage.mixed.dbModel.ConsMixedDbItemUi
-import kotlinx.coroutines.launch
 
 class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMileageViewModel>() {
 
@@ -53,14 +47,15 @@ class ConsMileageFragment : BaseFragment<FragmentBaseConsMileageBinding, ConsMil
     }
 
     private fun calculate() {
-            viewModel.calculate(ConsInputUi.Base(
+            viewModel.calculate(
+                ConsCalcValuesUi.Base(
                 binding.etCurrentMileage.text.toString().toFloat() - binding.etPreviousMileage.text.toString().toFloat(),
                 binding.etFilledFuel.text.toString().toFloat()
             ))
             savePrevMileage()
     }
 
-    private fun openResultDialog(resultEvent: Event<ConsResultUi>) {
+    private fun openResultDialog(resultEvent: Event<ConsCalcResultUi>) {
         val result = resultEvent.value ?: return
         consumption = result.consumption()
         ConsMileageDialogFragment.newInstance(result).show(

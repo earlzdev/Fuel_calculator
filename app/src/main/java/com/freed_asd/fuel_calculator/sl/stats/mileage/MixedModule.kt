@@ -1,6 +1,6 @@
 package com.freed_asd.fuel_calculator.sl.stats.mileage
 
-import com.freed_asd.fuel_calculator.domain.consumption.dbItem.mixed.ConsMixedDomainToUiMapper
+import com.freed_asd.fuel_calculator.domain.consumption.mappers.ConsMixedDomainToUiMapper
 import com.freed_asd.fuel_calculator.presentation.statistic.mileage.mixed.MixedMileageStatsViewModel
 import com.freed_asd.fuel_calculator.sl.BaseModule
 import com.freed_asd.fuel_calculator.sl.consumption.ConsCoreModule

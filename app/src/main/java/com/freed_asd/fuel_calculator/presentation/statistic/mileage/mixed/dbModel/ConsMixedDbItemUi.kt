@@ -1,6 +1,6 @@
 package com.freed_asd.fuel_calculator.presentation.statistic.mileage.mixed.dbModel
 
-import com.freed_asd.fuel_calculator.domain.consumption.dbItem.mixed.ConsMixedDbItemDomain
+import com.freed_asd.fuel_calculator.domain.consumption.models.SavedMixedDomain
 
 interface ConsMixedDbItemUi {
 
@@ -32,7 +32,7 @@ interface ConsMixedUiToDomainMapper<T> {
 
     fun mapToUi(id: Long, consumption: Float, mileage: Float) : T
 
-    class Base() : ConsMixedUiToDomainMapper<ConsMixedDbItemDomain> {
-        override fun mapToUi(id: Long, consumption: Float, mileage: Float) = ConsMixedDbItemDomain.Base(id, consumption, mileage)
+    class Base() : ConsMixedUiToDomainMapper<SavedMixedDomain> {
+        override fun mapToUi(id: Long, consumption: Float, mileage: Float) = SavedMixedDomain.Base(id, consumption, mileage)
     }
 }

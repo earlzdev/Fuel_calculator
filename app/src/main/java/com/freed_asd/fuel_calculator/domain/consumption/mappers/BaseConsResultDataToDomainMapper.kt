@@ -1,9 +1,9 @@
 package com.freed_asd.fuel_calculator.domain.consumption.mappers
 
 import com.freed_asd.fuel_calculator.data.consumption.mappers.ConsResultDataToDomainMapper
-import com.freed_asd.fuel_calculator.domain.consumption.ConsResultDomain
+import com.freed_asd.fuel_calculator.domain.consumption.models.ConsCalcResultDomain
 
-class BaseConsResultDataToDomainMapper : ConsResultDataToDomainMapper<ConsResultDomain> {
+class BaseConsResultDataToDomainMapper : ConsResultDataToDomainMapper<ConsCalcResultDomain> {
 
-    override fun map(consumption: Float) = ConsResultDomain.Base(consumption)
+    override fun map(consumption: Float) = ConsCalcResultDomain.Base(consumption)
 }

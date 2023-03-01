@@ -14,7 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.withCreated
 import androidx.loader.content.AsyncTaskLoader
 import com.freed_asd.fuel_calculator.R
-import com.freed_asd.fuel_calculator.core.BaseFragment
+import com.freed_asd.fuel_calculator.presentation.core.BaseFragment
 import com.freed_asd.fuel_calculator.databinding.FragmentStatsCityMileageBinding
 import com.freed_asd.fuel_calculator.presentation.statistic.mileage.city.dbModel.ConsCityDbItemUi
 import com.freed_asd.fuel_calculator.presentation.statistic.mileage.mixed.dbModel.ConsMixedDbItemUi

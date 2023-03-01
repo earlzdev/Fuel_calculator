@@ -6,16 +6,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.freed_asd.fuel_calculator.databinding.FragmentPriceItemDesignBinding
-import com.freed_asd.fuel_calculator.presentation.price.dbItem.PriceDbItemUi
+import com.freed_asd.fuel_calculator.presentation.price.dbItem.SavedTripPriceUi
 
 interface ItemClickListener {
 
-    fun onItemDetails(item: PriceDbItemUi)
+    fun onItemDetails(item: SavedTripPriceUi)
 }
 
 class StatsRvAdapter(
     private val clickListener: ItemClickListener
-) : ListAdapter<PriceDbItemUi, PriceItemViewHolder>(DiffCallBack) {
+) : ListAdapter<SavedTripPriceUi, PriceItemViewHolder>(DiffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PriceItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -31,19 +31,19 @@ class StatsRvAdapter(
         }
     }
 
-    companion object DiffCallBack : DiffUtil.ItemCallback<PriceDbItemUi>() {
+    companion object DiffCallBack : DiffUtil.ItemCallback<SavedTripPriceUi>() {
 
-     override fun areItemsTheSame(oldItem: PriceDbItemUi, newItem: PriceDbItemUi) =
+     override fun areItemsTheSame(oldItem: SavedTripPriceUi, newItem: SavedTripPriceUi) =
          oldItem.id() == newItem.id()
 
-     override fun areContentsTheSame(oldItem: PriceDbItemUi, newItem: PriceDbItemUi) =
+     override fun areContentsTheSame(oldItem: SavedTripPriceUi, newItem: SavedTripPriceUi) =
          oldItem.name() == newItem.name()
     }
 }
 
 class PriceItemViewHolder(private val binding: FragmentPriceItemDesignBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: PriceDbItemUi) {
+    fun bind(item: SavedTripPriceUi) {
         binding.priceName.text = item.name()
     }
 }

@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.freed_asd.fuel_calculator.domain.consumption.dbItem.track.ConsTrackDomainToUiMapper
-import com.freed_asd.fuel_calculator.domain.consumption.interactor.ConsInteractor
+import com.freed_asd.fuel_calculator.domain.consumption.models.ConsTrackDomainToUiMapper
+import com.freed_asd.fuel_calculator.domain.consumption.ConsInteractor
 import com.freed_asd.fuel_calculator.presentation.statistic.mileage.track.dbModel.ConsTrackDbItemUi
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch

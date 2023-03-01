@@ -7,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
-import com.freed_asd.fuel_calculator.R
-import com.freed_asd.fuel_calculator.core.BaseFragment
+import com.freed_asd.fuel_calculator.presentation.core.BaseFragment
 import com.freed_asd.fuel_calculator.databinding.FragmentTripFullStatsBinding
-import com.freed_asd.fuel_calculator.presentation.price.dbItem.PriceDbItemUi
+import com.freed_asd.fuel_calculator.presentation.price.dbItem.SavedTripPriceUi
 
 class TripFullStatsFragment : BaseFragment<FragmentTripFullStatsBinding, TripFullStatsViewModel>() {
 
@@ -42,7 +41,7 @@ class TripFullStatsFragment : BaseFragment<FragmentTripFullStatsBinding, TripFul
 
     private fun itemId() = requireArguments().getLong(ITEM)
 
-    private fun initViews(item: PriceDbItemUi) {
+    private fun initViews(item: SavedTripPriceUi) {
         binding.priceNameEd.setText(item.name())
         Log.d("tag", "initViews: ${item.needFuel()}")
         binding.priceNeedFuelValue.text = String.format("%.2f", item.needFuel())

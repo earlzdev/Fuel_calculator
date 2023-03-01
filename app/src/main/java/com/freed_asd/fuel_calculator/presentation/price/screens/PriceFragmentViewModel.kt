@@ -2,10 +2,9 @@ package com.freed_asd.fuel_calculator.presentation.price.screens
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.freed_asd.fuel_calculator.core.BaseViewModel
-import com.freed_asd.fuel_calculator.core.Event
-import com.freed_asd.fuel_calculator.data.Repository
-import com.freed_asd.fuel_calculator.domain.tripPrice.interactor.PriceInteractor
+import com.freed_asd.fuel_calculator.presentation.core.BaseViewModel
+import com.freed_asd.fuel_calculator.presentation.core.Event
+import com.freed_asd.fuel_calculator.domain.tripPrice.PriceInteractor
 import com.freed_asd.fuel_calculator.domain.tripPrice.mappers.BasePriceInputUiToDomainMapper
 import com.freed_asd.fuel_calculator.presentation.price.PriceInputUi
 import com.freed_asd.fuel_calculator.presentation.price.PriceResultUi
@@ -15,7 +14,7 @@ class PriceFragmentViewModel(
     private val interactor: PriceInteractor,
     private val inputMapper: BasePriceInputUiToDomainMapper,
     private val resultMapper: BasePriceResultDomainToUiMapper
-) : BaseViewModel<Repository, Event<PriceResultUi>>() {
+) : BaseViewModel<Event<PriceResultUi>>() {
 
     override fun observe(owner: LifecycleOwner, observer: Observer<Event<PriceResultUi>>) {
         liveData.observe(owner, observer)

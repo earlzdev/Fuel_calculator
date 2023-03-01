@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.freed_asd.fuel_calculator.core.BaseFragment
-import com.freed_asd.fuel_calculator.core.Event
+import com.freed_asd.fuel_calculator.presentation.core.BaseFragment
+import com.freed_asd.fuel_calculator.presentation.core.Event
 import com.freed_asd.fuel_calculator.databinding.FragmentBaseConsDistanceBinding
-import com.freed_asd.fuel_calculator.presentation.consumption.ConsInputUi
-import com.freed_asd.fuel_calculator.presentation.consumption.ConsResultUi
+import com.freed_asd.fuel_calculator.presentation.consumption.models.ConsCalcValuesUi
+import com.freed_asd.fuel_calculator.presentation.consumption.models.ConsCalcResultUi
 import com.freed_asd.fuel_calculator.presentation.consumption.screens.distance.dialog.ConsDistanceDialogFragment
 
 class ConsDistanceFragment : BaseFragment<FragmentBaseConsDistanceBinding, ConsDistanceViewModel>() {
@@ -35,7 +35,7 @@ class ConsDistanceFragment : BaseFragment<FragmentBaseConsDistanceBinding, ConsD
 
     private fun calculate(validation: ConsDistanceValidation)  {
         if (validation.validate()) {
-            val input = ConsInputUi.Base(
+            val input = ConsCalcValuesUi.Base(
                 binding.etDistance.text.toString().toFloat(),
                 binding.etFilledFuelDistance.text.toString().toFloat()
             )
@@ -43,7 +43,7 @@ class ConsDistanceFragment : BaseFragment<FragmentBaseConsDistanceBinding, ConsD
         }
     }
 
-    private fun openResultDialog(resultEvent: Event<ConsResultUi>) {
+    private fun openResultDialog(resultEvent: Event<ConsCalcResultUi>) {
         val result = resultEvent.value ?: return
         ConsDistanceDialogFragment.newInstance(result).show(
             parentFragmentManager,

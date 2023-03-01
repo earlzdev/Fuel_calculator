@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.freed_asd.fuel_calculator.FuelCalcApp
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.databinding.FragmentDialogConsumptionDistanceBinding
-import com.freed_asd.fuel_calculator.presentation.consumption.ConsResultUi
+import com.freed_asd.fuel_calculator.presentation.consumption.models.ConsCalcResultUi
 
 class ConsDistanceDialogFragment: DialogFragment() {
 
@@ -50,7 +50,7 @@ class ConsDistanceDialogFragment: DialogFragment() {
         }
     }
 
-    private fun onDetails() = requireArguments().getParcelable<ConsResultUi.Base>(RESULT_KEY)
+    private fun onDetails() = requireArguments().getParcelable<ConsCalcResultUi.Base>(RESULT_KEY)
         ?: throw IllegalStateException("calculation result can not be null")
 
     override fun onDestroy() {
@@ -64,7 +64,7 @@ class ConsDistanceDialogFragment: DialogFragment() {
         const val RESULT_KEY = "RESULT_KEY"
         const val DEFAULT_COEFF = 0.28
 
-        fun newInstance(result: ConsResultUi) = ConsDistanceDialogFragment().apply {
+        fun newInstance(result: ConsCalcResultUi) = ConsDistanceDialogFragment().apply {
             arguments = bundleOf(RESULT_KEY to result)
         }
     }

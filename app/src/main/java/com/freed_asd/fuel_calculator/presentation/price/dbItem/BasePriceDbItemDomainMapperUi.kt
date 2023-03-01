@@ -1,8 +1,8 @@
 package com.freed_asd.fuel_calculator.presentation.price.dbItem
 
-import com.freed_asd.fuel_calculator.domain.tripPrice.dbItem.PriceItemDbDomainMapper
+import com.freed_asd.fuel_calculator.domain.tripPrice.models.PriceItemDbDomainMapper
 
-class BasePriceDbItemDomainMapperUi: PriceItemDbDomainMapper<PriceDbItemUi> {
+class BasePriceDbItemDomainMapperUi: PriceItemDbDomainMapper<SavedTripPriceUi> {
 
     override fun mapToUi(
         id: Long,
@@ -11,7 +11,7 @@ class BasePriceDbItemDomainMapperUi: PriceItemDbDomainMapper<PriceDbItemUi> {
         needFuel: Float,
         generalPrice: Float,
         everyonePrice: Float
-    ) = PriceDbItemUi.Base(id, name, distance, needFuel, generalPrice, everyonePrice)
+    ) = SavedTripPriceUi.Base(id, name, distance, needFuel, generalPrice, everyonePrice)
 
     override fun mapToData(
         id: Long,
@@ -20,7 +20,7 @@ class BasePriceDbItemDomainMapperUi: PriceItemDbDomainMapper<PriceDbItemUi> {
         needFuel: Float,
         generalPrice: Float,
         everyonePrice: Float
-    ): PriceDbItemUi {
+    ): SavedTripPriceUi {
         TODO("Not yet implemented")
     }
 }
