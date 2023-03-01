@@ -57,7 +57,7 @@
     <string name="previoues_mileage">Предыдущее показание пробега в километрах</string>
     <string name="save_prev_mileage">Сохранять предыдущий пробег</string>
     <string name="current_mileage">Текущее показание пробега в километрах</string>
-    <string name="filled_fuel">Залито топлива в литрах</string>
+    <string name="filled_fuel">Затрачено топлива в литрах</string>
     <string name="incorrect_value">Некорректное значение</string>
     <string name="dot">.</string>
     <string name="no_data">Нет данных</string>

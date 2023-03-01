@@ -10,7 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import com.freed_asd.fuel_calculator.R
-import com.freed_asd.fuel_calculator.core.BaseFragment
+import com.freed_asd.fuel_calculator.presentation.core.BaseFragment
 import com.freed_asd.fuel_calculator.databinding.FragmentBaseConsumptionBinding
 import com.freed_asd.fuel_calculator.presentation.consumption.screens.distance.ConsDistanceFragment
 import com.freed_asd.fuel_calculator.presentation.consumption.screens.mileage.ConsMileageFragment

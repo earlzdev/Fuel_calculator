@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.freed_asd.fuel_calculator.R
-import com.freed_asd.fuel_calculator.core.BaseFragment
+import com.freed_asd.fuel_calculator.presentation.core.BaseFragment
 import com.freed_asd.fuel_calculator.databinding.FragmentStatsTrackMileageBinding
 import com.freed_asd.fuel_calculator.presentation.statistic.mileage.track.dbModel.ConsTrackDbItemUi
 import com.github.mikephil.charting.data.Entry

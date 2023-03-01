@@ -1,19 +1,18 @@
 package com.freed_asd.fuel_calculator.presentation.statistic.trips.fullStats
 
 import androidx.lifecycle.*
-import com.freed_asd.fuel_calculator.core.BaseViewModel
-import com.freed_asd.fuel_calculator.data.Repository
-import com.freed_asd.fuel_calculator.domain.tripPrice.interactor.PriceInteractor
+import com.freed_asd.fuel_calculator.presentation.core.BaseViewModel
+import com.freed_asd.fuel_calculator.domain.tripPrice.PriceInteractor
 import com.freed_asd.fuel_calculator.presentation.price.dbItem.BasePriceDbItemDomainMapperUi
-import com.freed_asd.fuel_calculator.presentation.price.dbItem.PriceDbItemUi
+import com.freed_asd.fuel_calculator.presentation.price.dbItem.SavedTripPriceUi
 import kotlinx.coroutines.launch
 
 class TripFullStatsViewModel(
     private val priceInteractor: PriceInteractor,
     private val priceDomainToUiDbMapper: BasePriceDbItemDomainMapperUi,
-) : BaseViewModel<Repository, PriceDbItemUi>() {
+) : BaseViewModel<SavedTripPriceUi>() {
 
-    override fun observe(owner: LifecycleOwner, observer: Observer<PriceDbItemUi>) {
+    override fun observe(owner: LifecycleOwner, observer: Observer<SavedTripPriceUi>) {
         liveData.observe(owner, observer)
     }
 

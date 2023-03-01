@@ -2,18 +2,16 @@ package com.freed_asd.fuel_calculator.presentation.consumption.screens.distance.
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import com.freed_asd.fuel_calculator.core.BaseViewModel
-import com.freed_asd.fuel_calculator.data.Repository
-import com.freed_asd.fuel_calculator.presentation.consumption.ConsResultUi
+import com.freed_asd.fuel_calculator.presentation.consumption.models.ConsCalcResultUi
+import com.freed_asd.fuel_calculator.presentation.core.BaseViewModel
 
-class DistanceDialogViewModel : BaseViewModel<Repository, ConsResultUi>() {
+class DistanceDialogViewModel : BaseViewModel<ConsCalcResultUi>() {
 
-    override fun observe(owner: LifecycleOwner, observer: Observer<ConsResultUi>) {
+    override fun observe(owner: LifecycleOwner, observer: Observer<ConsCalcResultUi>) {
         liveData.observe(owner, observer)
     }
 
-    fun provideResult(result: ConsResultUi) {
+    fun provideResult(result: ConsCalcResultUi) {
         liveData.value = result
     }
 }

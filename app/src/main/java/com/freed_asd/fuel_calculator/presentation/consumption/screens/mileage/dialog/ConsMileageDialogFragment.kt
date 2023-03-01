@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.freed_asd.fuel_calculator.FuelCalcApp
 import com.freed_asd.fuel_calculator.R
 import com.freed_asd.fuel_calculator.databinding.FragmentDialogConsumptionMileageBinding
-import com.freed_asd.fuel_calculator.presentation.consumption.ConsResultUi
+import com.freed_asd.fuel_calculator.presentation.consumption.models.ConsCalcResultUi
 
 class ConsMileageDialogFragment : DialogFragment() {
 
@@ -49,7 +49,7 @@ class ConsMileageDialogFragment : DialogFragment() {
         }
     }
 
-    private fun onResult() = requireArguments().getParcelable<ConsResultUi.Base>(RESULT_KEY)
+    private fun onResult() = requireArguments().getParcelable<ConsCalcResultUi.Base>(RESULT_KEY)
         ?: throw IllegalStateException("calculation result can not be null")
 
     override fun onDestroy() {
@@ -62,7 +62,7 @@ class ConsMileageDialogFragment : DialogFragment() {
         const val RESULT_KEY = "RESULT_KEY"
         const val DEFAULT_COEFF = 0.28
 
-        fun newInstance(result: ConsResultUi) = ConsMileageDialogFragment().apply {
+        fun newInstance(result: ConsCalcResultUi) = ConsMileageDialogFragment().apply {
             arguments = bundleOf(RESULT_KEY to result)
         }
     }

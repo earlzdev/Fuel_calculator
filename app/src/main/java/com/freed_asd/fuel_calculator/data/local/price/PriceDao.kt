@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 interface PriceDao {
 
     @Query("SELECT * FROM priceDb")
-    fun allValues() : Flow<List<PriceDb>>
+    fun allValues() : List<PriceDb>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertValue(value: PriceDb)

@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import com.freed_asd.fuel_calculator.core.BaseFragment
-import com.freed_asd.fuel_calculator.core.Event
+import com.freed_asd.fuel_calculator.presentation.core.BaseFragment
+import com.freed_asd.fuel_calculator.presentation.core.Event
 import com.freed_asd.fuel_calculator.databinding.FragmentBasePriceBinding
 import com.freed_asd.fuel_calculator.presentation.price.PriceInputUi
 import com.freed_asd.fuel_calculator.presentation.price.PriceResultUi

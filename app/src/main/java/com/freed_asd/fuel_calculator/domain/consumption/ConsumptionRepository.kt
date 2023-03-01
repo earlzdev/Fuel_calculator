@@ -1,10 +1,10 @@
 package com.freed_asd.fuel_calculator.domain.consumption
 
-import com.freed_asd.fuel_calculator.data.consumption.ConsInputData
-import com.freed_asd.fuel_calculator.data.consumption.ConsResultData
-import com.freed_asd.fuel_calculator.data.consumption.dbItems.city.ConsCityDbItemData
-import com.freed_asd.fuel_calculator.data.consumption.dbItems.mixed.ConsMixedDbItemData
-import com.freed_asd.fuel_calculator.data.consumption.dbItems.track.ConsTrackDbItemData
+import com.freed_asd.fuel_calculator.data.consumption.models.ConsCalcValuesData
+import com.freed_asd.fuel_calculator.data.consumption.models.ConsCalcResultData
+import com.freed_asd.fuel_calculator.data.consumption.models.SavedCityConsData
+import com.freed_asd.fuel_calculator.data.consumption.models.SavedMixedConsData
+import com.freed_asd.fuel_calculator.data.consumption.models.SavedTrackConsData
 import com.freed_asd.fuel_calculator.data.local.consumption.city.ConsCity
 import com.freed_asd.fuel_calculator.data.local.consumption.mixed.ConsMixed
 import com.freed_asd.fuel_calculator.data.local.consumption.track.ConsTrack
@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ConsumptionRepository {
 
-    fun calcConsumption(input: ConsInputData) : ConsResultData
+    fun calcConsumption(input: ConsCalcValuesData) : ConsCalcResultData
 
     suspend fun insertIntoMixedDb(value: ConsMixed)
 
@@ -20,11 +20,11 @@ interface ConsumptionRepository {
 
     suspend fun insertIntoCityDb(value: ConsCity)
 
-    fun allDbMixedValues() : Flow<List<ConsMixedDbItemData>>
+    fun allDbMixedValues() : Flow<List<SavedMixedConsData>>
 
-    fun allDbCityValues() : Flow<List<ConsCityDbItemData>>
+    fun allDbCityValues() : Flow<List<SavedCityConsData>>
 
-    fun allDbTrackValues() : Flow<List<ConsTrackDbItemData>>
+    fun allDbTrackValues() : Flow<List<SavedTrackConsData>>
 
     suspend fun deleteMixedValue(id: Long)
 

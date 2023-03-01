@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.freed_asd.fuel_calculator.core.BaseFragment
-import com.freed_asd.fuel_calculator.core.Event
+import com.freed_asd.fuel_calculator.presentation.core.BaseFragment
+import com.freed_asd.fuel_calculator.presentation.core.Event
 import com.freed_asd.fuel_calculator.databinding.FragmentBaseDistanceBinding
 import com.freed_asd.fuel_calculator.presentation.distance.DistanceInputUi
 import com.freed_asd.fuel_calculator.presentation.distance.DistanceResultUi

@@ -2,15 +2,9 @@ package com.freed_asd.fuel_calculator.sl.consumption
 
 import android.content.Context
 import com.freed_asd.fuel_calculator.data.consumption.ConsumptionRepositoryImpl
-import com.freed_asd.fuel_calculator.data.consumption.dbItems.city.ConsCityDataToDomainMapper
-import com.freed_asd.fuel_calculator.data.consumption.dbItems.city.ConsCityDbToDataMapper
-import com.freed_asd.fuel_calculator.data.consumption.dbItems.mixed.ConsMixedDataToDomainMapper
-import com.freed_asd.fuel_calculator.data.consumption.dbItems.mixed.ConsMixedDbToDataMapper
-import com.freed_asd.fuel_calculator.data.consumption.dbItems.track.ConsTrackDataToDomainMapper
-import com.freed_asd.fuel_calculator.data.consumption.dbItems.track.ConsTrackDbToDataMapper
-import com.freed_asd.fuel_calculator.data.consumption.mappers.BaseConsInputDomainToDataMapper
+import com.freed_asd.fuel_calculator.data.consumption.mappers.*
 import com.freed_asd.fuel_calculator.data.local.AppDataBase
-import com.freed_asd.fuel_calculator.domain.consumption.interactor.ConsInteractor
+import com.freed_asd.fuel_calculator.domain.consumption.ConsInteractor
 import com.freed_asd.fuel_calculator.domain.consumption.mappers.BaseConsResultDataToDomainMapper
 import com.freed_asd.fuel_calculator.sl.ResourceProvider
 

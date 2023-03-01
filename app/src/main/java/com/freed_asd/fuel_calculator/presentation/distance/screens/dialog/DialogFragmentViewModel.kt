@@ -2,12 +2,10 @@ package com.freed_asd.fuel_calculator.presentation.distance.screens.dialog
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.freed_asd.fuel_calculator.core.BaseViewModel
-import com.freed_asd.fuel_calculator.data.Repository
-import com.freed_asd.fuel_calculator.domain.distance.interactor.DistanceInteractor
+import com.freed_asd.fuel_calculator.presentation.core.BaseViewModel
 import com.freed_asd.fuel_calculator.presentation.distance.DistanceResultUi
 
-class DialogFragmentViewModel() : BaseViewModel<Repository, DistanceResultUi>() {
+class DialogFragmentViewModel : BaseViewModel<DistanceResultUi>() {
 
     override fun observe(owner: LifecycleOwner, observer: Observer<DistanceResultUi>) {
         super.observe(owner, observer)
