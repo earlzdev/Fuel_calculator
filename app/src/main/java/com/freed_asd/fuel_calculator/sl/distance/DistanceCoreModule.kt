@@ -2,7 +2,8 @@ package com.freed_asd.fuel_calculator.sl.distance
 
 import android.content.Context
 import com.freed_asd.fuel_calculator.data.distance.CalcMaxDistanceRepositoryImpl
-import com.freed_asd.fuel_calculator.data.distance.models.CalcMaxDistanceValuesData
+import com.freed_asd.fuel_calculator.data.distance.MaxDistanceCalculator
+import com.freed_asd.fuel_calculator.data.distance.TripPriceCalculator
 import com.freed_asd.fuel_calculator.data.distance.mappers.BaseInputDomainToDataMapper
 import com.freed_asd.fuel_calculator.data.local.AppDataBase
 import com.freed_asd.fuel_calculator.domain.distance.DistanceInteractor
@@ -15,8 +16,8 @@ class DistanceCoreModule {
     lateinit var resourceProvider: ResourceProvider
 
     fun init(context: Context) {
-        val priceMapper = CalcMaxDistanceValuesData.TripPriceCalculator.Base()
-        val distanceMapper = CalcMaxDistanceValuesData.MaxDistanceCalculator.Base()
+        val priceMapper = TripPriceCalculator.Base()
+        val distanceMapper = MaxDistanceCalculator.Base()
         val distanceRepository = CalcMaxDistanceRepositoryImpl(distanceMapper, priceMapper)
         val distanceInputDomainMapper = BaseInputDomainToDataMapper()
         val distanceResultDomainMapper = BaseResultDataToDomainMapper()

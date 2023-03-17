@@ -5,8 +5,8 @@ import com.freed_asd.fuel_calculator.data.distance.models.CalcMaxDistanceValuesD
 import com.freed_asd.fuel_calculator.domain.distance.CalcMaxDistanceRepository
 
 class CalcMaxDistanceRepositoryImpl(
-    private val distanceMapper: CalcMaxDistanceValuesData.MaxDistanceCalculator,
-    private val priceMapper: CalcMaxDistanceValuesData.TripPriceCalculator,
+    private val distanceMapper: MaxDistanceCalculator,
+    private val priceMapper: TripPriceCalculator,
 ) : CalcMaxDistanceRepository {
 
     override fun calcMaxDistance(data: CalcMaxDistanceValuesData): CalcMaxDistanceResultData {
