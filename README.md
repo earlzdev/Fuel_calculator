@@ -1,6 +1,9 @@
 # Fuel consumption calculator
 This application helps to calculate the fuel consumption, trip price and max distance. It also helps to keep track of fuel consumption by graph.
 
+Download url:
+https://appgallery.huawei.com/#/app/C107870757
+
 # Screens
 
 <img src="https://media.giphy.com/media/1iqjNDfM5AqEUAform/giphy.gif" alt="я джифка"> <img src="https://media.giphy.com/media/MSoKi1Z7hW1Mm1LiAU/giphy.gif" alt="я джифка">
@@ -16,6 +19,3 @@ This application helps to calculate the fuel consumption, trip price and max dis
 <li><a href ="https://kotlinlang.org/docs/coroutines-overview.html#sample-projects">Coroutines</a> - Do some code in the background.<br>
 <li><a href ="https://developer.android.com/topic/libraries/view-binding">View binding</a> - Allows you to more easily write code that interacts with views.<br>
 <li><a href ="http://sergeyteplyakov.blogspot.com/2013/03/di-service-locator.html">Service Locator</a> - Method of dependency injection.<br>
-
-Download url:
-https://appgallery.huawei.com/#/app/C107870757
