@@ -17,3 +17,5 @@ This application helps to calculate the fuel consumption, trip price and max dis
 <li><a href ="https://developer.android.com/topic/libraries/view-binding">View binding</a> - Allows you to more easily write code that interacts with views.<br>
 <li><a href ="http://sergeyteplyakov.blogspot.com/2013/03/di-service-locator.html">Service Locator</a> - Method of dependency injection.<br>
 
+Download url:
+https://appgallery.huawei.com/#/app/C107870757
